@@ -1,0 +1,35 @@
+{
+    "name": "chakram",
+    "version": "0.0.1",
+    "description": "",
+    "license": {
+        "type": "MIT"
+    },
+    "contributors": [
+        "Daniel Reid",
+        "Harry Rose"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dareid/chakram"
+    },
+    "keywords": [
+        "testing",
+        "api",
+        "REST",
+        "mocha",
+        "chai",
+        "bdd"
+    ],
+    "dependencies": {
+        "request": "~2.53.0",
+        "underscore": "~1.8.2",
+        "q": "~1.1.2",
+        "chai": "~2.1.0",
+        "chai-as-promised": "~4.2.0"
+    },
+    "devDependencies": {},
+    "engines": {
+        "node": ">= 0.10.0"
+    }
+}
