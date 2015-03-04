@@ -37,5 +37,11 @@ describe("Chakram", function() {
         it("should support chaining of tests", function () {
             return expect(request).to.have.status(200).and.not.to.have.status(404);
         });
+        
+        it("should support auto waiting for tests", function() {
+            expect(request).to.have.status(200);
+            expect(request).not.to.have.status(404);
+            return chakram.wait();
+        });
     });
 });
