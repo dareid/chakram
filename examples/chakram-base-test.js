@@ -28,7 +28,7 @@ describe("Chakram", function() {
         });
         
         it("should support grouping multiple tests", function () {
-            return chakram.all([
+            return chakram.waitFor([
                 expect(request).to.have.status(200),
                 expect(request).not.to.have.status(404)
             ]);
