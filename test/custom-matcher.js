@@ -3,7 +3,7 @@ var chakram = require('./../lib/chakram.js'),
 
 var customProperty = function (chai, utils) {
     utils.addProperty(chai.Assertion.prototype, 'teapot', function () {
-        this.assert(this._obj.response.statusCode == 418, 'expected status code #{this} to equal #{exp}', 'expected #{this} to not be equal to #{exp}', 418);
+        this.assert(this._obj.response.statusCode === 418, 'expected status code #{this} to equal #{exp}', 'expected #{this} to not be equal to #{exp}', 418);
     });
 };
 var customMethod = function (chai, utils) {

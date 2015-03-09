@@ -1,4 +1,4 @@
-var chakram = require('./../lib/chakram.js'),
+var chakram = require('./../../lib/chakram.js'),
     expect = chakram.expect;
 
 describe("Chakram Matchers", function() {

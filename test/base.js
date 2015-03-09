@@ -4,19 +4,22 @@ var chakram = require('./../lib/chakram.js'),
 describe("Chakram", function() {
     
     describe("Async support", function () {
-        var delayedResponse;
-        this.timeout(10000);
         
-        beforeEach(function() {
-            delayedResponse = chakram.get("http://httpbin.org/delay/1");
-        });
-    
-        it("should support mocha's promise returns", function () {
-            return expect(delayedResponse).to.have.status(200);
-        });
+        describe("Async it", function() {
+            var delayedResponse;
+            this.timeout(10000);
+            
+            beforeEach(function() {
+                delayedResponse = chakram.get("http://httpbin.org/delay/1");
+            });
 
-        it("should support mocha's done callback", function (done) {
-            expect(delayedResponse).to.have.status(200).and.notify(done);
+            it("should support mocha's promise returns", function () {
+                return expect(delayedResponse).to.have.status(200);
+            });
+
+            it("should support mocha's done callback", function (done) {
+                expect(delayedResponse).to.have.status(200).and.notify(done);
+            });
         });
     });
     
