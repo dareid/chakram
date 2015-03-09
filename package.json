@@ -28,7 +28,13 @@
         "chai": "~2.1.0",
         "chai-as-promised": "~4.2.0"
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "mocha": "~2.2.1"
+    },
+    "scripts": {
+        "pretest": "npm install",
+        "test": "mocha examples/*.js"
+    },
     "engines": {
         "node": ">= 0.10.0"
     }
