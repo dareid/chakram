@@ -29,11 +29,13 @@
         "chai-as-promised": "~4.2.0"
     },
     "devDependencies": {
-        "mocha": "~2.2.1"
+        "mocha": "~2.2.1",
+        "istanbul": "~0.3.7",
+        "codeclimate-test-reporter": "~0.0.4"
     },
     "scripts": {
         "pretest": "npm install",
-        "test": "mocha examples/*.js"
+        "test": "istanbul cover _mocha examples/*.js"
     },
     "engines": {
         "node": ">= 0.10.0"
