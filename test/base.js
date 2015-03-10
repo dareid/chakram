@@ -25,7 +25,7 @@ describe("Chakram", function() {
             });
 
             it("should support mocha's done callback", function (done) {
-                expect(delayedResponse).to.have.status(200).and.notify(done);
+                expect(delayedResponse).to.have.status(200).then(function(){done();});
             });
         });
     });
