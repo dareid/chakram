@@ -14,7 +14,7 @@ describe("Chakram", function() {
         
         describe("Async it", function() {
             var delayedResponse;
-            this.timeout(10000);
+            this.timeout(11000);
             
             beforeEach(function() {
                 delayedResponse = chakram.get("http://httpbin.org/delay/1");
