@@ -3,6 +3,13 @@ var chakram = require('./../lib/chakram.js'),
 
 describe("Chakram", function() {
     
+    it("should support chai's built in expectations", function () {
+        expect(true).not.to.equal(false);
+        expect(1).to.be.below(10);
+        expect("teststring").to.be.a('string');
+        expect([1,2,3]).not.to.contain(4);
+    });
+    
     describe("Async support", function () {
         
         describe("Async it", function() {

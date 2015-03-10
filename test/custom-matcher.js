@@ -1,20 +1,21 @@
 var chakram = require('./../lib/chakram.js'),
     expect = chakram.expect;
 
-var customProperty = function (chai, utils) {
-    utils.addProperty(chai.Assertion.prototype, 'teapot', function () {
-        this.assert(this._obj.response.statusCode === 418, 'expected status code #{this} to equal #{exp}', 'expected #{this} to not be equal to #{exp}', 418);
-    });
-};
-var customMethod = function (chai, utils) {
-    utils.addMethod(chai.Assertion.prototype, 'httpVersion', function (ver) {
-        this.assert(this._obj.response.httpVersion === ver, 'expected #{this} to equal #{exp}', 'expected #{this} to not be equal to #{exp}', ver);
-    });
-};
-
-chakram.initialize(customProperty, customMethod);
-
 describe("Custom Matchers", function() {
+
+    before(function() {
+        var customProperty = function (chai, utils) {
+            utils.addProperty(chai.Assertion.prototype, 'teapot', function () {
+                this.assert(this._obj.response.statusCode === 418, 'expected status code #{this} to equal #{exp}', 'expected #{this} to not be equal to #{exp}', 418);
+            });
+        };
+        var customMethod = function (chai, utils) {
+            utils.addMethod(chai.Assertion.prototype, 'httpVersion', function (ver) {
+                this.assert(this._obj.response.httpVersion === ver, 'expected #{this} to equal #{exp}', 'expected #{this} to not be equal to #{exp}', ver);
+            });
+        };
+        chakram.initialize(customProperty, customMethod);
+    });
 
     it("should support adding custom properties", function () {
         var notATeapot = chakram.get("http://httpbin.org/status/200");
