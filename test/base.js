@@ -75,4 +75,48 @@ describe("Chakram", function() {
             return chakram.wait();
         });
     });
+    
+    describe("Chained requests", function () {
+        
+        var request;
+        
+        before(function () {
+            request = chakram.get("http://httpbin.org/status/200");
+        });
+        
+        var assertChakramResponseObject = function (obj) {
+            expect(obj.body).to.exist;
+            expect(obj.response).to.exist;
+            expect(obj.error).to.not.be.undefined;
+            expect(obj.url).to.exist;
+            expect(obj.jar).to.exist;
+        };      
+        
+        it("should allow chakram expect promises to resolve to the chakram response object", function (done) {
+            var expectPromise = expect(request).to.have.status(200);
+            expectPromise.then(function(obj) {
+                assertChakramResponseObject(obj);
+                done();
+            });
+        });
+        
+        it("should allow chakram request promises to resolve to the chakram response object", function (done) {
+            request.then(function(obj) {
+                assertChakramResponseObject(obj);
+                done();
+            });
+        });
+        
+        it("should allow multiple chained requests (can't utilize promise returns)", function (done) {
+            this.timeout(4000);
+            expect(chakram.get("http://httpbin.org/status/200")).to.have.status(200)
+            .then(function(obj) {
+                expect(chakram.post("http://httpbin.org/post", obj.url, {json:false})).to.have.status(200)
+                .then(function(obj) {
+                    expect(JSON.parse(obj.body).data).to.be.equal("http://httpbin.org/status/200");
+                    done();
+                });
+            });
+        });
+    });
 });
