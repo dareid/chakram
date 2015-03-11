@@ -12,12 +12,14 @@ describe("Chakram Matchers", function() {
         
         it("should check existance of a header", function () {
             expect(headerRequest).to.have.header('testheader');
+            expect(headerRequest).to.have.header('testHeaDer');
             expect(headerRequest).not.to.have.header('notpresentheader');
             return chakram.wait();
         });
         
         it("should check that header matches string", function () {
             expect(headerRequest).to.have.header('testheader', "true123");
+            expect(headerRequest).to.have.header('TESTHEADER', "true123");
             
             expect(headerRequest).not.to.have.header('testheader', "123");
             expect(headerRequest).not.to.have.header('testheader', "TRUE");
@@ -33,7 +35,7 @@ describe("Chakram Matchers", function() {
             expect(headerRequest).to.have.header('testheader', /ru/);
             expect(headerRequest).to.have.header('testheader', /\d/);
             expect(headerRequest).to.have.header('testheader', /[t][r]/);
-            expect(headerRequest).to.have.header('testheader', /TRUE/i);
+            expect(headerRequest).to.have.header('Testheader', /TRUE/i);
             
             expect(headerRequest).not.to.have.header('testheader', /tree/);
             expect(headerRequest).not.to.have.header('testheader', /\s/);

@@ -92,19 +92,34 @@ describe("Chakram", function() {
             expect(obj.jar).to.exist;
         };      
         
-        it("should allow chakram expect promises to resolve to the chakram response object", function (done) {
-            var expectPromise = expect(request).to.have.status(200);
-            expectPromise.then(function(obj) {
+        var assertChakramResponseObjAndDone = function (done) {
+            return function (obj) {
                 assertChakramResponseObject(obj);
                 done();
-            });
+            };
+        };
+        
+        it("should allow chakram expect promises to resolve to a chakram response object", function (done) {
+            var expectPromise = expect(request).to.have.status(200);
+            expectPromise.then(assertChakramResponseObjAndDone(done));
         });
         
-        it("should allow chakram request promises to resolve to the chakram response object", function (done) {
-            request.then(function(obj) {
-                assertChakramResponseObject(obj);
-                done();
-            });
+        it("should allow chakram request promises to resolve to a chakram response object", function (done) {
+            request.then(assertChakramResponseObjAndDone(done));
+        });
+        
+        it("should allow chakram waitFor promises to resolve to a chakram response object", function (done) {
+            var waitPromise = chakram.waitFor([
+                expect(request).to.have.status(200),
+                expect(request).not.to.have.status(400)
+            ]);
+            waitPromise.then(assertChakramResponseObjAndDone(done));
+        });
+        
+        it("should allow chakram wait promises to resolve to a chakram response object", function (done) {
+            expect(request).to.have.status(200);
+            expect(request).not.to.have.status(400);
+            chakram.wait().then(assertChakramResponseObjAndDone(done));
         });
         
         it("should allow multiple chained requests", function () {
