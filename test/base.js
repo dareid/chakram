@@ -8,6 +8,8 @@ describe("Chakram", function() {
         expect(1).to.be.below(10);
         expect("teststring").to.be.a('string');
         expect([1,2,3]).not.to.contain(4);
+        expect(undefined).to.be.undefined;
+        expect(null).to.be.null;
     });
     
     it("should support JSON POST requests", function (done) {
