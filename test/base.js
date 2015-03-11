@@ -107,15 +107,13 @@ describe("Chakram", function() {
             });
         });
         
-        it("should allow multiple chained requests (can't utilize promise returns)", function (done) {
+        it("should allow multiple chained requests (can't utilize promise returns)", function () {
             this.timeout(4000);
-            expect(chakram.get("http://httpbin.org/status/200")).to.have.status(200)
+            return expect(chakram.get("http://httpbin.org/status/200")).to.have.status(200)
             .then(function(obj) {
-                expect(chakram.post("http://httpbin.org/post", obj.url, {json:false})).to.have.status(200)
-                .then(function(obj) {
-                    expect(JSON.parse(obj.body).data).to.be.equal("http://httpbin.org/status/200");
-                    done();
-                });
+                return expect(chakram.post("http://httpbin.org/post", obj.url, {json:false})).to.have.status(200);
+            }).then(function(obj) {
+                return expect(JSON.parse(obj.body).data).to.be.equal("http://httpbin.org/status/200");
             });
         });
     });
