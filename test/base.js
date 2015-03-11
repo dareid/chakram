@@ -107,7 +107,7 @@ describe("Chakram", function() {
             });
         });
         
-        it("should allow multiple chained requests (can't utilize promise returns)", function () {
+        it("should allow multiple chained requests", function () {
             this.timeout(4000);
             return expect(chakram.get("http://httpbin.org/status/200")).to.have.status(200)
             .then(function(obj) {
