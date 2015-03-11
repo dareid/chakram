@@ -10,6 +10,25 @@ describe("Chakram", function() {
         expect([1,2,3]).not.to.contain(4);
     });
     
+    it("should support JSON POST requests", function (done) {
+        var json = {"num": 2,"str": "test"};
+        var post = chakram.post("http://httpbin.org/post", json);
+        post.then(function(resp) {
+            expect(resp.body.data).to.be.equal(JSON.stringify(json));
+            expect(resp.body.headers['Content-Type']).to.be.equal('application/json');
+            done();
+        });
+    });
+    
+    it("should support non-JSON POST requests", function (done) {
+        var stringPost = "testing with a string post";
+        var post = chakram.post("http://httpbin.org/post", stringPost, {json:false});
+        post.then(function(resp) {
+            expect(JSON.parse(resp.body).data).to.be.equal(stringPost);
+            done();
+        });
+    });
+    
     describe("Async support", function () {
         
         describe("Async it", function() {
