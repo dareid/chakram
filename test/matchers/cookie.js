@@ -19,6 +19,7 @@ describe("Chakram Matchers", function() {
         it("should check that the cookie value matches a given string", function () {
             expect(cookieSet).to.have.cookie('chakram', 'testval');
             
+            expect(cookieSet).not.to.have.cookie('Chakram', 'testval');
             expect(cookieSet).not.to.have.cookie('chakram', 'est');
             expect(cookieSet).not.to.have.cookie('chakram', 'testva');
             expect(cookieSet).not.to.have.cookie('chakram', 'Testval');
