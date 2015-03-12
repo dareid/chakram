@@ -12,24 +12,6 @@ describe("Chakram", function() {
         expect(null).to.be.null;
     });
     
-    it("should support JSON POST requests", function () {
-        var json = {"num": 2,"str": "test"};
-        var post = chakram.post("http://httpbin.org/post", json);
-        return post.then(function(resp) {
-            expect(resp.body.data).to.be.equal(JSON.stringify(json));
-            expect(resp.body.headers['Content-Type']).to.be.equal('application/json');
-        });
-    });
-    
-    it("should support non-JSON POST requests", function () {
-        var stringPost = "testing with a string post";
-        var post = chakram.post("http://httpbin.org/post", stringPost, {json:false});
-        return post.then(function(resp) {
-            expect(JSON.parse(resp.body).data).to.be.equal(stringPost);
-            expect(JSON.parse(resp.body).headers['Content-Type']).not.to.be.equal('application/json');
-        });
-    });
-    
     describe("Async support", function () {
         
         describe("Async it", function() {
@@ -80,13 +62,13 @@ describe("Chakram", function() {
         var request;
         
         before(function () {
-            request = chakram.get("http://httpbin.org/status/200");
+            request = chakram.get("http://httpbin.org/get");
         });
         
         var assertChakramResponseObject = function (obj) {
             expect(obj.body).to.exist;
             expect(obj.response).to.exist;
-            expect(obj.error).to.not.be.undefined;
+            expect(obj.error).to.be.null;
             expect(obj.url).to.exist;
             expect(obj.jar).to.exist;
         };      
@@ -118,12 +100,12 @@ describe("Chakram", function() {
             this.timeout(4000);
             return expect(chakram.get("http://httpbin.org/status/200")).to.have.status(200)
             .then(function(obj) {
-                var postRequest = chakram.post("http://httpbin.org/post", obj.url, {json:false});
+                var postRequest = chakram.post("http://httpbin.org/post", {"url": obj.url});
                 expect(postRequest).to.have.status(200);
                 expect(postRequest).to.have.header('content-length');
                 return chakram.wait();
             }).then(function(obj) {
-                expect(JSON.parse(obj.body).data).to.be.equal("http://httpbin.org/status/200");
+                expect(obj.body.json.url).to.be.equal("http://httpbin.org/status/200");
             });
         });
     });
