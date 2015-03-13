@@ -8,7 +8,8 @@ describe("Chakram methods", function() {
             var json = {"num": 2,"str": "test"};
             var post = testMethod(testUrl, json);
             return post.then(function(resp) {
-                expect(resp.body.data).to.be.equal(JSON.stringify(json));
+                expect(resp.body).to.be.an('object');
+                expect(resp.body.json).to.deep.equal(json);
                 expect(resp.body.headers['Content-Type']).to.be.equal('application/json');
             });
         });
@@ -17,6 +18,7 @@ describe("Chakram methods", function() {
             var stringPost = "testing with a string post";
             var post = testMethod(testUrl, stringPost, {json:false});
             return post.then(function(resp) {
+                expect(resp.body).to.be.a('string');
                 expect(JSON.parse(resp.body).data).to.be.equal(stringPost);
                 expect(JSON.parse(resp.body).headers['Content-Type']).not.to.be.equal('application/json');
             });
@@ -42,6 +44,7 @@ describe("Chakram methods", function() {
     it("should allow GET requests", function () {
         return chakram.get("http://httpbin.org/get?test=str")
         .then(function(obj) {
+            expect(obj.body).to.be.an('object');
             expect(obj.body.args.test).to.equal('str');
         });
     });

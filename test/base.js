@@ -12,6 +12,20 @@ describe("Chakram", function() {
         expect(null).to.be.null;
     });
     
+    it("should expose any errors in the chakram response object", function () {
+        return chakram.get("not-valid")
+        .then(function(obj) {
+            expect(obj.error).to.exist.and.to.be.a("object");
+        });
+    });
+    
+    it("should include the original URL in the chakram response object", function () {
+        return chakram.get("not-valid")
+        .then(function(obj) {
+            expect(obj.url).to.exist.and.to.equal("not-valid");
+        });
+    });
+    
     describe("Async support", function () {
         
         describe("Async it", function() {
@@ -71,18 +85,18 @@ describe("Chakram", function() {
             expect(obj.error).to.be.null;
             expect(obj.url).to.exist;
             expect(obj.jar).to.exist;
-        };      
+        };    
         
-        it("should allow chakram expect promises to resolve to a chakram response object", function () {
+        it("should resolve chakram request promises to a chakram response object", function () {
+            return request.then(assertChakramResponseObject);
+        });  
+        
+        it("should resolve chakram expect promises to a chakram response object", function () {
             var expectPromise = expect(request).to.have.status(200);
             return expectPromise.then(assertChakramResponseObject);
         });
         
-        it("should allow chakram request promises to resolve to a chakram response object", function () {
-            return request.then(assertChakramResponseObject);
-        });
-        
-        it("should allow chakram waitFor promises to resolve to a chakram response object", function () {
+        it("should resolve chakram.waitFor promises to a chakram response object", function () {
             var waitPromise = chakram.waitFor([
                 expect(request).to.have.status(200),
                 expect(request).not.to.have.status(400)
@@ -90,7 +104,7 @@ describe("Chakram", function() {
             return waitPromise.then(assertChakramResponseObject);
         });
         
-        it("should allow chakram wait promises to resolve to a chakram response object", function () {
+        it("should resolve chakram.wait promises to a chakram response object", function () {
             expect(request).to.have.status(200);
             expect(request).not.to.have.status(400);
             return chakram.wait().then(assertChakramResponseObject);

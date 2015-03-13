@@ -35,7 +35,7 @@
     },
     "scripts": {
         "pretest": "npm install",
-        "test": "istanbul cover _mocha $(find test/ -name \"*.js\")"
+        "test": "istanbul cover _mocha test/* test/**/*"
     },
     "engines": {
         "node": ">= 0.10.0"
