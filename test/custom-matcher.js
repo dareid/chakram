@@ -6,12 +6,14 @@ describe("Custom Matchers", function() {
     before(function() {
         var customProperty = function (chai, utils) {
             utils.addProperty(chai.Assertion.prototype, 'teapot', function () {
-                this.assert(this._obj.response.statusCode === 418, 'expected status code #{this} to equal #{exp}', 'expected #{this} to not be equal to #{exp}', 418);
+                var statusCode = this._obj.response.statusCode;
+                this.assert(statusCode === 418, 'expected status code '+statusCode+' to equal 418', 'expected '+statusCode+' to not be equal to 418');
             });
         };
         var customMethod = function (chai, utils) {
             utils.addMethod(chai.Assertion.prototype, 'httpVersion', function (ver) {
-                this.assert(this._obj.response.httpVersion === ver, 'expected #{this} to equal #{exp}', 'expected #{this} to not be equal to #{exp}', ver);
+                var version = this._obj.response.httpVersion;
+                this.assert(version === ver, 'expected '+version+' to equal #{exp}', 'expected '+version+' to not be equal to #{exp}', ver);
             });
         };
         chakram.initialize(customProperty, customMethod);
