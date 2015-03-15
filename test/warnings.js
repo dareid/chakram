@@ -8,6 +8,8 @@ describe("User Warnings", function() {
     var warningStub;
     
     before(function () {
+        var warning = chakram.__get__("warnUser");
+        expect(warning).to.throw(Error);        
         warningStub = sinon.stub();
         chakram.__set__("warnUser", warningStub);
     });
