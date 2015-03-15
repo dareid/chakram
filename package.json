@@ -28,7 +28,8 @@
         "chai": "2.1.x",
         "chai-as-promised": "4.2.x",
         "tv4": "1.1.x",
-        "object-path": "0.9.x"
+        "object-path": "0.9.x",
+        "chai-shallow-deep-equal": "1.3.x"
     },
     "devDependencies": {
         "mocha": "2.x.x",
