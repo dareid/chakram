@@ -1,7 +1,7 @@
 var chakram = require('./../lib/chakram.js'),
     expect = chakram.expect;
 
-describe("Chakram methods", function() {
+describe("Methods", function() {
 
     var testWriteMethods = function (testMethod, testUrl) {
         it("should support JSON requests", function () {
