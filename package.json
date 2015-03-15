@@ -23,7 +23,7 @@
     ],
     "dependencies": {
         "request": "~2.53.0",
-        "underscore": "~1.8.2",
+        "extend-object": "~1.0.0",
         "q": "~1.1.2",
         "chai": "~2.1.0",
         "chai-as-promised": "~4.2.0",
