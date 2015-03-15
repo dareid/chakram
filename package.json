@@ -22,20 +22,20 @@
         "bdd"
     ],
     "dependencies": {
-        "request": "~2.53.0",
-        "extend-object": "~1.0.0",
-        "q": "~1.1.2",
-        "chai": "~2.1.0",
-        "chai-as-promised": "~4.2.0",
-        "tv4": "~1.1.9",
-        "object-path": "~0.9.0"
+        "request": "2.53.x",
+        "extend-object": "1.0.x",
+        "q": "1.1.x",
+        "chai": "2.1.x",
+        "chai-as-promised": "4.2.x",
+        "tv4": "1.1.x",
+        "object-path": "0.9.x"
     },
     "devDependencies": {
-        "mocha": "~2.2.1",
-        "istanbul": "~0.3.7",
-        "codeclimate-test-reporter": "~0.0.4",
-        "rewire": "^2.3.1",
-        "sinon": "^1.14.0"
+        "mocha": "2.x.x",
+        "istanbul": "0.x.x",
+        "codeclimate-test-reporter": "0.x.x",
+        "rewire": "2.x.x",
+        "sinon": "1.x.x"
     },
     "scripts": {
         "pretest": "npm install",
