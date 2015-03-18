@@ -1,13 +1,4 @@
-# Chakram
-
-[![Build Status](https://travis-ci.org/dareid/chakram.svg?branch=master)](https://travis-ci.org/dareid/chakram) [![Test Coverage](https://codeclimate.com/github/dareid/chakram/badges/coverage.svg)](https://codeclimate.com/github/dareid/chakram)
-
-Chakram is a REST API testing framework designed to perform end to end tests on JSON REST endpoints. The library offers a BDD testing style and fully exploits javascript promises - the resulting tests are simple, clear and expressive. The library is built on [node.js](https://nodejs.org/), [mocha](http://mochajs.org/) and [chai](http://chaijs.com/). 
-
-## Example
-
-```js
-var chakram = require('chakram'),
+var chakram = require('./../lib/chakram.js'),
     expect = chakram.expect;
 
 describe("Random User API", function() {
@@ -59,19 +50,3 @@ describe("Random User API", function() {
         });
     });
 });
-
-```
-For more examples please explore the project's test folder, which includes examples of all chakram's capabilites.
-
-## Install Chakram
-Chakram requires nodejs and NPM to be installed, it is available as an NPM module. Ideally, Chakram should be added to your testing project's devDependancies. This can be achieved with the following command:
-```js
-npm install chakram --save-dev
-```
-
-## API Documentation
-
-{{#module name="chakram"~}}
-  {{>body~}}
-  {{>exported~}}
-{{/module}}
