@@ -37,13 +37,14 @@
         "codeclimate-test-reporter": "0.x.x",
         "rewire": "2.x.x",
         "sinon": "1.x.x",
-        "jsdoc": "latest"
+        "jsdoc": "latest",
+        "jaguarjs-jsdoc": "dareid/jaguarjs-jsdoc"
     },
     "scripts": {
         "pretest": "npm install",
         "test": "istanbul cover _mocha test/* test/**/*",
         "predoc": "npm install",
-        "doc": "jsdoc  -R README.md -r lib"
+        "doc": "jsdoc -t node_modules/jaguarjs-jsdoc -c conf.json -R README.md -r lib"
     },
     "engines": {
         "node": ">= 0.10.0"
