@@ -144,85 +144,275 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="global.html">Global</h1>
         
 
 
+
+<section>
+    
+<header>
+    <h2>
+    
+    </h2>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+        
+        
+<dl class="details">
+    
+        
+    
+    
     
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
 
-    <h3> </h3>
+        
+        
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+        
+        <dl>
+                
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="ChakramResponse">ChakramResponse<span class="type-signature type object">Object</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Encapsulates the results of a HTTP call into a single object
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Error</span>
 
 
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">An error when applicable</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>response</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
 
 
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">An <a href="http://nodejs.org/api/http.html#http_http_incomingmessage">http.IncomingMessage</a> object</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>body</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+|
+
+<span class="param-type">Buffer</span>
+|
+
+<span class="param-type">Object</span>
 
 
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The response body. Typically a JSON object unless the json option has been set to false, in which case will be either a String or Buffer</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>jar</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
 
 
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A <a href="https://github.com/goinstant/tough-cookie">tough cookie</a> jar</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The request's original URL</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
     
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
 
+    
+    
+</dd>
 
+            </dl>
+    
+    
+    
+</article>
 
-    <section>
-        <article class="readme"><h1>Chakram</h1><p><a href="https://travis-ci.org/dareid/chakram"><img src="https://travis-ci.org/dareid/chakram.svg?branch=master" alt="Build Status"></a> <a href="https://codeclimate.com/github/dareid/chakram"><img src="https://codeclimate.com/github/dareid/chakram/badges/coverage.svg" alt="Test Coverage"></a></p>
-<p>Chakram is a REST API testing framework designed to perform end to end tests on JSON REST endpoints. The library offers a BDD testing style and fully exploits javascript promises - the resulting tests are simple, clear and expressive. The library is built on <a href="https://nodejs.org/">node.js</a>, <a href="http://mochajs.org/">mocha</a> and <a href="http://chaijs.com/">chai</a>. </p>
-<h2>Install Chakram</h2><p>Chakram requires nodejs and NPM to be installed, it is available as an NPM module. Ideally, Chakram should be added to your testing project's devDependancies. This can be achieved with the following command:</p>
-<pre class="prettyprint source lang-js"><code>npm install chakram --save-dev</code></pre><h2>Example</h2><pre class="prettyprint source lang-js"><code>var chakram = require('chakram'),
-    expect = chakram.expect;
-
-describe(&quot;Random User API&quot;, function() {
-    var apiRequest;
-
-    before(function () {
-        apiRequest = chakram.get(&quot;http://api.randomuser.me/?gender=female&quot;);
-    });
-
-    it(&quot;should return 200 on success&quot;, function () {
-        return expect(apiRequest).to.have.status(200);
-    });
-
-    it(&quot;should return content type and server headers&quot;, function () {
-        expect(apiRequest).to.have.header(&quot;server&quot;);
-        expect(apiRequest).to.have.header(&quot;content-type&quot;, /json/);
-        return chakram.wait();
-    });
-
-    it(&quot;should include email, username, password and phone number&quot;, function () {
-        return expect(apiRequest).to.have.schema('results.0.user', {
-            &quot;required&quot;: [
-                &quot;email&quot;, 
-                &quot;username&quot;, 
-                &quot;password&quot;, 
-                &quot;phone&quot;
-            ]
-        });
-    });
-
-    it(&quot;should return a female user&quot;, function () {
-        return expect(apiRequest).to.have.json('results.0.user.gender', 'female');
-    });
-
-    it(&quot;should return a single random user&quot;, function () {
-        return expect(apiRequest).to.have.schema('results', {minItems: 1, maxItems: 1});
-    }); 
-
-    it(&quot;should return a different username when called again&quot;, function () {
-        var firstUsername;
-
-        return apiRequest.then(function(obj) {
-            firstUsername = obj.body.results[0].user.username;
-            return chakram.get(&quot;http://api.randomuser.me/?gender=female&quot;);
-        })
-        .then(function(obj) {
-            var secondUsername = obj.body.results[0].user.username;
-            expect(firstUsername).not.to.equal(secondUsername);
-        });
-    });
-});</code></pre><p>For more examples please explore the project's test folder, which includes examples of all chakram's capabilites.</p></article>
-    </section>
-
+</section>  
 
 
 

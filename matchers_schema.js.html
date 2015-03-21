@@ -2,13 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Chakram</title>
-    
-    <meta name="description" content="Chakram: E2E REST API test tool" />
-    
-        <meta name="keywords" content="E2E REST API JSON chai mocha nodejs test" />
-        <meta name="keyword" content="E2E REST API JSON chai mocha nodejs test" />
-    
+    <title>Source: matchers/schema.js</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -23,7 +17,7 @@
     
     
     <script>
-    var config = {"monospaceLinks":false,"cleverLinks":false,"applicationName":"Chakram","googleAnalytics":"","meta":{"title":"Chakram","description":"Chakram: E2E REST API test tool","keyword":"E2E REST API JSON chai mocha nodejs test"},"linenums":true,"default":{}};
+    var config = {"monospaceLinks":false,"cleverLinks":false,"default":{"outputSourceFiles":true}};
     </script>
     
 
@@ -33,7 +27,7 @@
 <div id="wrap" class="clearfix">
     
 <div class="navigation">
-    <h3 class="applicationName"><a href="index.html">Chakram</a></h3>
+    <h3 class="applicationName"><a href="index.html"></a></h3>
 
     <div class="search">
         <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
@@ -144,83 +138,64 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="matchers_schema.js.html">Source: matchers/schema.js</h1>
         
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article class="readme"><h1>Chakram</h1><p><a href="https://travis-ci.org/dareid/chakram"><img src="https://travis-ci.org/dareid/chakram.svg?branch=master" alt="Build Status"></a> <a href="https://codeclimate.com/github/dareid/chakram"><img src="https://codeclimate.com/github/dareid/chakram/badges/coverage.svg" alt="Test Coverage"></a></p>
-<p>Chakram is a REST API testing framework designed to perform end to end tests on JSON REST endpoints. The library offers a BDD testing style and fully exploits javascript promises - the resulting tests are simple, clear and expressive. The library is built on <a href="https://nodejs.org/">node.js</a>, <a href="http://mochajs.org/">mocha</a> and <a href="http://chaijs.com/">chai</a>. </p>
-<h2>Install Chakram</h2><p>Chakram requires nodejs and NPM to be installed, it is available as an NPM module. Ideally, Chakram should be added to your testing project's devDependancies. This can be achieved with the following command:</p>
-<pre class="prettyprint source lang-js"><code>npm install chakram --save-dev</code></pre><h2>Example</h2><pre class="prettyprint source lang-js"><code>var chakram = require('chakram'),
-    expect = chakram.expect;
+        <article>
+            <pre class="prettyprint source "><code>var tv4 = require('tv4'),
+    path = require('object-path');
 
-describe(&quot;Random User API&quot;, function() {
-    var apiRequest;
-
-    before(function () {
-        apiRequest = chakram.get(&quot;http://api.randomuser.me/?gender=female&quot;);
+/**
+Checks the schema of the returned JSON object against a provided {@link http://json-schema.org/ JSON Schema}. This assertation utilizes the brilliant {@link https://github.com/geraintluff/tv4 tv4 library}. An optional dot notation argument allows a subelement of the JSON object to checked against a JSON schema. Amoungst others, this can confirm types, array lengths, required fields, min and max of numbers and string lengths. For more examples see the test/matchers/schema.js tests.
+@alias module:chakram-expectation.schema
+@param {String} [subelement] - if specified a subelement of the JSON body is checked, specified using dot notation 
+@param {*} expectedSchema - a JSON schema object which should match the JSON body or the JSON body's subelement. For more details on format see {@link http://json-schema.org/ the JSON schema website}
+@example 
+it("should check that the returned JSON object satisifies a JSON schema", function () {
+    var request = chakram.get("http://httpbin.org/get");
+    expect(request).to.have.schema('headers', {"required": ["Host", "Accept"]});
+    expect(request).to.have.schema({
+        "type": "object",
+        properties: {
+            url: {
+                type: "string"
+            },
+            headers: {
+                type: "object"
+            }
+        }
     });
+    return chakram.wait();
+});
+ */
 
-    it(&quot;should return 200 on success&quot;, function () {
-        return expect(apiRequest).to.have.status(200);
+module.exports = function (chai, utils) {
+
+    utils.addMethod(chai.Assertion.prototype, 'schema', function () {
+        
+        var object = this._obj.body;
+        var schema = arguments[arguments.length-1];
+        
+        if(arguments.length === 2) {
+            object = path.get(object, arguments[0]);
+            if(object === undefined || object === null) {
+                throw new Error("could not find path '"+arguments[0]+"' in object "+JSON.stringify(this._obj.body)); 
+            }
+        }        
+        
+        var valid = tv4.validate(object, schema);
+        
+        this.assert(
+            valid, 
+            'expected body to match JSON schema '+JSON.stringify(schema)+'. error: ' + tv4.error, 
+            'expected body to not match JSON schema ' + JSON.stringify(schema)
+        );
     });
-
-    it(&quot;should return content type and server headers&quot;, function () {
-        expect(apiRequest).to.have.header(&quot;server&quot;);
-        expect(apiRequest).to.have.header(&quot;content-type&quot;, /json/);
-        return chakram.wait();
-    });
-
-    it(&quot;should include email, username, password and phone number&quot;, function () {
-        return expect(apiRequest).to.have.schema('results.0.user', {
-            &quot;required&quot;: [
-                &quot;email&quot;, 
-                &quot;username&quot;, 
-                &quot;password&quot;, 
-                &quot;phone&quot;
-            ]
-        });
-    });
-
-    it(&quot;should return a female user&quot;, function () {
-        return expect(apiRequest).to.have.json('results.0.user.gender', 'female');
-    });
-
-    it(&quot;should return a single random user&quot;, function () {
-        return expect(apiRequest).to.have.schema('results', {minItems: 1, maxItems: 1});
-    }); 
-
-    it(&quot;should return a different username when called again&quot;, function () {
-        var firstUsername;
-
-        return apiRequest.then(function(obj) {
-            firstUsername = obj.body.results[0].user.username;
-            return chakram.get(&quot;http://api.randomuser.me/?gender=female&quot;);
-        })
-        .then(function(obj) {
-            var secondUsername = obj.body.results[0].user.username;
-            expect(firstUsername).not.to.equal(secondUsername);
-        });
-    });
-});</code></pre><p>For more examples please explore the project's test folder, which includes examples of all chakram's capabilites.</p></article>
+};</code></pre>
+        </article>
     </section>
 
 
@@ -231,7 +206,7 @@ describe(&quot;Random User API&quot;, function() {
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Sat Mar 21 2015 22:52:15 GMT+0000 (GMT)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Sat Mar 21 2015 22:48:41 GMT+0000 (GMT)
         </footer>
     </div>
 </div>
