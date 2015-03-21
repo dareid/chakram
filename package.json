@@ -37,13 +37,13 @@
         "codeclimate-test-reporter": "0.x.x",
         "rewire": "2.x.x",
         "sinon": "1.x.x",
-        "jsdoc-to-markdown": "0.x.x"
+        "jsdoc": "latest"
     },
     "scripts": {
         "pretest": "npm install",
         "test": "istanbul cover _mocha test/* test/**/*",
         "predoc": "npm install",
-        "doc": "jsdoc2md --template template.hbs lib/*.js lib/**/*.js > README.md"
+        "doc": "jsdoc  -R README.md -r lib"
     },
     "engines": {
         "node": ">= 0.10.0"
