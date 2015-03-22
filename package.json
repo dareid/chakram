@@ -17,6 +17,7 @@
         "testing",
         "api",
         "REST",
+        "JSON",
         "mocha",
         "chai",
         "bdd"
