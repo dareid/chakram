@@ -99,3 +99,13 @@ describe("Random User API", function() {
 });
 
 ```
+
+## Run Tests
+To run Chakram tests, install the Mocha testing framework globally (or as a dev dependancy):
+```
+npm install -g mocha
+```
+Once installed, run the tests using the [Mocha command line](http://mochajs.org/#usage), which in its simplest form is:
+```
+mocha path/to/tests
+```
