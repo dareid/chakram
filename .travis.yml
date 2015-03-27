@@ -8,3 +8,13 @@ addons:
     
 after_script:
   - cat coverage/lcov.info | codeclimate
+  
+deploy:
+  provider: npm
+  email: danielallenreid@gmail.com
+  api_key:
+    secure: WKXhgXectE9pqwxUMXDmNF7hC8ZatjInaPoO2XpqNZ4ggFeBT7YFuBPeZ4tqGo0RAgsSRC+/USENuMUZPlJjuVir2hdK9lX0iUxmXboUIPGNzCt7+cY/g0/ZVLtSBMsBmoRjZlPLYxoyqXJJCw9yiz41vOBk6dSQzdgqu9J4R78=
+  on:
+    tags: true
+    repo: dareid/chakram
+    branch: master
