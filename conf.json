@@ -1,12 +1,12 @@
 {
 	"templates": {
 	    "applicationName": "Chakram",
-	    "googleAnalytics": "",
+	    "googleAnalytics": "UA-61133305-1",
 	    "meta": {
-            "title": "Chakram: BDD REST API test tool",
-            "description": "Chakram: BDD REST API test tool",
-            "keyword": "E2E REST API JSON chai mocha nodejs test BDD"
+		    "title": "Chakram: BDD REST API test tool",
+		    "description": "Chakram: BDD REST API test tool",
+		    "keyword": "E2E REST API JSON chai mocha nodejs test BDD"
 	    },
-	    "linenums": true
+	    "linenums": false
 	}
 }
