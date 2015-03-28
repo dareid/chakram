@@ -41,16 +41,20 @@ describe("Random User API", function() {
         return expect(apiRequest).not.to.be.encoded.with.gzip;
     });
     
-    it("should return a different username when called again", function () {
-        var firstUsername;
-        
-        return apiRequest.then(function(obj) {
-            firstUsername = obj.body.results[0].user.username;
-            return chakram.get("http://api.randomuser.me/?gender=female");
-        })
-        .then(function(obj) {
-            var secondUsername = obj.body.results[0].user.username;
-            expect(firstUsername).not.to.equal(secondUsername);
+    it("should return a different username on each request", function () {
+        this.timeout(10000);
+        var multipleRequests = [];
+        for(var ct = 0; ct < 5; ct++) {
+            multipleRequests.push(chakram.get("http://api.randomuser.me/?gender=female"));
+        }
+        return chakram.all(multipleRequests).then(function(responses) {
+            var returnedUsernames = responses.map(function(response) {
+                return response.body.results[0].user.username;
+            });
+            while (returnedUsernames.length > 0) {
+                var username = returnedUsernames.pop();
+                expect(returnedUsernames.indexOf(username)).to.equal(-1);
+            }
         });
     });
 });
