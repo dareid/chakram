@@ -79,4 +79,14 @@ describe("Documentation examples", function() {
         return chakram.wait();
     });
   
+    it("should detect deflate compression", function () {
+        var deflate = chakram.get("http://httpbin.org/deflate");
+        return expect(deflate).to.be.encoded.with.deflate;
+    });
+    
+    it("should detect gzip compression", function () {
+        var gzip = chakram.get("http://httpbin.org/gzip");
+        return expect(gzip).to.be.encoded.with.gzip;
+    });
+    
 });
