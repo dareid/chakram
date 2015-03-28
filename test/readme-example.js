@@ -19,7 +19,7 @@ describe("Random User API", function() {
     });
     
     it("should include email, username, password and phone number", function () {
-        return expect(apiRequest).to.have.schema('results.0.user', {
+        return expect(apiRequest).to.have.schema('results[0].user', {
             "required": [
                 "email", 
                 "username", 
@@ -30,12 +30,16 @@ describe("Random User API", function() {
     });
     
     it("should return a female user", function () {
-        return expect(apiRequest).to.have.json('results.0.user.gender', 'female');
+        return expect(apiRequest).to.have.json('results[0].user.gender', 'female');
     });
     
     it("should return a single random user", function () {
         return expect(apiRequest).to.have.schema('results', {minItems: 1, maxItems: 1});
     }); 
+    
+    it("should not be gzip compressed", function () {
+        return expect(apiRequest).not.to.be.encoded.with.gzip;
+    });
     
     it("should return a different username when called again", function () {
         var firstUsername;
