@@ -5,15 +5,11 @@ var rewire = require('rewire'),
 
 
 describe("User Warnings", function() {
-    var consoleErrorStub;
+    var warningStub, revertWarning;
     
-    before(function () {
-        consoleErrorStub = sinon.stub();
-        chakram.__set__({
-            console: {
-                error: consoleErrorStub
-            }
-        });
+    before(function () {     
+        warningStub = sinon.stub();
+        revertWarning = chakram.__set__("warnUser", warningStub);
     });
     
     it("should warn user about unrun tests", function () {
@@ -27,7 +23,37 @@ describe("User Warnings", function() {
         expect(request).to.have.status(400);
     });
     
+    it("should set the test as an error on warning the user", function () {
+        revertWarning();
+        var thisObj = {
+            test: {
+                error : sinon.stub()   
+            },
+            currentTest: {
+                state : "passed"   
+            }
+        }; 
+        var warning = chakram.__get__("warnUser");
+        warning.call(thisObj, "test error");
+        expect(thisObj.test.error.callCount).to.equal(1);
+    });
+    
+    it("should not warn the user if the test has failed anyway", function () {
+        revertWarning();
+        var thisObj = {
+            test: {
+                error : sinon.stub()   
+            },
+            currentTest: {
+                state : "failed"   
+            }
+        }; 
+        var warning = chakram.__get__("warnUser");
+        warning.call(thisObj, "test error");
+        expect(thisObj.test.error.callCount).to.equal(0);
+    });
+    
     after(function() {
-        expect(consoleErrorStub.callCount).to.equal(2);
+        expect(warningStub.callCount).to.equal(2);
     });
 });
