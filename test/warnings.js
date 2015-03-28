@@ -5,13 +5,15 @@ var rewire = require('rewire'),
 
 
 describe("User Warnings", function() {
-    var warningStub;
+    var consoleErrorStub;
     
     before(function () {
-        var warning = chakram.__get__("warnUser");
-        expect(warning).to.throw(Error);        
-        warningStub = sinon.stub();
-        chakram.__set__("warnUser", warningStub);
+        consoleErrorStub = sinon.stub();
+        chakram.__set__({
+            console: {
+                error: consoleErrorStub
+            }
+        });
     });
     
     it("should warn user about unrun tests", function () {
@@ -26,6 +28,6 @@ describe("User Warnings", function() {
     });
     
     after(function() {
-        expect(warningStub.callCount).to.equal(2);
+        expect(consoleErrorStub.callCount).to.equal(2);
     });
 });
