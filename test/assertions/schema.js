@@ -1,7 +1,7 @@
 var chakram = require('./../../lib/chakram.js'),
     expect = chakram.expect;
 
-describe("Chakram Matchers", function() {    
+describe("Chakram Assertions", function() {    
     describe("JSON Schema", function() {
         
         var getRequest, postRequest;

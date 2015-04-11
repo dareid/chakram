@@ -1,7 +1,7 @@
 var chakram = require('./../lib/chakram.js'),
     expect = chakram.expect;
 
-describe("Custom Matchers", function() {
+describe("Custom Assertion", function() {
 
     before(function() {
         var customProperty = function (chai, utils) {

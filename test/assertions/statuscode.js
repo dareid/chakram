@@ -1,7 +1,7 @@
 var chakram = require('./../../lib/chakram.js'),
     expect = chakram.expect;
 
-describe("Chakram Matchers", function() {
+describe("Chakram Assertions", function() {
     
     describe("Status code", function() {
         it("should assert return status code", function() {
