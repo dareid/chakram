@@ -4,7 +4,7 @@
 
 Chakram is an API testing framework designed to perform end to end tests on JSON REST endpoints. The library offers a BDD testing style and fully exploits javascript promises - the resulting tests are simple, clear and expressive. The library is built on [node.js](https://nodejs.org/), [mocha](http://mochajs.org/) and [chai](http://chaijs.com/). 
 
-More information is available in the [library's documentation](http://dareid.github.io/chakram/) and its [own tests](https://github.com/dareid/chakram/tree/master/test) which demonstrate all of Chakram's capabilities. 
+More information is available in the [library's documentation](http://dareid.github.io/chakram/) and its [own tests](https://github.com/dareid/chakram/tree/master/test) which demonstrate all of Chakram's capabilities. Example API tests of publically accessable APIs are available in the [examples directory](https://github.com/dareid/chakram/tree/master/examples).
 
 ## Install Chakram
 Chakram requires nodejs and NPM to be installed, it is available as an NPM module. Ideally, Chakram should be added to your testing project's devDependancies. This can be achieved with the following command:
@@ -15,7 +15,7 @@ npm install chakram --save-dev
 ## Introduction
 Chakram builds on top of the mocha testing framework, as such, the tests follow the [BDD style](http://mochajs.org/#getting-started). As this library focuses on testing REST APIs, the tests are naturally asynchronous. Mocha has [native support for promises](http://mochajs.org/#asynchronous-code) which Chakram exploits. All requests and expectations return promises which fulfill to [Chakram response objects](http://dareid.github.io/chakram/global.html#ChakramResponse).
 
-The example below demonstrates a GET request and an assertation of the returned status code. The assertation of the status code returns a promise which is fulfilled once the status code has been checked. 
+The example below demonstrates a GET request and an assertion of the returned status code. The assertion of the status code returns a promise which is fulfilled once the status code has been checked. 
 
 ```js
 var chakram = require('chakram'),
@@ -93,7 +93,7 @@ describe("Random User API", function() {
 });
 
 ```
-It is important that tests wait for all requests and assertations to be completed. To help, chakram includes a wait method, this returns a promise which will be fulfilled once all assertations have been performed. In addition, Chakram will fail any tests which do not wait for assertations to complete. Below is a test using the wait method. 
+It is important that tests wait for all requests and assertions to be completed. To help, chakram includes a wait method, this returns a promise which will be fulfilled once all assertions have been performed. In addition, Chakram will fail any tests which do not wait for assertions to complete. Below is a test using the wait method. 
 
 ```js
 var chakram = require('chakram'),

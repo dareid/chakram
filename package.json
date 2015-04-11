@@ -1,7 +1,7 @@
 {
     "name": "chakram",
-    "version": "0.0.3",
-    "description": "Chakram is a REST API testing framework designed to perform end to end tests on JSON REST endpoints. The library offers a BDD testing style and fully exploits javascript promises",
+    "version": "0.0.4",
+    "description": "Chakram is an API testing framework designed to test JSON REST endpoints. The library offers a BDD testing style and fully exploits javascript promises",
     "main": "lib/chakram.js",
     "license": {
         "type": "MIT"
@@ -15,13 +15,14 @@
         "url": "https://github.com/dareid/chakram"
     },
     "keywords": [
-        "testing",
+        "test",
         "api",
         "REST",
+        "HTTP",
         "JSON",
         "mocha",
         "chai",
-        "bdd"
+        "BDD"
     ],
     "dependencies": {
         "request": "2.53.x",
@@ -43,7 +44,7 @@
     },
     "scripts": {
         "pretest": "npm install",
-        "test": "istanbul cover _mocha test/* test/**/*",
+        "test": "istanbul cover _mocha test/* test/**/* examples/*",
         "predoc": "npm install",
         "doc": "jsdoc -t node_modules/jaguarjs-jsdoc -c conf.json -R README.md -r lib"
     },

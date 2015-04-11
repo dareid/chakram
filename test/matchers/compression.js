@@ -5,7 +5,7 @@ describe("Chakram Matchers", function() {
     
     describe("Compression", function() {
         
-        it("should allow assertations on uncompressed responses", function () {
+        it("should allow assertions on uncompressed responses", function () {
             var noncompressed = chakram.get("http://httpbin.org/get");
             expect(noncompressed).not.to.be.encoded.with.gzip;
             expect(noncompressed).not.to.be.encoded.with.deflate;

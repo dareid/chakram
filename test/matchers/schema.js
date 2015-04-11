@@ -25,7 +25,7 @@ describe("Chakram Matchers", function() {
         
         describe("dot notation access", function() {      
             
-            it("should perform assertations on subelements if first argument is a dot notation string", function () {
+            it("should perform assertions on subelements if first argument is a dot notation string", function () {
                 var expectedSchema = {"required": ["Host", "Accept"]};
                 expect(getRequest).to.have.schema('headers', expectedSchema);
                 expect(getRequest).not.to.have.schema(expectedSchema);
@@ -89,7 +89,7 @@ describe("Chakram Matchers", function() {
                 return expect(getRequest).to.have.schema(expectedTypes);
             });
             
-            it("should allow assertations on object's properties", function () {
+            it("should allow assertions on object's properties", function () {
                 var expectedTypes = {
                     properties: {
                         url: {
@@ -123,7 +123,7 @@ describe("Chakram Matchers", function() {
                 ]);
             });
                     
-            it("should allow assertations on array's items", function () {
+            it("should allow assertions on array's items", function () {
                 var expectStringsToBeTestWithNumber = {
                     items: {
                         pattern: /test\d/
