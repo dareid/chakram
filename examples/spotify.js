@@ -17,10 +17,8 @@ describe("Spotify API", function() {
             required: ["error"]
         };
         
-        var spotify = function (chai, utils) {
+        var spotifyCustomAssertions = function (chai, utils) {
             utils.addProperty(chai.Assertion.prototype, 'spotify', function () {});
-        };
-        var spotifyError = function (chai, utils) {
             utils.addMethod(chai.Assertion.prototype, 'error', function (status, message) {
                 var req = new chai.Assertion(this._obj);
                 utils.transferFlags(this, req); 
@@ -29,8 +27,6 @@ describe("Spotify API", function() {
                 req.to.have.json('error.message', message);
                 req.to.have.json('error.status', status);
             });
-        };
-        var limitCheck = function (chai, utils) {
             utils.addMethod(chai.Assertion.prototype, 'limit', function (topLevelObjectName, limit) {
                 var req = new chai.Assertion(this._obj);
                 utils.transferFlags(this, req);
@@ -44,7 +40,7 @@ describe("Spotify API", function() {
             });
         };
         
-        chakram.initialize(spotify, spotifyError, limitCheck);
+        chakram.initialize(spotifyCustomAssertions);
     });
     
     
