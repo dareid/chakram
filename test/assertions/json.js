@@ -25,6 +25,10 @@ describe("Chakram Assertions", function() {
             });            
         });
         
+        it("should support checking that a path does not exist", function () {
+            return expect(postRequest).not.to.have.json('headers.non.existant');
+        });
+        
         describe("Equals", function () {
             it("should ensure matches json exactly", function () {
                 return chakram.waitFor([
@@ -36,20 +40,6 @@ describe("Chakram Assertions", function() {
                     })
                 ]);
             });
-            
-            it("should allow custom callbacks to be used to run assertions", function () {
-                return expect(postRequest).to.have.json('json.stringArray', function (data) {
-                    expect(data).to.deep.equal(["test1", "test2", "test3"]);
-                });
-            });
-            
-            it("should allow the whole JSON body to be checked", function () {
-                return expect(postRequest).to.have.json(function (data) {
-                    expect(data.json.number).to.be.above(19).and.below(21);
-                    expect(data.json.number).not.to.equal(211);
-                });
-            });
-            
         });
         
         describe("Includes", function () {
@@ -94,6 +84,19 @@ describe("Chakram Assertions", function() {
             });
         });
         
+        describe("Callbacks", function () {            
+            it("should allow custom callbacks to be used to run assertions", function () {
+                return expect(postRequest).to.have.json('json.stringArray', function (data) {
+                    expect(data).to.deep.equal(["test1", "test2", "test3"]);
+                });
+            });
             
+            it("should allow the whole JSON body to be checked", function () {
+                return expect(postRequest).to.have.json(function (data) {
+                    expect(data.json.number).to.be.above(19).and.below(21);
+                    expect(data.json.number).not.to.equal(211);
+                });
+            });
+        });
     });    
 });
