@@ -50,6 +50,9 @@ describe("Documentation examples", function() {
         expect(response).to.have.header('content-type');
         expect(response).to.have.header('content-type', 'application/json');
         expect(response).to.have.header('content-type', /json/);
+        expect(response).to.have.header('content-type', function(contentType) {
+            expect(contentType).to.equal('application/json');
+        });
         return chakram.wait();
     });
 

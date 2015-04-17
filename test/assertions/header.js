@@ -45,5 +45,15 @@ describe("Chakram Assertions", function() {
             expect(headerRequest).not.to.have.header('notpresentheader', "/true123/");
             return chakram.wait();
         });
+        
+        it("should call provided functions with the header value", function () {
+            expect(headerRequest).to.have.header('testheader', function (headerValue) {
+                expect(headerValue).to.equal("true123");
+            });
+            expect(headerRequest).to.have.header('notpresentheader', function (headerValue) {
+                expect(headerValue).to.be.undefined;
+            });
+            return chakram.wait();
+        });
     });    
 });
