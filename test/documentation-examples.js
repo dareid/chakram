@@ -62,6 +62,9 @@ describe("Documentation examples", function() {
             }
         });
         expect(response).to.have.json('url', "http://httpbin.org/get");
+        expect(response).to.have.json('url', function (url) {
+            expect(url).to.equal("http://httpbin.org/get");
+        });
         return chakram.wait();
     });
   

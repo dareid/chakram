@@ -33,6 +33,13 @@ describe("Random User API", function() {
         return expect(apiResponse).to.have.json('results[0].user.gender', 'female');
     });
     
+    it("should return a valid email address", function () {
+        return expect(apiResponse).to.have.json(function(json) {
+            var email = json.results[0].user.email;
+            expect(/\S+@\S+\.\S+/.test(email)).to.be.true;
+        });
+    });
+    
     it("should return a single random user", function () {
         return expect(apiResponse).to.have.schema('results', {minItems: 1, maxItems: 1});
     }); 

@@ -31,7 +31,7 @@ describe("Minimal example", function() {
 Below is a larger example testing the [Random User Generator API](https://randomuser.me/).
 
 ```js
-var chakram = require('./../lib/chakram.js'),
+var chakram = require('chakram'),
     expect = chakram.expect;
 
 describe("Random User API", function() {
@@ -64,6 +64,13 @@ describe("Random User API", function() {
     
     it("should return a female user", function () {
         return expect(apiResponse).to.have.json('results[0].user.gender', 'female');
+    });
+    
+    it("should return a valid email address", function () {
+        return expect(apiResponse).to.have.json(function(json) {
+            var email = json.results[0].user.email;
+            expect(/\S+@\S+\.\S+/.test(email)).to.be.true;
+        });
     });
     
     it("should return a single random user", function () {
