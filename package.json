@@ -46,7 +46,7 @@
         "pretest": "npm install",
         "test": "istanbul cover _mocha test/* test/**/* examples/*",
         "predoc": "npm install",
-        "doc": "jsdoc -t node_modules/jaguarjs-jsdoc -c conf.json -R README.md -r lib"
+        "doc": "jsdoc -t node_modules/jaguarjs-jsdoc -R README.md -r lib"
     },
     "engines": {
         "node": ">= 0.10.0"
