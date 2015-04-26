@@ -2,12 +2,12 @@ var chakram = require('./../lib/chakram.js'),
     expect = chakram.expect;
 
 describe("Methods", function() {
-
+    
     var testWriteMethods = function (testMethod, testUrl) {
         it("should support JSON requests", function () {
             var json = {"num": 2,"str": "test"};
-            var post = testMethod(testUrl, json);
-            return post.then(function(resp) {
+            var response = testMethod(testUrl, json);
+            return response.then(function(resp) {
                 expect(resp.body).to.be.an('object');
                 expect(resp.body.json).to.deep.equal(json);
                 expect(resp.body.headers['Content-Type']).to.be.equal('application/json');
@@ -16,12 +16,22 @@ describe("Methods", function() {
 
         it("should support non-JSON requests", function () {
             var stringPost = "testing with a string post";
-            var post = testMethod(testUrl, stringPost, {json:false});
-            return post.then(function(resp) {
+            var response = testMethod(testUrl, stringPost, {json:false});
+            return response.then(function(resp) {
                 expect(resp.body).to.be.a('string');
                 expect(JSON.parse(resp.body).data).to.be.equal(stringPost);
                 expect(JSON.parse(resp.body).headers['Content-Type']).not.to.be.equal('application/json');
             });
+        });
+        
+        it("should support sending custom headers", function () {
+            var customHeaders = {
+                "Token": "dummy token value"
+            };
+            var response = testMethod(testUrl, {}, {
+                headers: customHeaders
+            });
+            return expect(response).to.include.json('headers', customHeaders);
         });
     };
     
