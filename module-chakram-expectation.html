@@ -242,7 +242,7 @@
     
         
         <div class="tag-source">
-            matchers/cookie.js, line 16
+            assertions/cookie.js, line 15
         </div>
         
     </div>
@@ -388,12 +388,11 @@
 
     
     <pre class="prettyprint"><code>it("should allow checking of HTTP cookies", function () {
-    var request = chakram.get("http://httpbin.org/cookies/set?chakram=testval");
-    return chakram.waitFor([
-        expect(request).to.have.cookie('chakram'),
-        expect(request).to.have.cookie('chakram', 'testval'),
-        expect(request).to.have.cookie('chakram', /val/)
-    ]);
+    var response = chakram.get("http://httpbin.org/cookies/set?chakram=testval");
+    expect(response).to.have.cookie('chakram');
+    expect(response).to.have.cookie('chakram', 'testval');
+    expect(response).to.have.cookie('chakram', /val/);
+    return chakram.wait();
 });</code></pre>
     
 
@@ -411,7 +410,7 @@
     
         
         <div class="tag-source">
-            matchers/compression.js, line 31
+            assertions/compression.js, line 31
         </div>
         
     </div>
@@ -493,7 +492,7 @@
     
         
         <div class="tag-source">
-            matchers/compression.js, line 18
+            assertions/compression.js, line 18
         </div>
         
     </div>
@@ -575,7 +574,7 @@
     
         
         <div class="tag-source">
-            matchers/header.js, line 17
+            assertions/header.js, line 19
         </div>
         
     </div>
@@ -655,6 +654,9 @@
 |
 
 <span class="param-type">RegExp</span>
+|
+
+<span class="param-type">function</span>
 
 
             
@@ -671,7 +673,7 @@
                         
                     
                 
-                if specified, checks the header matches the given string or regular expression</td>
+                if specified, checks the header matches the given string or regular expression OR calls the provided function passing the header's value</td>
         </tr>
 	
 	
@@ -721,12 +723,14 @@
 
     
     <pre class="prettyprint"><code>it("should allow checking of HTTP headers", function () {
-    var request = chakram.get("http://httpbin.org/get");
-    return chakram.waitFor([
-        expect(request).to.have.header('content-type'),
-        expect(request).to.have.header('content-type', 'application/json'),
-        expect(request).to.have.header('content-type', /json/)
-    ]);
+    var response = chakram.get("http://httpbin.org/get");
+    expect(response).to.have.header('content-type');
+    expect(response).to.have.header('content-type', 'application/json');
+    expect(response).to.have.header('content-type', /json/);
+    expect(response).to.have.header('content-type', function(contentType) {
+        expect(contentType).to.equal('application/json');
+    });
+    return chakram.wait();
 });</code></pre>
     
 
@@ -744,7 +748,7 @@
     
         
         <div class="tag-source">
-            matchers/json.js, line 22
+            assertions/json.js, line 25
         </div>
         
     </div>
@@ -823,6 +827,9 @@
             
                 
 <span class="param-type">*</span>
+|
+
+<span class="param-type">function</span>
 
 
             
@@ -837,7 +844,7 @@
                         
                     
                 
-                a JSON serializable object which should match the JSON body or the JSON body's subelement</td>
+                a JSON serializable object which should match the JSON body or the JSON body's subelement OR a custom function which is called with the JSON body or the JSON body's subelement</td>
         </tr>
 	
 	
@@ -887,14 +894,17 @@
 
     
     <pre class="prettyprint"><code>it("should allow checking of JSON return bodies", function () {
-    var request = chakram.get("http://httpbin.org/get");
-    expect(request).to.include.json({
+    var response = chakram.get("http://httpbin.org/get");
+    expect(response).to.include.json({
         url: "http://httpbin.org/get",
         headers: {
             Host: "httpbin.org",
         }
     });
-    expect(request).to.have.json('url', "http://httpbin.org/get");
+    expect(response).to.have.json('url', "http://httpbin.org/get");
+    expect(response).to.have.json('url', function (url) {
+        expect(url).to.equal("http://httpbin.org/get");
+    });
     return chakram.wait();
 });</code></pre>
     
@@ -913,7 +923,7 @@
     
         
         <div class="tag-source">
-            matchers/schema.js, line 28
+            assertions/schema.js, line 28
         </div>
         
     </div>
@@ -924,7 +934,7 @@
     
     
     <div class="description">
-        Checks the schema of the returned JSON object against a provided <a href="http://json-schema.org/">JSON Schema</a>. This assertation utilizes the brilliant <a href="https://github.com/geraintluff/tv4">tv4 library</a>. An optional dot notation argument allows a subelement of the JSON object to checked against a JSON schema. Amoungst others, this can confirm types, array lengths, required fields, min and max of numbers and string lengths. For more examples see the test/matchers/schema.js tests.
+        Checks the schema of the returned JSON object against a provided <a href="http://json-schema.org/">JSON Schema</a>. This assertion utilizes the brilliant <a href="https://github.com/geraintluff/tv4">tv4 library</a>. An optional dot notation argument allows a subelement of the JSON object to checked against a JSON schema. Amoungst others, this can confirm types, array lengths, required fields, min and max of numbers and string lengths. For more examples see the test/assertions/schema.js tests.
     </div>
     
 
@@ -1056,9 +1066,9 @@
 
     
     <pre class="prettyprint"><code>it("should check that the returned JSON object satisifies a JSON schema", function () {
-    var request = chakram.get("http://httpbin.org/get");
-    expect(request).to.have.schema('headers', {"required": ["Host", "Accept"]});
-    expect(request).to.have.schema({
+    var response = chakram.get("http://httpbin.org/get");
+    expect(response).to.have.schema('headers', {"required": ["Host", "Accept"]});
+    expect(response).to.have.schema({
         "type": "object",
         properties: {
             url: {
@@ -1087,7 +1097,7 @@
     
         
         <div class="tag-source">
-            matchers/statuscode.js, line 12
+            assertions/statuscode.js, line 12
         </div>
         
     </div>
@@ -1195,8 +1205,8 @@
 
     
     <pre class="prettyprint"><code>it("should allow checking of the response's status code", function () {
-    var request = chakram.get("http://httpbin.org/get");
-    return expect(request).to.have.status(200);
+    var response = chakram.get("http://httpbin.org/get");
+    return expect(response).to.have.status(200);
 });</code></pre>
     
 
@@ -1220,7 +1230,7 @@
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Tue Apr 07 2015 12:26:34 GMT+0100 (BST)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Wed Apr 29 2015 08:13:48 GMT+0100 (BST)
         </footer>
     </div>
 </div>

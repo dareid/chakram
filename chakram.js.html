@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Source: chakram.js</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/jaguar.css">
+    
+    
+    <script>
+    var config = {"monospaceLinks":false,"cleverLinks":false,"default":{"outputSourceFiles":true}};
+    </script>
+    
+
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html"></a><iframe src="https://ghbtns.com/github-btn.html?user=dareid&repo=chakram&type=star&count=true" style="margin-top: 3px;" frameborder="0" scrolling="0" width="170px" height="20px"></iframe></h3>
+
+    <div class="search">
+        <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
+    </div>
+    <ul class="list">
+    
+        <li class="item" data-name="module:chakram">
+            <span class="title">
+                <a href="module-chakram.html">module:chakram</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="module:chakram.all"><a href="module-chakram.html#.all">all</a></li>
+            
+                <li data-name="module:chakram.delete"><a href="module-chakram.html#.delete">delete</a></li>
+            
+                <li data-name="module:chakram.expect"><a href="module-chakram.html#.expect">expect</a></li>
+            
+                <li data-name="module:chakram.get"><a href="module-chakram.html#.get">get</a></li>
+            
+                <li data-name="module:chakram.head"><a href="module-chakram.html#.head">head</a></li>
+            
+                <li data-name="module:chakram.initialize"><a href="module-chakram.html#.initialize">initialize</a></li>
+            
+                <li data-name="module:chakram.options"><a href="module-chakram.html#.options">options</a></li>
+            
+                <li data-name="module:chakram.patch"><a href="module-chakram.html#.patch">patch</a></li>
+            
+                <li data-name="module:chakram.post"><a href="module-chakram.html#.post">post</a></li>
+            
+                <li data-name="module:chakram.put"><a href="module-chakram.html#.put">put</a></li>
+            
+                <li data-name="module:chakram.request"><a href="module-chakram.html#.request">request</a></li>
+            
+                <li data-name="module:chakram.wait"><a href="module-chakram.html#.wait">wait</a></li>
+            
+                <li data-name="module:chakram.waitFor"><a href="module-chakram.html#.waitFor">waitFor</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="module:chakram-expectation">
+            <span class="title">
+                <a href="module-chakram-expectation.html">module:chakram-expectation</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="module:chakram-expectation.cookie"><a href="module-chakram-expectation.html#.cookie">cookie</a></li>
+            
+                <li data-name="module:chakram-expectation.deflate"><a href="module-chakram-expectation.html#.deflate">deflate</a></li>
+            
+                <li data-name="module:chakram-expectation.gzip"><a href="module-chakram-expectation.html#.gzip">gzip</a></li>
+            
+                <li data-name="module:chakram-expectation.header"><a href="module-chakram-expectation.html#.header">header</a></li>
+            
+                <li data-name="module:chakram-expectation.json"><a href="module-chakram-expectation.html#.json">json</a></li>
+            
+                <li data-name="module:chakram-expectation.schema"><a href="module-chakram-expectation.html#.schema">schema</a></li>
+            
+                <li data-name="module:chakram-expectation.status"><a href="module-chakram-expectation.html#.status">status</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="global">
+            <span class="title">
+                <a href="global.html">global</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            <span class="subtitle">Typedefs</span>
+            
+                <li data-name="ChakramResponse"><a href="global.html#ChakramResponse">ChakramResponse</a></li>
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+    </ul>
+</div>
+
+    <div class="main">
+        <h1 class="page-title" data-filename="chakram.js.html">Source: chakram.js</h1>
+        
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source "><code>/**
+Chakram Module
+@module chakram
+@example
+var chakram = require("chakram");
+ */
+
+var Q = require('q'),
+    extend = require('extend-object'),
+    methods = require('./methods.js'),
+    chakramMatchers = require("./assertions/index.js"),
+    chaiAsPromised,
+    chaiShallow = require('chai-shallow-deep-equal'),
+    chai;
+
+var exports = module.exports = {};
+extend(exports, methods);
+
+
+exports.initialized = false;
+
+var extendChaiPromise = function () {
+    chaiAsPromised.transferPromiseness = function (assertion, promise) {
+        assertion.then = promise.then.bind(promise);
+        assertion.isFulfilled = promise.isFulfilled.bind(promise);
+    };
+};
+
+var loadChai = function () {
+    if (exports.initialized) {
+        delete require.cache[require.resolve('chai-as-promised')];
+        delete require.cache[require.resolve('chai')];
+    }
+    chai = require('chai');
+    chaiAsPromised = require("chai-as-promised");
+    extendChaiPromise();
+};
+
+/**
+Initialise the chakram package with custom chai plugins.
+Only call if you want to exploit custom plugins.
+@param {...ChaiPlugin} customChaiPlugin - One or multiple chai plugins
+@alias module:chakram.initialize
+@example 
+var customProperty = function (chai, utils) {
+    utils.addProperty(chai.Assertion.prototype, 'teapot', function () {
+        var statusCode = this._obj.response.statusCode;
+        this.assert(
+            statusCode === 418, 
+            'expected status code '+statusCode+' to equal 418', 
+            'expected '+statusCode+' to not be equal to 418'
+        );
+    });
+};
+chakram.initialise(customProperty);
+ */
+exports.initialize = function (customChaiPlugin) {
+    loadChai();
+    for(var ct = 0; ct &lt; arguments.length; ct++) {
+        chai.use(arguments[ct]);
+    }
+    chakramMatchers.map(function(matcher) {
+        chai.use(matcher);
+    });
+    chai.use(chaiShallow);
+    chai.use(chaiAsPromised);
+    exports.initialized = true;
+};
+
+var recordedExpects = [];
+
+/**
+Chakram assertion constructor. Extends chai's extend method with Chakram's HTTP assertions.
+Please see {@link http://chaijs.com/api/bdd/ chai's API documentation} for details on the default chai assertions and the {@link ChakramExpectation} documentation for the Chakram HTTP assertions.
+@param {*} value - The variable to run assertions on, can be a {@link ChakramResponse} promise
+@returns {chakram-expectation} A Chakram expectation object
+@alias module:chakram.expect
+@example 
+var expect = chakram.expect;
+it("should support chakram and chai assertions", function () {
+    var google = chakram.get("http://google.com");
+    expect(true).to.be.true;
+    expect(google).to.have.status(200);
+    expect(1).to.be.below(10);
+    expect("teststring").to.be.a('string');
+    return chakram.wait();
+});
+ */
+exports.expect = function(value) {
+    if(exports.initialized === false) {
+        exports.initialize();
+    }
+    if (value !== undefined &amp;&amp; value !== null &amp;&amp; value.then !== undefined) {
+        var test = chai.expect(value).eventually;
+        recordedExpects.push(test);
+        return test;
+    } else {
+        return chai.expect(value);   
+    }
+};
+
+/**
+Returns a promise which is fulfilled once all promises in the provided array are fulfilled.
+Identical to {@link https://github.com/kriskowal/q/wiki/API-Reference#promiseall Q.all}.
+@method
+@param {Promise[]} promiseArray - An array of promises to wait for
+@returns {Promise}
+@alias module:chakram.all
+ */
+exports.all = Q.all;
+
+/**
+Returns a promise which is fulfilled once all promises in the provided array are fulfilled.
+Similar to {@link https://github.com/kriskowal/q/wiki/API-Reference#promiseall Q.all}, however, instead of being fulfilled with an array containing the fulfillment value of each promise, it is fulfilled with the fulfillment value of the last promise in the provided array. This allows chaining of HTTP calls.
+@param {Promise[]} promiseArray - An array of promises to wait for
+@returns {Promise}
+@alias module:chakram.waitFor
+@example 
+it("should support grouping multiple tests", function () {
+    var response = chakram.get("http://httpbin.org/get");
+    return chakram.waitFor([
+        expect(response).to.have.status(200),
+        expect(response).not.to.have.status(404)
+    ]);
+});
+ */
+exports.waitFor = function(promiseArray) {
+    return Q.all(promiseArray).then(function(resolvedArray) {
+        var deferred = Q.defer();
+        deferred.resolve(resolvedArray[resolvedArray.length - 1]);
+        return deferred.promise;
+    });
+};
+
+/**
+Returns a promise which is fulfilled once all chakram expectations are fulfilled.
+This works by recording all chakram expectations called within an 'it' and waits for all the expectations to finish before resolving the returned promise.
+@returns {Promise}
+@alias module:chakram.wait
+@example 
+it("should support auto waiting for tests", function() {
+    var response = chakram.get("http://httpbin.org/get");
+    expect(response).to.have.status(200);
+    expect(response).not.to.have.status(404);
+    return chakram.wait();
+});
+ */
+exports.wait = function() {
+    return exports.waitFor(recordedExpects);
+};
+
+var warnUser = function (message) {
+    if (this.currentTest.state !== 'failed') {
+        this.test.error(new Error(message));
+    }
+};
+
+var checkForUnfulfilledExpectations = function () {
+    for(var ct = 0; ct &lt; recordedExpects.length; ct++) {
+        if(recordedExpects[ct].isFulfilled !== undefined &amp;&amp; recordedExpects[ct].isFulfilled() === false) {
+            warnUser.call(this, "Some expectation promises were not fulfilled before the test finished. Ensure you are waiting for all the expectations to run");
+            break;
+        }
+    }
+};
+
+afterEach(function() {
+    checkForUnfulfilledExpectations.call(this);
+    recordedExpects = [];
+});</code></pre>
+        </article>
+    </section>
+
+
+
+
+
+
+        
+
+        <footer>
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Wed Apr 29 2015 08:12:56 GMT+0100 (BST)
+        </footer>
+    </div>
+</div>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+<script src="scripts/main.js"></script>
+</body>
+</html>

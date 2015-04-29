@@ -2,13 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Chakram: BDD REST API test tool</title>
-    
-    <meta name="description" content="Chakram: BDD REST API test tool" />
-    
-        <meta name="keywords" content="E2E REST API JSON chai mocha nodejs test BDD" />
-        <meta name="keyword" content="E2E REST API JSON chai mocha nodejs test BDD" />
-    
+    <title>Source: assertions/index.js</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -23,29 +17,17 @@
     
     
     <script>
-    var config = {"monospaceLinks":false,"cleverLinks":false,"applicationName":"Chakram","googleAnalytics":"UA-61133305-1","meta":{"title":"Chakram: BDD REST API test tool","description":"Chakram: BDD REST API test tool","keyword":"E2E REST API JSON chai mocha nodejs test BDD"},"linenums":false,"default":{}};
+    var config = {"monospaceLinks":false,"cleverLinks":false,"default":{"outputSourceFiles":true}};
     </script>
     
 
-    
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', config.googleAnalytics]);
-      _gaq.push(['_trackPageview']);
-    
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
     
 </head>
 <body>
 <div id="wrap" class="clearfix">
     
 <div class="navigation">
-    <h3 class="applicationName"><a href="index.html">Chakram</a><iframe src="https://ghbtns.com/github-btn.html?user=dareid&repo=chakram&type=star&count=true" style="margin-top: 3px;" frameborder="0" scrolling="0" width="170px" height="20px"></iframe></h3>
+    <h3 class="applicationName"><a href="index.html"></a><iframe src="https://ghbtns.com/github-btn.html?user=dareid&repo=chakram&type=star&count=true" style="margin-top: 3px;" frameborder="0" scrolling="0" width="170px" height="20px"></iframe></h3>
 
     <div class="search">
         <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
@@ -163,275 +145,30 @@
 </div>
 
     <div class="main">
-        <h1 class="page-title" data-filename="global.html">Global</h1>
+        <h1 class="page-title" data-filename="assertions_index.js.html">Source: assertions/index.js</h1>
         
 
 
+    
+    <section>
+        <article>
+            <pre class="prettyprint source "><code>/**
+Chakram Expectation
+@module chakram-expectation
+@desc Extends the {@link http://chaijs.com/api/bdd/ chai.expect} object with additional HTTP matchers.
+ */
 
-<section>
-    
-<header>
-    <h2>
-    
-    </h2>
-    
-</header>  
+module.exports = [
+    require('./statuscode.js'),
+    require('./header.js'),
+    require('./cookie.js'),
+    require('./schema.js'),
+    require('./json.js'),
+    require('./compression.js')
+];</code></pre>
+        </article>
+    </section>
 
-<article>
-    <div class="container-overview">
-    
-    
-    
-        
-        
-        
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-        
-        
-    
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        <h3 class="subsection-title">Type Definitions</h3>
-        
-        <dl>
-                
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="ChakramResponse">ChakramResponse<span class="type-signature type object">Object</span> </h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        Encapsulates the results of a HTTP call into a single object
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-        <h5 class="subsection-title">Properties:</h5>
-        
-        <dl>
-
-<table class="props">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>error</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Error</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">An error when applicable</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>response</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">An <a href="http://nodejs.org/api/http.html#http_http_incomingmessage">http.IncomingMessage</a> object</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>body</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-|
-
-<span class="param-type">Buffer</span>
-|
-
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The response body. Typically a JSON object unless the json option has been set to false, in which case will be either a String or Buffer</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>jar</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">A <a href="https://github.com/goinstant/tough-cookie">tough cookie</a> jar</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>url</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The request's original URL</td>
-        </tr>
-	
-	
-	</tbody>
-</table></dl>
-        
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-            </dl>
-    
-    
-    
-</article>
-
-</section>  
 
 
 
@@ -440,7 +177,7 @@
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Wed Apr 29 2015 08:13:48 GMT+0100 (BST)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Wed Apr 29 2015 08:12:56 GMT+0100 (BST)
         </footer>
     </div>
 </div>
