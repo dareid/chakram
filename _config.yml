@@ -9,3 +9,5 @@ github_username:  dareid/chakram
 twitter_username: danielallenreid
 # Build settings
 markdown: kramdown
+gems:
+  - jekyll-sitemap
