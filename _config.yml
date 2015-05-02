@@ -3,8 +3,8 @@ title: Chakram
 email: danielallenreid@gmail.com
 description:
  "Chakram is an API testing framework designed to perform end to end tests on JSON REST endpoints. The library offers a BDD testing style and fully exploits javascript promises - the resulting tests are simple, clear and expressive."
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "dareid.github.io/chakram/" # the base hostname & protocol for your site
+baseurl: "/chakram/" # the subpath of your site, e.g. /blog/
+url: "http://dareid.github.io" # the base hostname & protocol for your site
 github_username:  dareid/chakram
 twitter_username: danielallenreid
 # Build settings
