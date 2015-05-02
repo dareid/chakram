@@ -1,301 +1,95 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Chakram: BDD REST API test tool</title>
-    
-    <meta name="description" content="Chakram: BDD REST API test tool" />
-    
-        <meta name="keywords" content="E2E REST API JSON chai mocha nodejs test BDD" />
-        <meta name="keyword" content="E2E REST API JSON chai mocha nodejs test BDD" />
-    
-    
-    
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <script src="scripts/jquery.min.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="styles/jaguar.css">
-    
-    
-    <script>
-    var config = {"monospaceLinks":false,"cleverLinks":false,"applicationName":"Chakram","googleAnalytics":"UA-61133305-1","meta":{"title":"Chakram: BDD REST API test tool","description":"Chakram: BDD REST API test tool","keyword":"E2E REST API JSON chai mocha nodejs test BDD"},"linenums":false,"default":{}};
-    </script>
-    
+---
+layout: default
+---
 
-    
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', config.googleAnalytics]);
-      _gaq.push(['_trackPageview']);
-    
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-    
-</head>
-<body>
-<div id="wrap" class="clearfix">
-    
-<div class="navigation">
-    <h3 class="applicationName"><a href="index.html">Chakram</a><iframe src="https://ghbtns.com/github-btn.html?user=dareid&repo=chakram&type=star&count=true" style="margin-top: 3px;" frameborder="0" scrolling="0" width="170px" height="20px"></iframe></h3>
+<div class="home">
 
-    <div class="search">
-        <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
+  <div class="masthead">
+    <img src="assets/circle_brush_white.png" width="144" height="144"></img>
+
+    <div class="wrapper">
+      Chakram is a REST API testing framework<br>offering a BDD testing style and fully exploiting promises
     </div>
-    <ul class="list">
-    
-        <li class="item" data-name="module:chakram">
-            <span class="title">
-                <a href="module-chakram.html">module:chakram</a>
-                
-            </span>
-            <ul class="members itemMembers">
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            <ul class="methods itemMembers">
-            
-            <span class="subtitle">Methods</span>
-            
-                <li data-name="module:chakram.all"><a href="module-chakram.html#.all">all</a></li>
-            
-                <li data-name="module:chakram.delete"><a href="module-chakram.html#.delete">delete</a></li>
-            
-                <li data-name="module:chakram.expect"><a href="module-chakram.html#.expect">expect</a></li>
-            
-                <li data-name="module:chakram.get"><a href="module-chakram.html#.get">get</a></li>
-            
-                <li data-name="module:chakram.head"><a href="module-chakram.html#.head">head</a></li>
-            
-                <li data-name="module:chakram.initialize"><a href="module-chakram.html#.initialize">initialize</a></li>
-            
-                <li data-name="module:chakram.options"><a href="module-chakram.html#.options">options</a></li>
-            
-                <li data-name="module:chakram.patch"><a href="module-chakram.html#.patch">patch</a></li>
-            
-                <li data-name="module:chakram.post"><a href="module-chakram.html#.post">post</a></li>
-            
-                <li data-name="module:chakram.put"><a href="module-chakram.html#.put">put</a></li>
-            
-                <li data-name="module:chakram.request"><a href="module-chakram.html#.request">request</a></li>
-            
-                <li data-name="module:chakram.wait"><a href="module-chakram.html#.wait">wait</a></li>
-            
-                <li data-name="module:chakram.waitFor"><a href="module-chakram.html#.waitFor">waitFor</a></li>
-            
-            </ul>
-            <ul class="events itemMembers">
-            
-            </ul>
-        </li>
-    
-        <li class="item" data-name="module:chakram-expectation">
-            <span class="title">
-                <a href="module-chakram-expectation.html">module:chakram-expectation</a>
-                
-            </span>
-            <ul class="members itemMembers">
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            <ul class="methods itemMembers">
-            
-            <span class="subtitle">Methods</span>
-            
-                <li data-name="module:chakram-expectation.cookie"><a href="module-chakram-expectation.html#.cookie">cookie</a></li>
-            
-                <li data-name="module:chakram-expectation.deflate"><a href="module-chakram-expectation.html#.deflate">deflate</a></li>
-            
-                <li data-name="module:chakram-expectation.gzip"><a href="module-chakram-expectation.html#.gzip">gzip</a></li>
-            
-                <li data-name="module:chakram-expectation.header"><a href="module-chakram-expectation.html#.header">header</a></li>
-            
-                <li data-name="module:chakram-expectation.json"><a href="module-chakram-expectation.html#.json">json</a></li>
-            
-                <li data-name="module:chakram-expectation.schema"><a href="module-chakram-expectation.html#.schema">schema</a></li>
-            
-                <li data-name="module:chakram-expectation.status"><a href="module-chakram-expectation.html#.status">status</a></li>
-            
-            </ul>
-            <ul class="events itemMembers">
-            
-            </ul>
-        </li>
-    
-        <li class="item" data-name="global">
-            <span class="title">
-                <a href="global.html">global</a>
-                
-                <span class="static">static</span>
-                
-            </span>
-            <ul class="members itemMembers">
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            <span class="subtitle">Typedefs</span>
-            
-                <li data-name="ChakramResponse"><a href="global.html#ChakramResponse">ChakramResponse</a></li>
-            
-            </ul>
-            <ul class="methods itemMembers">
-            
-            </ul>
-            <ul class="events itemMembers">
-            
-            </ul>
-        </li>
-    
-    </ul>
-</div>
+  </div>
 
-    <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
-        
+  <div class="wrapper">
 
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-    
-
-
-
-
-    <section>
-        <article class="readme"><h1>Chakram</h1><p><a href="https://travis-ci.org/dareid/chakram"><img src="https://travis-ci.org/dareid/chakram.svg?branch=master" alt="Build Status"></a> <a href="https://codeclimate.com/github/dareid/chakram"><img src="https://codeclimate.com/github/dareid/chakram/badges/coverage.svg" alt="Test Coverage"></a> <a href="https://codeclimate.com/github/dareid/chakram"><img src="https://codeclimate.com/github/dareid/chakram/badges/gpa.svg" alt="Code Climate"></a></p>
-<p>Chakram is an API testing framework designed to perform end to end tests on JSON REST endpoints. The library offers a BDD testing style and fully exploits javascript promises - the resulting tests are simple, clear and expressive. The library is built on <a href="https://nodejs.org/">node.js</a>, <a href="http://mochajs.org/">mocha</a> and <a href="http://chaijs.com/">chai</a>. </p>
-<p>More information is available in the <a href="http://dareid.github.io/chakram/">library's documentation</a> and its <a href="https://github.com/dareid/chakram/tree/master/test">own tests</a> which demonstrate all of Chakram's capabilities. Example API tests of publically accessable APIs are available in the <a href="https://github.com/dareid/chakram/tree/master/examples">examples directory</a>.</p>
-<h2>Install Chakram</h2><p>Chakram requires nodejs and NPM to be installed, it is available as an NPM module. Ideally, Chakram should be added to your testing project's devDependancies. This can be achieved with the following command:</p>
-<pre class="prettyprint source lang-js"><code>npm install chakram --save-dev</code></pre><h2>Introduction</h2><p>Chakram builds on top of the mocha testing framework, as such, the tests follow the <a href="http://mochajs.org/#getting-started">BDD style</a>. As this library focuses on testing REST APIs, the tests are naturally asynchronous. Mocha has <a href="http://mochajs.org/#asynchronous-code">native support for promises</a> which Chakram exploits. All requests and expectations return promises which fulfill to <a href="http://dareid.github.io/chakram/global.html#ChakramResponse">Chakram response objects</a>.</p>
-<p>The example below demonstrates a GET request and an assertion of the returned status code. The assertion of the status code returns a promise which is fulfilled once the status code has been checked. </p>
-<pre class="prettyprint source lang-js"><code>var chakram = require('chakram'),
-    expect = chakram.expect;
-
-describe(&quot;Minimal example&quot;, function() {    
-    it(&quot;should provide a simple async testing framework&quot;, function () {
-        var response = chakram.get(&quot;http://httpbin.org/get&quot;);
-        return expect(response).to.have.status(200);
-    });
-});</code></pre><p>Below is a larger example testing the <a href="https://randomuser.me/">Random User Generator API</a>.</p>
-<pre class="prettyprint source lang-js"><code>var chakram = require('chakram'),
-    expect = chakram.expect;
-
-describe(&quot;Random User API&quot;, function() {
-    var apiResponse;
-
-    before(function () {
-        apiResponse = chakram.get(&quot;http://api.randomuser.me/?gender=female&quot;);
-    });
-
-    it(&quot;should return 200 on success&quot;, function () {
-        return expect(apiResponse).to.have.status(200);
-    });
-
-    it(&quot;should return content type and server headers&quot;, function () {
-        expect(apiResponse).to.have.header(&quot;server&quot;);
-        expect(apiResponse).to.have.header(&quot;content-type&quot;, /json/);
-        return chakram.wait();
-    });
-
-    it(&quot;should include email, username, password and phone number&quot;, function () {
-        return expect(apiResponse).to.have.schema('results[0].user', {
-            &quot;required&quot;: [
-                &quot;email&quot;, 
-                &quot;username&quot;, 
-                &quot;password&quot;, 
-                &quot;phone&quot;
-            ]
-        });
-    });
-
-    it(&quot;should return a female user&quot;, function () {
-        return expect(apiResponse).to.have.json('results[0].user.gender', 'female');
-    });
-
-    it(&quot;should return a valid email address&quot;, function () {
-        return expect(apiResponse).to.have.json(function(json) {
-            var email = json.results[0].user.email;
-            expect(/\S+@\S+\.\S+/.test(email)).to.be.true;
-        });
-    });
-
-    it(&quot;should return a single random user&quot;, function () {
-        return expect(apiResponse).to.have.schema('results', {minItems: 1, maxItems: 1});
-    }); 
-
-    it(&quot;should not be gzip compressed&quot;, function () {
-        return expect(apiResponse).not.to.be.encoded.with.gzip;
-    });
-
-    it(&quot;should return a different username on each request&quot;, function () {
-        this.timeout(10000);
-        var multipleResponses = [];
-        for(var ct = 0; ct &lt; 5; ct++) {
-            multipleResponses.push(chakram.get(&quot;http://api.randomuser.me/?gender=female&quot;));
-        }
-        return chakram.all(multipleResponses).then(function(responses) {
-            var returnedUsernames = responses.map(function(response) {
-                return response.body.results[0].user.username;
-            });
-            while (returnedUsernames.length > 0) {
-                var username = returnedUsernames.pop();
-                expect(returnedUsernames.indexOf(username)).to.equal(-1);
-            }
-        });
-    });
-});</code></pre><p>It is important that tests wait for all requests and assertions to be completed. To help, chakram includes a wait method, this returns a promise which will be fulfilled once all assertions have been performed. In addition, Chakram will fail any tests which do not wait for assertions to complete. Below is a test using the wait method. </p>
-<pre class="prettyprint source lang-js"><code>var chakram = require('chakram'),
-    expect = chakram.expect;
-
-describe(&quot;Minimal example&quot;, function() {    
-    it(&quot;should provide a simple async testing framework&quot;, function () {
-        var response = chakram.get(&quot;http://httpbin.org/get&quot;);
-        expect(response).to.have.status(200);
-        expect(response).not.to.have.header('non-existing-header');
-        return chakram.wait();
-    });
-});</code></pre><h2>Run Tests</h2><p>To run Chakram tests, install the Mocha testing framework globally (or as a dev dependancy):</p>
-<pre class="prettyprint source"><code>npm install -g mocha</code></pre><p>Once installed, run the tests using the <a href="http://mochajs.org/#usage">Mocha command line</a>, which in its simplest form is:</p>
-<pre class="prettyprint source"><code>mocha path/to/tests</code></pre></article>
-    </section>
-
-
-
-
-
-
-        
-
-        <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Wed Apr 29 2015 08:13:48 GMT+0100 (BST)
-        </footer>
+    <div class="intro col-md-10 col-md-offset-1">
+      <h1>Simple API Testing</h1>
+      <h4>Chakram allows you to write clear and comprehensive tests,<br>ensuring JSON REST endpoints work correctly as you develop and in the future</h4>
     </div>
+
+    <div class="features">
+
+      <div class="feature col-md-12">
+        <div class="img-holder col-md-2 hidden-xs hidden-sm">
+          <img src="assets/check.svg"></img>
+        </div>
+        <div class="col-sm-12 col-md-10 col-md-offset-2">
+          <h3>HTTP Assertions</h3>
+          Chakram extends <a href="http://chaijs.com/">Chai.js</a>, adding HTTP specific assertions. It allows simple verification of returned status codes, the compression used, cookies, headers, returned JSON objects and the schema of the JSON response (using the <a href="http://json-schema.org/documentation.html">JSON schema specification</a>).
+          <pre><code class="js http">{% include assertions.js %}</code></pre>
+        </div>
+      </div>
+      <div class="feature col-md-12">
+        <div class="img-holder col-md-2 hidden-xs hidden-sm">
+          <img src="assets/clock.svg"></img>
+        </div>
+        <div class="col-sm-12 col-md-10 col-md-offset-2">
+          <h3>Promises</h3>
+          API testing is naturally asynchronous, which can make tests complex and unwieldy. Chakram fully exploits javascript promises, resulting in clear asynchronous tests.
+          <pre><code class="js promise">{% include promises.js %}</code></pre>
+        </div>
+      </div>
+      <div class="feature col-md-12">
+        <div class="img-holder col-md-2 hidden-xs hidden-sm">
+          <img src="assets/fishing.svg"></img>
+        </div>
+        <div class="col-sm-12 col-md-10 col-md-offset-2">
+          <h3>BDD + Hooks</h3>
+          Using BDD formatting and hooks, complex tests can be constructed with the necessary setup and tear down operations, all described in natural language for improved clarity and maintenance.
+          <pre><code class="js bdd">{% include bdd.js %}</code></pre>
+        </div>
+      </div>
+      <div class="feature col-md-12">
+        <div class="img-holder col-md-2 hidden-xs hidden-sm">
+          <img src="assets/crane.svg"></img>
+        </div>
+        <div class="col-sm-12 col-md-10 col-md-offset-2">
+          <h3>Extensibility</h3>
+          Chakram allows new assertions to be added to the framework. This is ideal for adding edge case HTTP assertions or project specific assertions. The end result is less duplication and clearer tests.
+          <pre><code class="js extend">{% include extend.js %}</code></pre>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div class="install col-md-12">
+
+      <h3>Getting Started</h3>
+      Chakram runs on node.js and is distributed via <a href="https://www.npmjs.com/package/chakram">NPM</a>. To begin testing, a node.js application should be created to contain the API tests and Chakram added as a development dependency:
+      <pre><code class="bash">npm install --save-dev chakram</code></pre>
+      The <a href="http://mochajs.org/">Mocha test runner</a> is used to run Chakram tests – this can be installed globally or as a development dependency. The following command installs Mocha globally:
+      <pre><code class="bash">npm install -g mocha</code></pre>
+      To run tests, simply call the <a href="http://mochajs.org/#usage">Mocha command line tool</a>. By default, this will run the tests located in the 'test' directory. Mocha can export the test results in many different formats, satisfying the majority of continuous integration platforms.
+      <br><br>
+      <p>
+        <a href="https://github.com/dareid/chakram/tree/master/examples">Examples</a>, <a href="https://github.com/dareid/chakram/tree/master/test">tests</a> and <a href="/jsdoc/">documentation</a> are available to introduce Chakram's capabilities.
+      </p>
+      <div class="help">
+        <a href="https://github.com/dareid/chakram">Issues, pull requests and questions are welcomed</a> – happy testing!
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(function() {
+      hljs.initHighlightingOnLoad();
+    });
+  </script>
+
 </div>
-<script>prettyPrint();</script>
-<script src="scripts/linenumber.js"></script>
-<script src="scripts/main.js"></script>
-</body>
-</html>

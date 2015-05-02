@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Source: assertions/schema.js</title>
+    <title>Source: assertions/cookie.js</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -145,58 +145,65 @@
 </div>
 
     <div class="main">
-        <h1 class="page-title" data-filename="assertions_schema.js.html">Source: assertions/schema.js</h1>
+        <h1 class="page-title" data-filename="assertions_cookie.js.html">Source: assertions/cookie.js</h1>
         
 
 
     
     <section>
         <article>
-            <pre class="prettyprint source "><code>var tv4 = require('tv4'),
-    path = require('./../utils/objectPath.js');
-
-/**
-Checks the schema of the returned JSON object against a provided {@link http://json-schema.org/ JSON Schema}. This assertion utilizes the brilliant {@link https://github.com/geraintluff/tv4 tv4 library}. An optional dot notation argument allows a subelement of the JSON object to checked against a JSON schema. Amoungst others, this can confirm types, array lengths, required fields, min and max of numbers and string lengths. For more examples see the test/assertions/schema.js tests.
-@alias module:chakram-expectation.schema
-@param {String} [subelement] - if specified a subelement of the JSON body is checked, specified using dot notation 
-@param {*} expectedSchema - a JSON schema object which should match the JSON body or the JSON body's subelement. For more details on format see {@link http://json-schema.org/ the JSON schema website}
+            <pre class="prettyprint source "><code>/**
+Either checks that a cookie exists or ensures the cookie matches a given value
+@alias module:chakram-expectation.cookie
+@param {String} name - checks a cookie with this name exists
+@param {String | RegExp} [value] - if specified, checks the cookie matches the given string or regular expression
 @example 
-it("should check that the returned JSON object satisifies a JSON schema", function () {
-    var response = chakram.get("http://httpbin.org/get");
-    expect(response).to.have.schema('headers', {"required": ["Host", "Accept"]});
-    expect(response).to.have.schema({
-        "type": "object",
-        properties: {
-            url: {
-                type: "string"
-            },
-            headers: {
-                type: "object"
-            }
-        }
-    });
+it("should allow checking of HTTP cookies", function () {
+    var response = chakram.get("http://httpbin.org/cookies/set?chakram=testval");
+    expect(response).to.have.cookie('chakram');
+    expect(response).to.have.cookie('chakram', 'testval');
+    expect(response).to.have.cookie('chakram', /val/);
     return chakram.wait();
 });
  */
-
 module.exports = function (chai, utils) {
 
-    utils.addMethod(chai.Assertion.prototype, 'schema', function () {
-        
-        var object = this._obj.body;
-        var schema = arguments[arguments.length-1];
-        
-        if(arguments.length === 2) {
-            object = path.get(utils, object, arguments[0]);
-        }        
-        
-        var valid = tv4.validate(object, schema);
-        
-        this.assert(
-            valid, 
-            'expected body to match JSON schema '+JSON.stringify(schema)+'. error: ' + tv4.error, 
-            'expected body to not match JSON schema ' + JSON.stringify(schema)
-        );
+    var getCookie = function (jar, url, key) {
+        var cookies = jar.getCookies(url);
+        for(var ct = 0; ct &lt; cookies.length; ct++) {
+            if(cookies[ct].key === key) {
+                return cookies[ct];
+            }
+        }
+        return null;
+    };
+    
+    var getCookieValue = function (jar, url, key) {
+        var cookie = getCookie(jar, url, key);
+        return (cookie === null ? null : cookie.value);
+    };
+    
+    utils.addMethod(chai.Assertion.prototype, 'cookie', function (key, value) {
+        var cookieValue = getCookieValue(this._obj.jar, this._obj.url, key);
+        if(arguments.length === 1) {
+            this.assert(
+                cookieValue !== undefined &amp;&amp; cookieValue !== null, 
+                'expected cookie '+ key +' to exist', 
+                'expected cookie '+ key +' not to exist'
+            );
+        } else if (value instanceof RegExp) {
+            this.assert(
+                value.test(cookieValue),
+                'expected cookie '+ key + ' with value ' + cookieValue + ' to match regex '+value,
+                'expected cookie '+ key + ' with value ' + cookieValue + ' not to match regex '+value
+            );
+        } else {
+            this.assert(
+                cookieValue === value,
+                'expected cookie '+ key + ' with value ' + cookieValue + ' to match '+value,
+                'expected cookie '+ key + ' with value ' + cookieValue + ' not to match '+value
+            );
+        }
     });
 };</code></pre>
         </article>
@@ -210,7 +217,7 @@ module.exports = function (chai, utils) {
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Wed Apr 29 2015 08:12:56 GMT+0100 (BST)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Sat May 02 2015 20:18:27 GMT+0100 (BST)
         </footer>
     </div>
 </div>

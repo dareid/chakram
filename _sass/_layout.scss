@@ -1,0 +1,202 @@
+/**
+ * Site header
+ */
+.navbar.navbar-default {
+  background-color: white;
+  border: 0px;
+  margin-bottom: 0px;
+  border-bottom: 1px solid $top-mast-color;
+}
+.navbar a {
+  color: $top-mast-color !important;
+}
+.navbar .open .dropdown-toggle {
+  background-color: $alpha-orange !important;
+}
+.navbar iframe {
+  margin-top: 0px !important;
+}
+
+
+/**
+ * main page
+ */
+.masthead {
+  position: relative;
+  padding: 30px 0;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0,0,0,.1);
+  background-color: $bottom-mast-color;
+  background-image: -webkit-gradient(linear,left top,left bottom,from($top-mast-color),to($bottom-mast-color));
+  background-image: -webkit-linear-gradient(top,$top-mast-color 0,$bottom-mast-color 100%);
+  background-image: -o-linear-gradient(top,$top-mast-color 0,$bottom-mast-color 100%);
+  background-image: linear-gradient(to bottom,$top-mast-color 0,$bottom-mast-color 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$top-mast-color', endColorstr='$bottom-mast-color', GradientType=0);
+  background-repeat: repeat-x;
+  
+  a {
+    color: white !important;
+    text-decoration: underline;
+  }
+  
+}
+
+.masthead img {
+  margin: 30px;
+  margin-top: 70px;
+}
+.masthead div {
+  margin-bottom: 150px;
+  font-size: 2em;
+}
+.masthead.small div {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.home .intro {
+  text-align: center;
+  margin-bottom: 60px;
+  margin-top: 100px;
+  color: #555;
+  h4 {
+    line-height: 1.3em !important;
+    font-size: 21px;
+  }
+  h1 {
+    font-size: 40px;
+    color: #333;
+  }
+}
+.feature {
+  margin-top: 30px;
+  text-align: left;
+  .img-holder {
+    position: absolute;
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+    img {
+      height: 100%;
+      padding-right: 10px;
+    } 
+  }
+  margin-bottom: 30px;
+}
+.install {
+  margin-top: 30px;
+  pre {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+  } 
+  p {
+    margin-top: 10px;
+  }
+  .help {
+    margin-top: 10px;
+    font-size: 1.2em;
+  }
+}
+.gist {
+  margin-top: 80px;
+}
+
+
+/**
+ * Site footer
+ */
+.site-footer {
+    padding-top: $spacing-unit*2;
+}
+.footer {
+  border-top: 1px solid $grey-color-light;
+  padding: $spacing-unit/2 0;
+  text-align: center;
+}
+.footer a {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+/**
+ * Page content
+ */
+.page-content {
+    padding: 0;
+    margin-top: 51px;
+}
+
+.page-heading {
+    font-size: 20px;
+}
+
+.jsdoc iframe {
+    border: 0px;
+    background-color: transparent;
+    width: 100%;
+}
+
+.post-list {
+    margin-left: 0;
+    list-style: none;
+
+    > li {
+        margin-bottom: $spacing-unit;
+    }
+}
+
+.post-meta {
+    font-size: $small-font-size;
+    color: $grey-color;
+}
+
+.post-link {
+    display: block;
+    font-size: 24px;
+}
+
+
+/**
+ * Posts
+ */
+.post-header {
+    margin-bottom: $spacing-unit;
+}
+
+.post-title {
+    font-size: 42px;
+    letter-spacing: -1px;
+    line-height: 1;
+
+    @include media-query($on-laptop) {
+        font-size: 36px;
+    }
+}
+
+.post-content {
+    margin-bottom: $spacing-unit;
+
+    h2 {
+        font-size: 32px;
+
+        @include media-query($on-laptop) {
+            font-size: 28px;
+        }
+    }
+
+    h3 {
+        font-size: 26px;
+
+        @include media-query($on-laptop) {
+            font-size: 22px;
+        }
+    }
+
+    h4 {
+        font-size: 20px;
+
+        @include media-query($on-laptop) {
+            font-size: 18px;
+        }
+    }
+}
