@@ -13,7 +13,7 @@ npm install chakram --save-dev
 ```
 
 ## Introduction
-Chakram builds on top of the mocha testing framework, as such, the tests follow the [BDD style](http://mochajs.org/#getting-started). As this library focuses on testing REST APIs, the tests are naturally asynchronous. Mocha has [native support for promises](http://mochajs.org/#asynchronous-code) which Chakram exploits. All requests and expectations return promises which fulfill to [Chakram response objects](http://dareid.github.io/chakram/global.html#ChakramResponse).
+Chakram builds on top of the mocha testing framework, as such, the tests follow the [BDD style](http://mochajs.org/#getting-started). As this library focuses on testing REST APIs, the tests are naturally asynchronous. Mocha has [native support for promises](http://mochajs.org/#asynchronous-code) which Chakram exploits. All requests and expectations return promises which fulfill to [Chakram response objects](http://dareid.github.io/chakram/jsdoc/global.html#ChakramResponse).
 
 The example below demonstrates a GET request and an assertion of the returned status code. The assertion of the status code returns a promise which is fulfilled once the status code has been checked. 
 
