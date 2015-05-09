@@ -1,6 +1,10 @@
 language: node_js
 node_js:
   - "0.10"
+branches:
+  except:
+    - experimental
+  
 
 addons:
   code_climate:
