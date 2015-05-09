@@ -17,30 +17,22 @@ describe("Spotify API", function() {
             required: ["error"]
         };
         
-        var spotifyCustomAssertions = function (chai, utils) {
-            utils.addProperty(chai.Assertion.prototype, 'spotify', function () {});
-            utils.addMethod(chai.Assertion.prototype, 'error', function (status, message) {
-                var req = new chai.Assertion(this._obj);
-                utils.transferFlags(this, req); 
-                req.to.have.schema(spotifyErrorSchema);
-                req.to.have.status(status);
-                req.to.have.json('error.message', message);
-                req.to.have.json('error.status', status);
+        chakram.addProperty("spotify", function(){});
+        chakram.addMethod("error", function (respObj, status, message) {
+            expect(respObj).to.have.schema(spotifyErrorSchema);
+            expect(respObj).to.have.status(status);
+            expect(respObj).to.have.json('error.message', message);
+            expect(respObj).to.have.json('error.status', status);
+        });
+        chakram.addMethod("limit", function (respObj, topLevelObjectName, limit) {
+            expect(respObj).to.have.schema(topLevelObjectName, {
+                required: ["limit", "items"],
+                properties: {
+                    limit: {minimum:limit, maximum:limit},
+                    items: {minItems: limit, maxItems: limit}
+                }
             });
-            utils.addMethod(chai.Assertion.prototype, 'limit', function (topLevelObjectName, limit) {
-                var req = new chai.Assertion(this._obj);
-                utils.transferFlags(this, req);
-                req.to.have.schema(topLevelObjectName, {
-                    required: ["limit", "items"],
-                    properties: {
-                        limit: {minimum:limit, maximum:limit},
-                        items: {minItems: limit, maxItems: limit}
-                    }
-                });
-            });
-        };
-        
-        chakram.initialize(spotifyCustomAssertions);
+        });
     });
     
     
