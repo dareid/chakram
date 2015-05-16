@@ -42,57 +42,62 @@ describe("Chakram Assertions", function() {
             });
         });
         
-        describe("Includes", function () {
-            it("should ensure body includes given json", function() {
-                return chakram.waitFor([
-                    expect(postRequest).to.include.json({
-                        json: {
+        var testChainedCompriseProperty = function(description, buildChain) {
+            describe(description, function () {
+                it("should ensure body includes given json", function() {
+                    return chakram.waitFor([
+                        buildChain(expect(postRequest).to).json({
+                            json: {
+                                number: 20,
+                                str: "test str",
+                                stringArray: {
+                                    1:"test2"
+                                }
+                            }
+                        }),
+                        buildChain(expect(postRequest).to.not).json({
+                            json: { number: 22 }  
+                        }),
+                        buildChain(expect(postRequest).to).json({
+                            json: { 
+                                obj: {
+                                    test: "str"
+                                }
+                            }
+                        })
+                    ]);
+                });
+
+                it("should support negated include JSON assertions", function () {
+                    return postRequest.then(function (resp) {
+                        expect(function() {
+                            buildChain(expect(resp).to.not).json({
+                                json: { number: 20 }  
+                            });
+                        }).to.throw(Error);
+                    });
+                });
+
+                it("should be able to specify json path", function () {
+                    return chakram.waitFor([
+                        buildChain(expect(postRequest).to).json('json', {
                             number: 20,
                             str: "test str",
-                            stringArray: {
-                                1:"test2"
-                            }
-                        }
-                    }),
-                    expect(postRequest).to.not.include.json({
-                        json: { number: 22 }  
-                    }),
-                    expect(postRequest).to.include.json({
-                        json: { 
-                            obj: {
-                                test: "str"
-                            }
-                        }
-                    })
-                ]);
-            });
-            
-            it("should support negated include JSON assertions", function () {
-                return postRequest.then(function (resp) {
-                    expect(function() {
-                        expect(resp).to.not.include.json({
-                            json: { number: 20 }  
-                        });
-                    }).to.throw(Error);
+                            stringArray: {1:"test2"}
+                        }),
+                        buildChain(expect(postRequest).to).json('json.obj', {
+                            test: "str"
+                        }),
+                        buildChain(expect(postRequest).to.not).json('json.obj', {
+                            doesnt: "exist"   
+                        })
+                    ]);
                 });
             });
-            
-            it("should be able to specify json path", function () {
-                return chakram.waitFor([
-                    expect(postRequest).to.include.json('json', {
-                        number: 20,
-                        str: "test str",
-                        stringArray: {1:"test2"}
-                    }),
-                    expect(postRequest).to.include.json('json.obj', {
-                        test: "str"
-                    }),
-                    expect(postRequest).not.to.include.json('json.obj', {
-                        doesnt: "exist"   
-                    })
-                ]);
-            });
-        });
+        };
+        
+        testChainedCompriseProperty("Comprise", function(assertion){ return assertion.comprise.of; });
+        testChainedCompriseProperty("Comprised", function(assertion){ return assertion.be.comprised.of; });
         
         describe("Callbacks", function () {            
             it("should allow custom callbacks to be used to run assertions", function () {

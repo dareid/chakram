@@ -58,7 +58,7 @@ describe("Documentation examples", function() {
 
     it("should allow checking of JSON return bodies", function () {
         var response = chakram.get("http://httpbin.org/get");
-        expect(response).to.include.json({
+        expect(response).to.comprise.of.json({
             url: "http://httpbin.org/get",
             headers: {
                 Host: "httpbin.org",
