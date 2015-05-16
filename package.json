@@ -1,54 +1,58 @@
 {
-    "name": "chakram",
-    "version": "0.1.1",
-    "description": "Chakram is an API testing framework designed to test JSON REST endpoints. The library offers a BDD testing style and fully exploits javascript promises",
-    "main": "lib/chakram.js",
-    "license": {
-        "type": "MIT"
-    },
-    "contributors": [
-        "Daniel Reid",
-        "Harry Rose"
+  "name": "chakram",
+  "version": "1.0.0",
+  "description": "Chakram is an API testing framework designed to test JSON REST endpoints. The library offers a BDD testing style and fully exploits javascript promises",
+  "main": "lib/chakram.js",
+  "license": {
+    "type": "MIT"
+  },
+  "contributors": [{
+      "name": "Daniel Reid",
+      "email": "danielallenreid@gmail.com",
+      "url": "https://twitter.com/danielallenreid"
+      }, {
+      "name": "Harry Rose"
+      }
     ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/dareid/chakram"
-    },
-    "keywords": [
-        "test",
-        "API",
-        "REST",
-        "HTTP",
-        "JSON",
-        "mocha",
-        "chai",
-        "BDD"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dareid/chakram"
+  },
+  "keywords": [
+      "test",
+      "API",
+      "REST",
+      "HTTP",
+      "JSON",
+      "mocha",
+      "chai",
+      "BDD"
     ],
-    "dependencies": {
-        "request": "2.53.x",
-        "extend-object": "1.0.x",
-        "q": "1.1.x",
-        "chai": "2.1.x",
-        "chai-as-promised": "4.2.x",
-        "tv4": "1.1.x",
-        "chai-subset": "1.0.x"
-    },
-    "devDependencies": {
-        "mocha": "2.x.x",
-        "istanbul": "0.x.x",
-        "codeclimate-test-reporter": "0.x.x",
-        "rewire": "2.x.x",
-        "sinon": "1.x.x",
-        "jsdoc": "latest",
-        "jaguarjs-jsdoc": "dareid/jaguarjs-jsdoc"
-    },
-    "scripts": {
-        "pretest": "npm install",
-        "test": "istanbul cover _mocha test/* test/**/* examples/*",
-        "predoc": "npm install",
-        "doc": "jsdoc -t node_modules/jaguarjs-jsdoc -c conf.json -R README.md -r lib"
-    },
-    "engines": {
-        "node": ">= 0.10.0"
-    }
+  "dependencies": {
+    "request": "2.55.x",
+    "extend-object": "1.0.x",
+    "q": "1.4.x",
+    "chai": "2.3.x",
+    "chai-as-promised": "5.0.x",
+    "tv4": "1.1.x",
+    "chai-subset": "1.0.x"
+  },
+  "devDependencies": {
+    "mocha": "2.x.x",
+    "istanbul": "0.x.x",
+    "codeclimate-test-reporter": "0.x.x",
+    "rewire": "2.x.x",
+    "sinon": "1.x.x",
+    "jsdoc": "latest",
+    "jaguarjs-jsdoc": "dareid/jaguarjs-jsdoc"
+  },
+  "scripts": {
+    "pretest": "npm install",
+    "test": "istanbul cover _mocha test/* test/**/* examples/*",
+    "predoc": "npm install",
+    "doc": "jsdoc -t node_modules/jaguarjs-jsdoc -c conf.json -R README.md -r lib"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  }
 }
