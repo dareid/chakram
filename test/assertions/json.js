@@ -67,6 +67,16 @@ describe("Chakram Assertions", function() {
                 ]);
             });
             
+            it("should support negated include JSON assertions", function () {
+                return postRequest.then(function (resp) {
+                    expect(function() {
+                        expect(resp).to.not.include.json({
+                            json: { number: 20 }  
+                        });
+                    }).to.throw(Error);
+                });
+            });
+            
             it("should be able to specify json path", function () {
                 return chakram.waitFor([
                     expect(postRequest).to.include.json('json', {
