@@ -55,6 +55,12 @@
             
             <span class="subtitle">Methods</span>
             
+                <li data-name="module:chakram.addMethod"><a href="module-chakram.html#.addMethod">addMethod</a></li>
+            
+                <li data-name="module:chakram.addProperty"><a href="module-chakram.html#.addProperty">addProperty</a></li>
+            
+                <li data-name="module:chakram.addRawPlugin"><a href="module-chakram.html#.addRawPlugin">addRawPlugin</a></li>
+            
                 <li data-name="module:chakram.all"><a href="module-chakram.html#.all">all</a></li>
             
                 <li data-name="module:chakram.delete"><a href="module-chakram.html#.delete">delete</a></li>
@@ -231,6 +237,468 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id=".addMethod">
+            
+            <span class="type-signature static">static</span>module:chakram.addMethod<span class="signature">(name, plugin)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            plugins.js, line 118
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Add a new method assertion to Chakram. Methods should be used when the assertion requires parameters.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The plugin's name, used as an identifier</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>plugin</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                A function which should accept one or more arguments. The first argument will be a <a href="global.html#ChakramResponse">ChakramResponse</a> object, followed by any arguments passed into the assertion.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>chakram.addMethod("statusRange", function (respObj, low, high) {
+    var inRange = respObj.response.statusCode >= low && respObj.response.statusCode <= high;
+    this.assert(inRange, 'expected '+respObj.response.statusCode+' to be between '+low+' and '+high, 'expected '+respObj.response.statusCode+' not to be between '+low+' and '+high);
+});
+var twohundred = chakram.get("http://httpbin.org/status/200");
+return expect(twohundred).to.have.statusRange(0, 200);</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".addProperty">
+            
+            <span class="type-signature static">static</span>module:chakram.addProperty<span class="signature">(name, plugin)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            plugins.js, line 97
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Add a new property assertion to Chakram. Properties should be used over methods when there is no arguments required for the assertion.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The plugin's name, used as an identifier</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>plugin</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                A function which should accept one argument; a <a href="global.html#ChakramResponse">ChakramResponse</a> object</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>chakram.addProperty("httpbin", function (respObj) {
+    var hostMatches = /httpbin.org/.test(respObj.url);
+    this.assert(hostMatches, 
+        'expected '+respObj.url+' to contain httpbin.org', 
+        'expected '+respObj.url+' to not contain httpbin.org');
+});
+var httpbin = chakram.get("http://httpbin.org/status/200");
+return expect(httpbin).to.be.at.httpbin;</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".addRawPlugin">
+            
+            <span class="type-signature static">static</span>module:chakram.addRawPlugin<span class="signature">(name, plugin)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            plugins.js, line 77
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Add a raw chai plugin to Chakram. See Chai's documentation for more details.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The plugin's name, used as an identifier</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>plugin</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                A Chai plugin function, function should accept two arguments, the chai object and the chai utils object</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>chakram.addRawPlugin("unavailable", function (chai, utils) {
+    utils.addProperty(chai.Assertion.prototype, 'unavailable', function () {
+        var statusCode = this._obj.response.statusCode;
+        this.assert(statusCode === 503, 
+            'expected status code '+statusCode+' to equal 503', 
+            'expected '+statusCode+' to not be equal to 503');
+    });
+});
+var unavailableReq = chakram.get("http://httpbin.org/status/503");
+return expect(unavailableReq).to.be.unavailable;</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id=".all">
             
             <span class="type-signature static">static</span>module:chakram.all<span class="signature">(promiseArray)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise}</span>
@@ -238,7 +706,7 @@
     
         
         <div class="tag-source">
-            chakram.js, line 110
+            chakram.js, line 56
         </div>
         
     </div>
@@ -594,7 +1062,7 @@ Identical to <a href="https://github.com/kriskowal/q/wiki/API-Reference#promisea
     
         
         <div class="tag-source">
-            chakram.js, line 89
+            chakram.js, line 35
         </div>
         
     </div>
@@ -1116,7 +1584,7 @@ it("should support chakram and chai assertions", function () {
     
         
         <div class="tag-source">
-            chakram.js, line 57
+            plugins.js, line 45
         </div>
         
     </div>
@@ -1127,8 +1595,7 @@ it("should support chakram and chai assertions", function () {
     
     
     <div class="description">
-        Initialise the chakram package with custom chai plugins.
-Only call if you want to exploit custom plugins.
+        Initialise the chakram package with custom chai plugins. This is no longer recommended, instead use either addMethod, addProperty or addRawPlugin.
     </div>
     
 
@@ -1198,6 +1665,8 @@ Only call if you want to exploit custom plugins.
     
     
 
+    
+        <dt class="important tag-deprecated">Deprecated</dt><dd><ul class="dummy"><li>since 0.2.0</li><ul></dd>
     
     
     
@@ -2281,7 +2750,7 @@ expect(request).to.have.status(200);</code></pre>
     
         
         <div class="tag-source">
-            chakram.js, line 148
+            chakram.js, line 94
         </div>
         
     </div>
@@ -2395,7 +2864,7 @@ This works by recording all chakram expectations called within an 'it' and waits
     
         
         <div class="tag-source">
-            chakram.js, line 127
+            chakram.js, line 73
         </div>
         
     </div>
@@ -2561,7 +3030,7 @@ Similar to <a href="https://github.com/kriskowal/q/wiki/API-Reference#promiseall
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Sat May 02 2015 20:18:58 GMT+0100 (BST)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0</a> on Sun May 17 2015 10:46:09 GMT+0100 (BST)
         </footer>
     </div>
 </div>
