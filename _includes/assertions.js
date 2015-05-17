@@ -4,7 +4,7 @@ describe("HTTP assertions", function () {
     expect(response).to.have.status(200);
     expect(response).to.have.header("content-type", "application/json");
     expect(response).not.to.be.encoded.with.gzip;
-    expect(response).to.contain.json({
+    expect(response).to.comprise.of.json({
       args: { test: "chakram" }
     });
     return chakram.wait();

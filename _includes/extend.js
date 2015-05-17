@@ -1,15 +1,11 @@
 describe("Extensibility", function () {
-  var teapot = function (chai, utils) {
-    utils.addProperty(chai.Assertion.prototype, 'teapot', function () {
-      var statusCode = this._obj.response.statusCode;
-      this.assert(statusCode === 418, 
-        'expected status code '+statusCode+' to equal 418', 
-        'expected '+statusCode+' to not be equal to 418');
-    });
-  };
-  
   before("define teapot", function () {
-    chakram.initialize(teapot);
+    chakram.addProperty("teapot", function (respObj) {
+      var statusCode = respObj.response.statusCode;
+      this.assert(statusCode === 418,
+        'expected status code ' + statusCode + ' to equal 418',
+        'expected ' + statusCode + ' to not be equal to 418');
+    });
   });
 
   it("should be able to detect teapots", function () {
@@ -19,4 +15,4 @@ describe("Extensibility", function () {
     expect(aTeapot).to.be.a.teapot;
     return chakram.wait();
   });
-}); 
+});
