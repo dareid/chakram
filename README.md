@@ -7,7 +7,7 @@ Chakram is an API testing framework designed to perform end to end tests on JSON
 More information is available in the [library's documentation](http://dareid.github.io/chakram/) and its [own tests](https://github.com/dareid/chakram/tree/master/test) which demonstrate all of Chakram's capabilities. Example API tests of publically accessable APIs are available in the [examples directory](https://github.com/dareid/chakram/tree/master/examples).
 
 ## Install Chakram
-Chakram requires nodejs and NPM to be installed, it is available as an NPM module. Ideally, Chakram should be added to your testing project's devDependancies. This can be achieved with the following command:
+Chakram requires Node.js and npm to be installed. It is available as an npm module. Ideally, Chakram should be added to your testing project's devDependencies. This can be achieved with the following command:
 ```js
 npm install chakram --save-dev
 ```
