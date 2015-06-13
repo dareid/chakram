@@ -6,45 +6,47 @@
   "license": {
     "type": "MIT"
   },
-  "contributors": [{
+  "contributors": [
+    {
       "name": "Daniel Reid",
       "email": "danielallenreid@gmail.com",
       "url": "https://twitter.com/danielallenreid"
-      }, {
+    },
+    {
       "name": "Harry Rose"
-      }
-    ],
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/dareid/chakram"
   },
   "keywords": [
-      "test",
-      "API",
-      "REST",
-      "HTTP",
-      "JSON",
-      "mocha",
-      "chai",
-      "BDD"
-    ],
+    "test",
+    "API",
+    "REST",
+    "HTTP",
+    "JSON",
+    "mocha",
+    "chai",
+    "BDD"
+  ],
   "dependencies": {
-    "request": "2.55.x",
+    "chai": "3.0.x",
+    "chai-as-promised": "5.1.x",
+    "chai-subset": "1.0.x",
     "extend-object": "1.0.x",
     "q": "1.4.x",
-    "chai": "2.3.x",
-    "chai-as-promised": "5.0.x",
-    "tv4": "1.1.x",
-    "chai-subset": "1.0.x"
+    "request": "2.57.x",
+    "tv4": "1.1.x"
   },
   "devDependencies": {
-    "mocha": "2.x.x",
-    "istanbul": "0.x.x",
     "codeclimate-test-reporter": "0.x.x",
-    "rewire": "2.x.x",
-    "sinon": "1.x.x",
+    "istanbul": "0.x.x",
+    "jaguarjs-jsdoc": "dareid/jaguarjs-jsdoc",
     "jsdoc": "latest",
-    "jaguarjs-jsdoc": "dareid/jaguarjs-jsdoc"
+    "mocha": "2.x.x",
+    "rewire": "2.x.x",
+    "sinon": "1.x.x"
   },
   "scripts": {
     "pretest": "npm install",

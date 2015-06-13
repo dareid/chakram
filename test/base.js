@@ -44,7 +44,7 @@ describe("Chakram", function() {
         it("should expose any errors in the chakram response object", function () {
             return chakram.get("not-valid")
             .then(function(obj) {
-                expect(obj.error).to.exist.and.to.be.a("object");
+                expect(obj.error).to.exist.and.to.be.an("error");
             });
         });
 
