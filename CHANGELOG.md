@@ -1,5 +1,9 @@
 #Changelog
 
+###1.0.1
+ - Improved schema error messages #14
+ - Updated dependencies #15
+
 ###1.0.0
  - Added "comprise" and "comprised" chain elements which should be used instead of "include" for subset JSON assertions
  - Simplified plugin interface
