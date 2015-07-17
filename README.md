@@ -120,7 +120,10 @@ describe("Chakram", function () {
 });
 ```
 
-Chakram exposes three promise related methods: [all](http://dareid.github.io/chakram/jsdoc/module-chakram.html#.all), [wait](http://dareid.github.io/chakram/jsdoc/module-chakram.html#.wait) and [waitFor](http://dareid.github.io/chakram/jsdoc/module-chakram.html#.waitFor).
+Chakram exposes three promise related methods:
+ - [all](http://dareid.github.io/chakram/jsdoc/module-chakram.html#.all), which takes an array of promises and returns a promise which is fulfilled once all promises in the provided array are fulfilled. The fulfillment value of the returned promise is an array of the fulfillment values of the promises which were passed to the function.
+ - [wait](http://dareid.github.io/chakram/jsdoc/module-chakram.html#.wait), which returns a promise which is fulfilled once all Chakram expectations are fulfilled.
+ - [waitFor](http://dareid.github.io/chakram/jsdoc/module-chakram.html#.waitFor), which takes an array of promises and returns a promise which is fulfilled once all promises in the provided array are fulfilled.  This is similar to chakram.all, except it is fulfilled with the fulfillment value of the last promise in the provided array.
 
 ### Running Tests
 To run Chakram tests, install the Mocha testing framework globally (or as a dev dependency):
