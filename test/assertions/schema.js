@@ -4,7 +4,7 @@ var chakram = require('./../../lib/chakram.js'),
 describe("Chakram Assertions", function() {    
     describe("JSON Schema", function() {
         
-        var getRequest, postRequest;
+        var getRequest, postRequest, personArraySchema;
         
         before(function() {
             getRequest = chakram.get("http://httpbin.org/get");
@@ -21,6 +21,18 @@ describe("Chakram Assertions", function() {
                 number: 20,
                 str: "test str"
             });
+            
+            personArraySchema = {
+                items: {
+                    properties: {
+                        name: { type: "string" },
+                        age: { 
+                            type: "integer",
+                            minimum: 0
+                        }
+                    }
+                }
+            };
         });
         
         describe("dot notation access", function() {      
@@ -129,21 +141,10 @@ describe("Chakram Assertions", function() {
                         pattern: /test\d/
                     }
                 };
-                var expectPersonArray = {
-                    items: {
-                        properties: {
-                            name: { type: "string" },
-                            age: { 
-                                type: "integer",
-                                minimum: 0
-                            }
-                        }
-                    }
-                };
                 return chakram.waitFor([
                     expect(postRequest).to.have.schema('json.stringArray', expectStringsToBeTestWithNumber),
                     expect(postRequest).not.to.have.schema('json.mixedArray', expectStringsToBeTestWithNumber),
-                    expect(postRequest).to.have.schema('json.objectArray', expectPersonArray)
+                    expect(postRequest).to.have.schema('json.objectArray', personArraySchema)
                 ]);
             });
             
@@ -197,6 +198,31 @@ describe("Chakram Assertions", function() {
                 expect(postRequest).not.to.have.schema('json.str', {maxLength: 5});
                 expect(postRequest).not.to.have.schema('json.str', {minLength: 50});
                 return chakram.wait();
+            });
+            
+        });
+      
+        describe("registering schemas", function () {
+            
+            it("should be able to validate pre-registered schemas", function () {
+                chakram.addSchema("https://github.com/dareid/chakram/testschema#person-array", personArraySchema);
+                chakram.addSchema({
+                    id: "https://github.com/dareid/chakram/testschema#string-array",
+                    pattern: /test\d/
+                });
+                return expect(postRequest).to.have.schema('json', {
+                    id: "https://github.com/dareid/chakram/testschema",
+                    properties: {
+                        stringArray: {
+                            items: {
+                                $ref: "https://github.com/dareid/chakram/testschema#string-array"    
+                            }
+                        },
+                        objectArray: {
+                            $ref: "https://github.com/dareid/chakram/testschema#person-array"
+                        }
+                    }
+                });
             });
             
         });
