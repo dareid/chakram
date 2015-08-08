@@ -1,5 +1,8 @@
 #Changelog
 
+###1.1.0
+ - Allowing pre-registration of JSON schemas
+
 ###1.0.1
  - Improved schema error messages #14
  - Updated dependencies #15
