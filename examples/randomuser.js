@@ -5,7 +5,7 @@ describe("Random User API", function() {
     var apiResponse;
     
     before(function () {
-        apiResponse = chakram.get("http://api.randomuser.me/?gender=female");
+        apiResponse = chakram.get("http://api.randomuser.me/0.6/?gender=female");
     });
     
     it("should return 200 on success", function () {
@@ -52,7 +52,7 @@ describe("Random User API", function() {
         this.timeout(10000);
         var multipleResponses = [];
         for(var ct = 0; ct < 5; ct++) {
-            multipleResponses.push(chakram.get("http://api.randomuser.me/?gender=female"));
+            multipleResponses.push(chakram.get("http://api.randomuser.me/0.6/?gender=female"));
         }
         return chakram.all(multipleResponses).then(function(responses) {
             var returnedUsernames = responses.map(function(response) {
