@@ -33,11 +33,11 @@
   "dependencies": {
     "chai": "3.2.x",
     "chai-as-promised": "5.1.x",
-    "chai-subset": "1.0.x",
+    "chai-subset": "1.1.x",
     "extend-object": "1.0.x",
     "q": "1.4.x",
-    "request": "2.60.x",
-    "tv4": "1.1.x"
+    "request": "2.61.x",
+    "tv4": "1.2.x"
   },
   "devDependencies": {
     "codeclimate-test-reporter": "0.x.x",
