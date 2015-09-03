@@ -1,7 +1,7 @@
 var chakram = require('./../lib/chakram.js'),
     expect = chakram.expect;
 
-xdescribe("Random User API", function() {
+describe("Random User API", function() {
     var apiResponse;
     
     before(function () {

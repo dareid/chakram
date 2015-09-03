@@ -44,13 +44,13 @@
     "istanbul": "0.x.x",
     "jaguarjs-jsdoc": "dareid/jaguarjs-jsdoc",
     "jsdoc": "latest",
-    "mocha": "2.x.x",
+    "mocha": "2.3.x",
     "rewire": "2.x.x",
     "sinon": "1.x.x"
   },
   "scripts": {
     "pretest": "npm install",
-    "test": "istanbul cover _mocha test/* test/**/* examples/*",
+    "test": "istanbul cover _mocha -- -t 10000 test/* examples/*",
     "predoc": "npm install",
     "doc": "jsdoc -t node_modules/jaguarjs-jsdoc -c conf.json -R README.md -r lib"
   },
