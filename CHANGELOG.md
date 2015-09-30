@@ -1,5 +1,8 @@
 #Changelog
 
+###1.2.0
+ - Added ability to set default options for requests #21
+
 ###1.1.0
  - Allowing pre-registration of JSON schemas
 
