@@ -47,6 +47,10 @@
             </span>
             <ul class="members itemMembers">
             
+            <span class="subtitle">Members</span>
+            
+                <li data-name="module:chakram.addSchema"><a href="module-chakram.html#.addSchema">addSchema</a></li>
+            
             </ul>
             <ul class="typedefs itemMembers">
             
@@ -62,6 +66,8 @@
                 <li data-name="module:chakram.addRawPlugin"><a href="module-chakram.html#.addRawPlugin">addRawPlugin</a></li>
             
                 <li data-name="module:chakram.all"><a href="module-chakram.html#.all">all</a></li>
+            
+                <li data-name="module:chakram.clearRequestDefaults"><a href="module-chakram.html#.clearRequestDefaults">clearRequestDefaults</a></li>
             
                 <li data-name="module:chakram.delete"><a href="module-chakram.html#.delete">delete</a></li>
             
@@ -82,6 +88,8 @@
                 <li data-name="module:chakram.put"><a href="module-chakram.html#.put">put</a></li>
             
                 <li data-name="module:chakram.request"><a href="module-chakram.html#.request">request</a></li>
+            
+                <li data-name="module:chakram.setRequestDefaults"><a href="module-chakram.html#.setRequestDefaults">setRequestDefaults</a></li>
             
                 <li data-name="module:chakram.wait"><a href="module-chakram.html#.wait">wait</a></li>
             
@@ -179,101 +187,101 @@
 
 
     <section>
-        <article class="readme"><h1>Chakram</h1><p><a href="https://travis-ci.org/dareid/chakram"><img src="https://travis-ci.org/dareid/chakram.svg?branch=master" alt="Build Status"></a> <a href="https://codeclimate.com/github/dareid/chakram"><img src="https://codeclimate.com/github/dareid/chakram/badges/coverage.svg" alt="Test Coverage"></a> <a href="https://codeclimate.com/github/dareid/chakram"><img src="https://codeclimate.com/github/dareid/chakram/badges/gpa.svg" alt="Code Climate"></a></p>
-<p>Chakram is an API testing framework designed to perform end to end tests on JSON REST endpoints. The library offers a BDD testing style and fully exploits javascript promises - the resulting tests are simple, clear and expressive. The library is built on <a href="https://nodejs.org/">node.js</a>, <a href="http://mochajs.org/">mocha</a> and <a href="http://chaijs.com/">chai</a>. </p>
-<p>More information is available in the <a href="http://dareid.github.io/chakram/">library's documentation</a> and its <a href="https://github.com/dareid/chakram/tree/master/test">own tests</a> which demonstrate all of Chakram's capabilities. Example API tests of publically accessable APIs are available in the <a href="https://github.com/dareid/chakram/tree/master/examples">examples directory</a>.</p>
-<h2>Install Chakram</h2><p>Chakram requires nodejs and NPM to be installed, it is available as an NPM module. Ideally, Chakram should be added to your testing project's devDependancies. This can be achieved with the following command:</p>
-<pre class="prettyprint source lang-js"><code>npm install chakram --save-dev</code></pre><h2>Introduction</h2><p>Chakram builds on top of the mocha testing framework, as such, the tests follow the <a href="http://mochajs.org/#getting-started">BDD style</a>. As this library focuses on testing REST APIs, the tests are naturally asynchronous. Mocha has <a href="http://mochajs.org/#asynchronous-code">native support for promises</a> which Chakram exploits. All requests and expectations return promises which fulfill to <a href="http://dareid.github.io/chakram/jsdoc/global.html#ChakramResponse">Chakram response objects</a>.</p>
-<p>The example below demonstrates a GET request and an assertion of the returned status code. The assertion of the status code returns a promise which is fulfilled once the status code has been checked. </p>
+        <article class="readme"><h1>Chakram</h1><p><a href="https://travis-ci.org/dareid/chakram"><img src="https://travis-ci.org/dareid/chakram.svg?branch=master" alt="Build Status"></a> <a href="https://codeclimate.com/github/dareid/chakram"><img src="https://codeclimate.com/github/dareid/chakram/badges/coverage.svg" alt="Test Coverage"></a> <a href="https://codeclimate.com/github/dareid/chakram"><img src="https://codeclimate.com/github/dareid/chakram/badges/gpa.svg" alt="Code Climate"></a> <a href="https://gitter.im/dareid/chakram"><img src="https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg" alt="Gitter"></a></p>
+<p>Chakram is an API testing framework designed to perform end to end tests on JSON REST endpoints.</p>
+<p>The library offers a BDD testing style and fully exploits javascript promises - the resulting tests are simple, clear and expressive. Chakram is built on <a href="https://nodejs.org/">node.js</a>, <a href="http://mochajs.org/">mocha</a> and <a href="http://chaijs.com/">chai</a>.</p>
+<p>This readme offers an introduction to the library. For more information, visit Chakram's <a href="http://dareid.github.io/chakram/">documentation</a> and <a href="https://github.com/dareid/chakram/tree/master/test">tests</a> which demonstrate all of Chakram's capabilities. In addition, example tests of publicly accessible APIs are available in the <a href="https://github.com/dareid/chakram/tree/master/examples">examples directory</a>.</p>
+<h2>Features</h2><ul>
+<li>HTTP specific assertions. Allows testing of:<ul>
+<li>Status codes</li>
+<li>Cookie presence and value</li>
+<li>Header presence and value</li>
+<li>JSON values</li>
+<li>JSON structure (using the <a href="http://json-schema.org/documentation.html">JSON schema specification</a>)</li>
+<li>Compression</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>BDD formatting and hooks (e.g. beforeEach, afterEach)</li>
+<li>Promise based</li>
+<li>Extensible, allowing the defintion of custom assertions</li>
+<li>Exports results in a variety of formats</li>
+</ul>
+<h2>Benefits</h2><ul>
+<li><strong>Software Quality</strong>: Like all good applications, it’s critical that APIs are well-tested to ensure that they function correctly and deliver a consistent interface for consumers.</li>
+<li><strong>Test Driven Development</strong>: Developers may adopt a test driven development approach to system testing. This ensures that minimal development effort is needed to achieve requirements coverage.</li>
+<li><strong>Backwards Compatibility</strong>: Suites of Chakram tests can be developed throughout the evolution of the API, ensuring that versions behave as expected and backward compatibility is maintained.</li>
+<li><strong>Documentation</strong>: A well-described and easily readable test can demonstrate how to make use of an API.</li>
+<li><strong>Third party testing</strong>: Chakram’s primary use is to test APIs under development.  However, it may also be exploited to test third party APIs. Tests can be written which verify the functionality required and using continuous integration platforms, tests can be run periodically so that any changes to the API can generate notifications.</li>
+</ul>
+<h2>Getting Started</h2><h3>Install Chakram</h3><p>Chakram requires Node.js and npm to be installed. It is available as an npm module. Ideally, Chakram should be added to your testing project's devDependencies. This can be achieved with the following command:</p>
+<pre class="prettyprint source lang-js"><code>npm install chakram --save-dev</code></pre><h3>Writing Tests</h3><p>Chakram builds on top of the mocha testing framework.  As such, the tests follow mocha's <a href="http://mochajs.org/#getting-started">BDD style</a>. The following sections introduce the various aspects of writing a Chakram test.</p>
+<h4>Making Requests</h4><p>Chakram makes use of the <a href="https://github.com/request/request">request library</a> and as such boasts a comprehensive request capability. Chakram exposes helper methods for the most common HTTP request verbs. The methods typically require the URL as the first parameter, the request body (if applicable) as the second parameter and any request options as an optional last parameter. For full documentation of the request methods see <a href="http://dareid.github.io/chakram/jsdoc/module-chakram.html">here</a>. The request methods return a promise which resolves to a <a href="http://dareid.github.io/chakram/jsdoc/global.html#ChakramResponse">Chakram response object</a>.</p>
+<p>Below is an example of making a HTTP GET request:</p>
+<pre class="prettyprint source lang-js"><code>var chakram = require('chakram');
+
+describe(&quot;Chakram&quot;, function() {
+    it(&quot;should offer simple HTTP request capabilities&quot;, function () {
+        return chakram.get(&quot;http://httpbin.org/get&quot;);
+    });
+});</code></pre><h4>Testing Responses</h4><p>Chakram offers a range of HTTP specific assertions which can test the information returned from API requests. Chakram offers a BDD testing style through Chakram's <code>expect</code> interface.</p>
+<p>When testing API responses, pass the request promise as an argument into chakram.expect. This will return an object which exposes the Chakram and Chai assertions. Perform an assertion by calling the desired <a href="http://dareid.github.io/chakram/jsdoc/module-chakram-expectation.html">Chakram assertion method</a>. <a href="http://chaijs.com/api/bdd/">Chai properties</a> can be used as a prefix to the assertion, improving the test's readability.</p>
+<p>The assertion is performed once the response is received (i.e. the request promise is fulfilled). Chakram assertions return a promise which resolve to a <a href="http://dareid.github.io/chakram/jsdoc/global.html#ChakramResponse">Chakram response object</a> once the test has been performed.</p>
+<p>Below is an example of testing the status code of a HTTP GET request:</p>
 <pre class="prettyprint source lang-js"><code>var chakram = require('chakram'),
     expect = chakram.expect;
 
-describe(&quot;Minimal example&quot;, function() {    
-    it(&quot;should provide a simple async testing framework&quot;, function () {
+describe(&quot;Chakram&quot;, function() {
+    it(&quot;should provide HTTP specific assertions&quot;, function () {
         var response = chakram.get(&quot;http://httpbin.org/get&quot;);
         return expect(response).to.have.status(200);
     });
-});</code></pre><p>Below is a larger example testing the <a href="https://randomuser.me/">Random User Generator API</a>.</p>
+});</code></pre><p>In addition to the HTTP specific assertions, chakram.expect exposes all of <a href="http://chaijs.com/api/bdd/">Chai's BDD properties and methods</a>. Documentation for the HTTP specific assertions can be seen <a href="http://dareid.github.io/chakram/jsdoc/module-chakram-expectation.html">here</a>.</p>
+<h4>Waiting</h4><p>As this library focuses on testing REST APIs, the tests are naturally asynchronous. Mocha has <a href="http://mochajs.org/#asynchronous-code">native support for promises</a>, which Chakram exploits. Returning a promise from an <code>it</code> callback will cause the test to wait until the promise resolves before continuing. Chakram's requests and expectations return promises which fulfill to <a href="http://dareid.github.io/chakram/jsdoc/global.html#ChakramResponse">Chakram response objects</a>. These promises can be returned to ensure the test waits for them to complete (as can be seen in the previous two examples).</p>
+<p>It is important that tests wait for all requests and assertions to be completed. To help, chakram includes a wait method. This returns a promise which will be fulfilled once all assertions have been performed. Furthermore, Chakram will fail any tests which do not wait for assertions to complete. Below is a test using the wait method.</p>
 <pre class="prettyprint source lang-js"><code>var chakram = require('chakram'),
     expect = chakram.expect;
 
-describe(&quot;Random User API&quot;, function() {
-    var apiResponse;
-
-    before(function () {
-        apiResponse = chakram.get(&quot;http://api.randomuser.me/?gender=female&quot;);
-    });
-
-    it(&quot;should return 200 on success&quot;, function () {
-        return expect(apiResponse).to.have.status(200);
-    });
-
-    it(&quot;should return content type and server headers&quot;, function () {
-        expect(apiResponse).to.have.header(&quot;server&quot;);
-        expect(apiResponse).to.have.header(&quot;content-type&quot;, /json/);
-        return chakram.wait();
-    });
-
-    it(&quot;should include email, username, password and phone number&quot;, function () {
-        return expect(apiResponse).to.have.schema('results[0].user', {
-            &quot;required&quot;: [
-                &quot;email&quot;, 
-                &quot;username&quot;, 
-                &quot;password&quot;, 
-                &quot;phone&quot;
-            ]
-        });
-    });
-
-    it(&quot;should return a female user&quot;, function () {
-        return expect(apiResponse).to.have.json('results[0].user.gender', 'female');
-    });
-
-    it(&quot;should return a valid email address&quot;, function () {
-        return expect(apiResponse).to.have.json(function(json) {
-            var email = json.results[0].user.email;
-            expect(/\S+@\S+\.\S+/.test(email)).to.be.true;
-        });
-    });
-
-    it(&quot;should return a single random user&quot;, function () {
-        return expect(apiResponse).to.have.schema('results', {minItems: 1, maxItems: 1});
-    }); 
-
-    it(&quot;should not be gzip compressed&quot;, function () {
-        return expect(apiResponse).not.to.be.encoded.with.gzip;
-    });
-
-    it(&quot;should return a different username on each request&quot;, function () {
-        this.timeout(10000);
-        var multipleResponses = [];
-        for(var ct = 0; ct &lt; 5; ct++) {
-            multipleResponses.push(chakram.get(&quot;http://api.randomuser.me/?gender=female&quot;));
-        }
-        return chakram.all(multipleResponses).then(function(responses) {
-            var returnedUsernames = responses.map(function(response) {
-                return response.body.results[0].user.username;
-            });
-            while (returnedUsernames.length > 0) {
-                var username = returnedUsernames.pop();
-                expect(returnedUsernames.indexOf(username)).to.equal(-1);
-            }
-        });
-    });
-});</code></pre><p>It is important that tests wait for all requests and assertions to be completed. To help, chakram includes a wait method, this returns a promise which will be fulfilled once all assertions have been performed. In addition, Chakram will fail any tests which do not wait for assertions to complete. Below is a test using the wait method. </p>
-<pre class="prettyprint source lang-js"><code>var chakram = require('chakram'),
-    expect = chakram.expect;
-
-describe(&quot;Minimal example&quot;, function() {    
+describe(&quot;Chakram&quot;, function() {
     it(&quot;should provide a simple async testing framework&quot;, function () {
         var response = chakram.get(&quot;http://httpbin.org/get&quot;);
         expect(response).to.have.status(200);
         expect(response).not.to.have.header('non-existing-header');
         return chakram.wait();
     });
-});</code></pre><h2>Run Tests</h2><p>To run Chakram tests, install the Mocha testing framework globally (or as a dev dependancy):</p>
+});</code></pre><h4>Complex Promise Use</h4><p>Due to the use of promises, complex tests can be written requiring chains of requests and assertions. An example can be seen below:</p>
+<pre class="prettyprint source lang-js"><code>describe(&quot;Chakram&quot;, function () {
+  it(&quot;should support sequential API interaction&quot;, function () {
+    var artist = &quot;Notorious B.I.G.&quot;;
+    return chakram.get(&quot;https://api.spotify.com/v1/search?q=&quot;+artist+&quot;&type=artist&quot;)
+    .then(function (searchResponse) {
+      var bigID = searchResponse.body.artists.items[0].id;
+      return chakram.get(&quot;https://api.spotify.com/v1/artists/&quot;+bigID+&quot;/top-tracks?country=GB&quot;);
+    })
+    .then(function (topTrackResponse) {
+      var topTrack = topTrackResponse.body.tracks[0];
+      expect(topTrack.name).to.contain(&quot;Old Thing Back&quot;);
+    });
+  });
+});</code></pre><p>Chakram exposes three promise related methods:</p>
+<ul>
+<li><a href="http://dareid.github.io/chakram/jsdoc/module-chakram.html#.all">all</a>, which takes an array of promises and returns a promise which is fulfilled once all promises in the provided array are fulfilled. The fulfillment value of the returned promise is an array of the fulfillment values of the promises which were passed to the function.</li>
+<li><a href="http://dareid.github.io/chakram/jsdoc/module-chakram.html#.wait">wait</a>, which returns a promise which is fulfilled once all Chakram expectations are fulfilled.</li>
+<li><a href="http://dareid.github.io/chakram/jsdoc/module-chakram.html#.waitFor">waitFor</a>, which takes an array of promises and returns a promise which is fulfilled once all promises in the provided array are fulfilled.  This is similar to chakram.all, except it is fulfilled with the fulfillment value of the last promise in the provided array.</li>
+</ul>
+<h3>Running Tests</h3><p>To run Chakram tests, install the Mocha testing framework globally (or as a dev dependency):</p>
 <pre class="prettyprint source"><code>npm install -g mocha</code></pre><p>Once installed, run the tests using the <a href="http://mochajs.org/#usage">Mocha command line</a>, which in its simplest form is:</p>
-<pre class="prettyprint source"><code>mocha path/to/tests</code></pre></article>
+<pre class="prettyprint source"><code>mocha path/to/tests</code></pre><p>Test results can be exported in multiple formats, Mocha's builtin formats are described <a href="http://mochajs.org/#reporters">here</a> and export plugins for Mocha are available on NPM.</p>
+<h3>Adding Assertions</h3><p>New assertions can be easily added to Chakram. The <a href="https://github.com/dareid/chakram/blob/master/test/plugins.js">plugin tests</a> demonstrate how properties and methods can be added. Further information is available in <a href="http://chaijs.com/guide/plugins/">Chai's plugin documentation</a>.</p>
+<h2>Contributing</h2><p>Issues, pull requests and questions are welcomed. If required, assistance can be found in the project's <a href="https://gitter.im/dareid/chakram">gitter chat room</a>.</p>
+<h3>Pull Requests</h3><ul>
+<li>Fork the repository</li>
+<li>Make changes</li>
+<li>If required, write tests covering the new functionality (tests are normally written against <a href="http://httpbin.org/">httpbin.org</a>)</li>
+<li>Ensure all tests pass and 100% code coverage is achieved (run <code>npm test</code>)</li>
+<li>Raise pull request</li>
+</ul></article>
     </section>
 
 
@@ -284,7 +292,7 @@ describe(&quot;Minimal example&quot;, function() {
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0</a> on Sun May 17 2015 10:46:09 GMT+0100 (BST)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.3</a> on Wed Sep 30 2015 22:57:43 GMT+0100 (BST)
         </footer>
     </div>
 </div>

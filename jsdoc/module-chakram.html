@@ -47,6 +47,10 @@
             </span>
             <ul class="members itemMembers">
             
+            <span class="subtitle">Members</span>
+            
+                <li data-name="module:chakram.addSchema"><a href="module-chakram.html#.addSchema">addSchema</a></li>
+            
             </ul>
             <ul class="typedefs itemMembers">
             
@@ -62,6 +66,8 @@
                 <li data-name="module:chakram.addRawPlugin"><a href="module-chakram.html#.addRawPlugin">addRawPlugin</a></li>
             
                 <li data-name="module:chakram.all"><a href="module-chakram.html#.all">all</a></li>
+            
+                <li data-name="module:chakram.clearRequestDefaults"><a href="module-chakram.html#.clearRequestDefaults">clearRequestDefaults</a></li>
             
                 <li data-name="module:chakram.delete"><a href="module-chakram.html#.delete">delete</a></li>
             
@@ -82,6 +88,8 @@
                 <li data-name="module:chakram.put"><a href="module-chakram.html#.put">put</a></li>
             
                 <li data-name="module:chakram.request"><a href="module-chakram.html#.request">request</a></li>
+            
+                <li data-name="module:chakram.setRequestDefaults"><a href="module-chakram.html#.setRequestDefaults">setRequestDefaults</a></li>
             
                 <li data-name="module:chakram.wait"><a href="module-chakram.html#.wait">wait</a></li>
             
@@ -228,6 +236,63 @@
     
     
     
+    
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".addSchema"><span class="type-signature static">static</span>module:chakram.addSchema</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Exposes tv4's add schema method. Allows the registration of schemas used for schema validation.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>chakram.addSchema('http://example.com/schema', { ... });</code></pre>
+    
+
+    
+</dd>
+
+        </dl>
     
     
     
@@ -706,7 +771,7 @@ return expect(unavailableReq).to.be.unavailable;</code></pre>
     
         
         <div class="tag-source">
-            chakram.js, line 56
+            chakram.js, line 57
         </div>
         
     </div>
@@ -845,6 +910,77 @@ Identical to <a href="https://github.com/kriskowal/q/wiki/API-Reference#promisea
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id=".clearRequestDefaults">
+            
+            <span class="type-signature static">static</span>module:chakram.clearRequestDefaults<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            methods.js, line 153
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Clears any previously set default options.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id=".delete">
             
             <span class="type-signature static">static</span>module:chakram.delete<span class="signature">(url, <span class="optional">data</span>, <span class="optional">params</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise}</span>
@@ -852,7 +988,7 @@ Identical to <a href="https://github.com/kriskowal/q/wiki/API-Reference#promisea
     
         
         <div class="tag-source">
-            methods.js, line 133
+            methods.js, line 136
         </div>
         
     </div>
@@ -1062,7 +1198,7 @@ Identical to <a href="https://github.com/kriskowal/q/wiki/API-Reference#promisea
     
         
         <div class="tag-source">
-            chakram.js, line 35
+            chakram.js, line 36
         </div>
         
     </div>
@@ -1224,7 +1360,7 @@ it("should support chakram and chai assertions", function () {
     
         
         <div class="tag-source">
-            methods.js, line 57
+            methods.js, line 60
         </div>
         
     </div>
@@ -1404,7 +1540,7 @@ it("should support chakram and chai assertions", function () {
     
         
         <div class="tag-source">
-            methods.js, line 68
+            methods.js, line 71
         </div>
         
     </div>
@@ -1727,7 +1863,7 @@ chakram.initialise(customProperty);</code></pre>
     
         
         <div class="tag-source">
-            methods.js, line 79
+            methods.js, line 82
         </div>
         
     </div>
@@ -1907,7 +2043,7 @@ chakram.initialise(customProperty);</code></pre>
     
         
         <div class="tag-source">
-            methods.js, line 108
+            methods.js, line 111
         </div>
         
     </div>
@@ -2115,7 +2251,7 @@ chakram.initialise(customProperty);</code></pre>
     
         
         <div class="tag-source">
-            methods.js, line 96
+            methods.js, line 99
         </div>
         
     </div>
@@ -2323,7 +2459,7 @@ chakram.initialise(customProperty);</code></pre>
     
         
         <div class="tag-source">
-            methods.js, line 121
+            methods.js, line 124
         </div>
         
     </div>
@@ -2531,7 +2667,7 @@ chakram.initialise(customProperty);</code></pre>
     
         
         <div class="tag-source">
-            methods.js, line 20
+            methods.js, line 22
         </div>
         
     </div>
@@ -2743,6 +2879,129 @@ expect(request).to.have.status(200);</code></pre>
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id=".setRequestDefaults">
+            
+            <span class="type-signature static">static</span>module:chakram.setRequestDefaults<span class="signature">(<span class="optional">defaults</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            methods.js, line 145
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Sets the default options applied to all future requests.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>defaults</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                default request options, see the popular <a href="https://github.com/request/request#requestoptions-callback">request library</a> for options</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id=".wait">
             
             <span class="type-signature static">static</span>module:chakram.wait<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise}</span>
@@ -2750,7 +3009,7 @@ expect(request).to.have.status(200);</code></pre>
     
         
         <div class="tag-source">
-            chakram.js, line 94
+            chakram.js, line 95
         </div>
         
     </div>
@@ -2864,7 +3123,7 @@ This works by recording all chakram expectations called within an 'it' and waits
     
         
         <div class="tag-source">
-            chakram.js, line 73
+            chakram.js, line 74
         </div>
         
     </div>
@@ -3030,7 +3289,7 @@ Similar to <a href="https://github.com/kriskowal/q/wiki/API-Reference#promiseall
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0</a> on Sun May 17 2015 10:46:09 GMT+0100 (BST)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.3</a> on Wed Sep 30 2015 22:57:43 GMT+0100 (BST)
         </footer>
     </div>
 </div>
