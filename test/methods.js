@@ -76,4 +76,30 @@ describe("Methods", function() {
         expect(request).to.have.header('Access-Control-Max-Age');
         return chakram.wait();
     });
+  
+  describe("request defaults", function () {
+      before(function () { 
+          chakram.setRequestDefaults({
+              headers: {
+                  Testing: 'default-option'
+              }
+          });
+      });
+      
+      it("should allow default settings to be applied to multiple requests", function () {
+          return chakram.get("http://httpbin.org/get").then(function(firstResp) {
+              return chakram.get("http://httpbin.org/get").then(function (secondResp) {
+                  expect(firstResp.body.headers.Testing).to.equal('default-option');
+                  expect(secondResp.body.headers.Testing).to.equal('default-option');
+              });
+          });
+      });
+      
+      it("should allow clearing default settings", function () {
+          chakram.clearRequestDefaults();
+          return chakram.get("http://httpbin.org/get").then(function(resp) {
+              expect(resp.body.headers.Testing).to.be.undefined;
+          });
+      });
+  });
 });
