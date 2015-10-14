@@ -7,6 +7,7 @@ describe("Chakram Assertions", function() {
         var cookieSet;
         
         before(function() {
+            chakram.setRequestDefaults({jar: true});
             cookieSet = chakram.get("http://httpbin.org/cookies/set?chakram=testval");
         });
         
