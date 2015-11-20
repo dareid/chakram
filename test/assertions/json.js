@@ -11,6 +11,7 @@ describe("Chakram Assertions", function() {
                 stringArray: ["test1", "test2", "test3"],
                 number: 20,
                 str: "test str",
+                empty: null,
                 obj: {
                     test: "str"   
                 }
@@ -39,6 +40,9 @@ describe("Chakram Assertions", function() {
                         test: "str"   
                     })
                 ]);
+            });            
+            it("should be able to equal nulls", function () {
+                return expect(postRequest).to.have.json('json.empty', null);
             });
         });
         

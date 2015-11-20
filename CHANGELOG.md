@@ -1,5 +1,8 @@
 #Changelog
 
+###1.2.1
+ - Allows equality checks for NULLs in JSON #24
+
 ###1.2.0
  - Added ability to set default options for requests #21
 
