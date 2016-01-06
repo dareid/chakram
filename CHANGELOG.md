@@ -1,5 +1,8 @@
 #Changelog
 
+###1.2.2
+ - Updating dependencies
+
 ###1.2.1
  - Allows equality checks for NULLs in JSON #24
 
