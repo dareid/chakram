@@ -1,6 +1,6 @@
 {
   "name": "chakram",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Chakram is an API testing framework designed to test JSON REST endpoints. The library offers a BDD testing style and fully exploits javascript promises",
   "main": "lib/chakram.js",
   "license": {
@@ -32,11 +32,11 @@
   ],
   "dependencies": {
     "chai": "3.4.x",
-    "chai-as-promised": "5.1.x",
-    "chai-subset": "1.1.x",
+    "chai-as-promised": "5.2.x",
+    "chai-subset": "1.2.x",
     "extend-object": "1.0.x",
     "q": "1.4.x",
-    "request": "2.65.x",
+    "request": "2.67.x",
     "tv4": "1.2.x"
   },
   "devDependencies": {

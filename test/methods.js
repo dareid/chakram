@@ -1,5 +1,6 @@
 var chakram = require('./../lib/chakram.js'),
-    expect = chakram.expect;
+    expect = chakram.expect,
+	fs = require('fs');
 
 describe("Methods", function() {
     
@@ -37,6 +38,19 @@ describe("Methods", function() {
     
     describe("POST", function () {
         testWriteMethods(chakram.post, "http://httpbin.org/post");
+		
+		it("should allow posting files with multipart/form-data", function () {
+			var response = chakram.post("https://httpbin.org/post", undefined, {
+				formData: {
+					pkgFile: fs.createReadStream('./package.json')
+				}
+			});
+			expect(response).to.have.json('files', function (files) {
+				expect(files).to.have.key('pkgFile');
+				expect(files.pkgFile).to.contain('chakram');
+			});
+			return chakram.wait();
+		});
     });
     
     describe("PUT", function () {
