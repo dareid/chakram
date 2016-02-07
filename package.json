@@ -51,7 +51,7 @@
   },
   "scripts": {
     "pretest": "npm install",
-    "test": "istanbul cover _mocha -- -t 10000 test/* examples/*",
+    "test": "istanbul cover _mocha -- -t 10000 test/*.js test/*/*.js examples/*.js",
     "predoc": "npm install",
     "doc": "jsdoc -t node_modules/jaguarjs-jsdoc -c conf.json -R README.md -r lib",
     "prebuild:js": "rm -rf dist",
