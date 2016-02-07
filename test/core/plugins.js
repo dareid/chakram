@@ -1,5 +1,6 @@
-var chakram = require('./../lib/chakram.js'),
-    expect = chakram.expect;
+var testsRunningInNode = (typeof global !== "undefined" ? true : false),
+    chakram = (testsRunningInNode ? global.chakram : window.chakram),
+    expect = (testsRunningInNode ? global.expect : window.expect);
 
 describe("Plugins", function() {
 
@@ -14,7 +15,7 @@ describe("Plugins", function() {
         expect(senseye).not.to.be.at.httpbin;
         return chakram.wait();
     });
-    
+
     it("should allow new methods to be defined", function () {
         chakram.addMethod("statusRange", function (respObj, low, high) {
             var inRange = respObj.response.statusCode >= low && respObj.response.statusCode <= high;
@@ -26,8 +27,8 @@ describe("Plugins", function() {
         expect(twohundred).not.to.have.statusRange(300, 500);
         return chakram.wait();
     });
-    
-    
+
+
     describe("raw chai plugin registration", function () {
         before(function() {
             chakram.addRawPlugin("unavailable", function (chai, utils) {
@@ -42,8 +43,8 @@ describe("Plugins", function() {
             return expect(unavailableReq).to.be.unavailable;
         });
     });
-    
-    
+
+
     describe("pre 0.2.0 plugin registration", function () {
         before(function() {
             var customProperty = function (chai, utils) {
@@ -75,5 +76,5 @@ describe("Plugins", function() {
             return expect(aTeapot).to.have.httpVersion("1.1");
         });
     });
-    
+
 });

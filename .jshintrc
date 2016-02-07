@@ -14,6 +14,7 @@
         "after": true,
         "afterEach": true,
         "describe": true,
-        "it": true
+        "it": true,
+        "window": true
     }
 }

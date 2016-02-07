@@ -1,9 +1,9 @@
-var chakram = require('./../lib/chakram.js'),
-    expect = chakram.expect,
-	fs = require('fs');
+var testsRunningInNode = (typeof global !== "undefined" ? true : false),
+    chakram = (testsRunningInNode ? global.chakram : window.chakram),
+    expect = (testsRunningInNode ? global.expect : window.expect);
 
 describe("Methods", function() {
-    
+
     var testWriteMethods = function (testMethod, testUrl) {
         it("should support JSON requests", function () {
             var json = {"num": 2,"str": "test"};
@@ -24,7 +24,7 @@ describe("Methods", function() {
                 expect(JSON.parse(resp.body).headers['Content-Type']).not.to.be.equal('application/json');
             });
         });
-        
+
         it("should support sending custom headers", function () {
             var customHeaders = {
                 "Token": "dummy token value"
@@ -35,11 +35,12 @@ describe("Methods", function() {
             return expect(response).to.include.json('headers', customHeaders);
         });
     };
-    
+
     describe("POST", function () {
         testWriteMethods(chakram.post, "http://httpbin.org/post");
-		
-		it("should allow posting files with multipart/form-data", function () {
+
+		testsRunningInNode && it("should allow posting files with multipart/form-data", function () {
+            var fs = require('fs');
 			var response = chakram.post("https://httpbin.org/post", undefined, {
 				formData: {
 					pkgFile: fs.createReadStream('./package.json')
@@ -52,19 +53,19 @@ describe("Methods", function() {
 			return chakram.wait();
 		});
     });
-    
+
     describe("PUT", function () {
         testWriteMethods(chakram.put, "http://httpbin.org/put");
     });
-    
+
     describe("DELETE", function () {
         testWriteMethods(chakram.delete, "http://httpbin.org/delete");
     });
-    
+
     describe("PATCH", function () {
         testWriteMethods(chakram.patch, "http://httpbin.org/patch");
-    });    
-    
+    });
+
     it("should allow GET requests", function () {
         return chakram.get("http://httpbin.org/get?test=str")
         .then(function(obj) {
@@ -72,7 +73,7 @@ describe("Methods", function() {
             expect(obj.body.args.test).to.equal('str');
         });
     });
-    
+
     it("should allow HEAD requests", function () {
         var request = chakram.head("http://httpbin.org/get?test=str");
         expect(request).to.have.status(200);
@@ -81,7 +82,7 @@ describe("Methods", function() {
             expect(obj.body).to.be.undefined;
         });
     });
-    
+
     it("should allow OPTIONS requests", function () {
         var request = chakram.options("http://httpbin.org/get?test=str");
         expect(request).to.have.header('Access-Control-Allow-Credentials');
@@ -90,16 +91,16 @@ describe("Methods", function() {
         expect(request).to.have.header('Access-Control-Max-Age');
         return chakram.wait();
     });
-  
+
   describe("request defaults", function () {
-      before(function () { 
+      before(function () {
           chakram.setRequestDefaults({
               headers: {
                   Testing: 'default-option'
               }
           });
       });
-      
+
       it("should allow default settings to be applied to multiple requests", function () {
           return chakram.get("http://httpbin.org/get").then(function(firstResp) {
               return chakram.get("http://httpbin.org/get").then(function (secondResp) {
@@ -108,7 +109,7 @@ describe("Methods", function() {
               });
           });
       });
-      
+
       it("should allow clearing default settings", function () {
           chakram.clearRequestDefaults();
           return chakram.get("http://httpbin.org/get").then(function(resp) {

@@ -1,5 +1,6 @@
-var chakram = require('./../lib/chakram.js'),
-    expect = chakram.expect;
+var testsRunningInNode = (typeof global !== "undefined" ? true : false),
+    chakram = (testsRunningInNode ? global.chakram : window.chakram),
+    expect = (testsRunningInNode ? global.expect : window.expect);
 
 describe("Documentation examples", function() {
 
@@ -11,7 +12,7 @@ describe("Documentation examples", function() {
         expect("teststring").to.be.a('string');
         return chakram.wait();
     });
-  
+
     it("should support grouping multiple tests", function () {
         var response = chakram.get("http://httpbin.org/get");
         return chakram.waitFor([
@@ -19,24 +20,24 @@ describe("Documentation examples", function() {
             expect(response).not.to.have.status(404)
         ]);
     });
-  
+
     it("should support auto waiting for tests", function() {
         var response = chakram.get("http://httpbin.org/get");
         expect(response).to.have.status(200);
         expect(response).not.to.have.status(404);
         return chakram.wait();
     });
-  
+
     it("should detect deflate compression", function () {
         var deflate = chakram.get("http://httpbin.org/deflate");
         return expect(deflate).to.be.encoded.with.deflate;
     });
-    
+
     it("should detect gzip compression", function () {
         var gzip = chakram.get("http://httpbin.org/gzip");
         return expect(gzip).to.be.encoded.with.gzip;
     });
-  
+
     it("should allow checking of HTTP cookies", function () {
         var response = chakram.get("http://httpbin.org/cookies/set?chakram=testval");
         expect(response).to.have.cookie('chakram');
@@ -44,7 +45,7 @@ describe("Documentation examples", function() {
         expect(response).to.have.cookie('chakram', /val/);
         return chakram.wait();
     });
-  
+
     it("should allow checking of HTTP headers", function () {
         var response = chakram.get("http://httpbin.org/get");
         expect(response).to.have.header('content-type');
@@ -70,7 +71,7 @@ describe("Documentation examples", function() {
         });
         return chakram.wait();
     });
-  
+
     it("should check that the returned JSON object satisifies a JSON schema", function () {
         var response = chakram.get("http://httpbin.org/get");
         expect(response).to.have.schema('headers', {"required": ["Host", "Accept"]});
@@ -92,5 +93,5 @@ describe("Documentation examples", function() {
         var response = chakram.get("http://httpbin.org/get");
         return expect(response).to.have.status(200);
     });
-    
+
 });

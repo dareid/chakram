@@ -1,6 +1,6 @@
-var chakram = require('./../../lib/chakram.js'),
-    expect = chakram.expect,
-    request = require('request');
+var testsRunningInNode = (typeof global !== "undefined" ? true : false),
+    chakram = (testsRunningInNode ? global.chakram : window.chakram),
+    expect = (testsRunningInNode ? global.expect : window.expect);
 
 describe("Chakram Assertions", function() {
     describe("Cookies", function() {
@@ -75,7 +75,8 @@ describe("Chakram Assertions", function() {
             return chakram.wait();
         });
 
-        it("should preserve cookies if defaults jar set to instance", function() {
+        testsRunningInNode && it("should preserve cookies if defaults jar set to instance", function() {
+            var request = require('request');
             var jar = request.jar();
             chakram.setRequestDefaults({jar: jar});
 

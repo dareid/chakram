@@ -1,8 +1,9 @@
-var chakram = require('./../../lib/chakram.js'),
-    expect = chakram.expect;
+var testsRunningInNode = (typeof global !== "undefined" ? true : false),
+    chakram = (testsRunningInNode ? global.chakram : window.chakram),
+    expect = (testsRunningInNode ? global.expect : window.expect);
 
 describe("Chakram Assertions", function() {
-    
+
     describe("Status code", function() {
         it("should assert return status code", function() {
             var exists = chakram.get("http://httpbin.org/status/200");
@@ -12,6 +13,6 @@ describe("Chakram Assertions", function() {
                 expect(missing).to.have.status(404)
             ]);
         });
-    });    
+    });
 
 });
