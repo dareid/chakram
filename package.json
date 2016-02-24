@@ -31,12 +31,12 @@
     "BDD"
   ],
   "dependencies": {
-    "chai": "3.4.x",
+    "chai": "^3.5.0",
     "chai-as-promised": "5.2.x",
     "chai-subset": "1.2.x",
     "extend-object": "1.0.x",
     "q": "1.4.x",
-    "request": "2.67.x",
+    "request": "^2.69.0",
     "tv4": "1.2.x"
   },
   "devDependencies": {
@@ -44,7 +44,7 @@
     "istanbul": "0.x.x",
     "jaguarjs-jsdoc": "dareid/jaguarjs-jsdoc",
     "jsdoc": "latest",
-    "mocha": "2.3.x",
+    "mocha": "^2.4.5",
     "rewire": "2.x.x",
     "simplifyify": "^2.0.1",
     "sinon": "1.x.x"
