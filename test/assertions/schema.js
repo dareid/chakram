@@ -206,21 +206,31 @@ describe("Chakram Assertions", function() {
         describe("registering schemas", function () {
 
             it("should be able to validate pre-registered schemas", function () {
-                chakram.addSchema("https://github.com/dareid/chakram/testschema#person-array", personArraySchema);
+                chakram.addSchema("https://github.com/dareid/chakram/testschema/person-array", personArraySchema);
                 chakram.addSchema({
-                    id: "https://github.com/dareid/chakram/testschema#string-array",
+                    id: "https://github.com/dareid/chakram/testschema/string-array",
                     pattern: /test\d/
                 });
                 return expect(postRequest).to.have.schema('json', {
-                    id: "https://github.com/dareid/chakram/testschema",
                     properties: {
                         stringArray: {
                             items: {
-                                $ref: "https://github.com/dareid/chakram/testschema#string-array"
+                                $ref: "https://github.com/dareid/chakram/testschema/string-array"
                             }
                         },
                         objectArray: {
-                            $ref: "https://github.com/dareid/chakram/testschema#person-array"
+                            $ref: "https://github.com/dareid/chakram/testschema/person-array"
+                        }
+                    }
+                });
+            });
+
+            it("should fail assertions with unknown schemas", function () {
+                return expect(postRequest).not.to.have.schema('json', {
+                    id: "https://github.com/dareid/chakram/testschema2",
+                    properties: {
+                        objectArray: {
+                            $ref: "https://github.com/dareid/chakram/testschema/person-array-not-registered#"
                         }
                     }
                 });
