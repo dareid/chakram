@@ -1,5 +1,9 @@
 #Changelog
 
+###1.2.3
+ - Updating dependencies
+ - Fails schema validation if a referenced schema is missing #32
+
 ###1.2.2
  - Updating dependencies
 
