@@ -1,2 +1,12 @@
+engines:
+ eslint:
+  enabled: true
+  config:
+    extensions:
+    - .js
+ratings:
+ paths:
+  - "**.js"
 exclude_paths:
  - dist/*
+ - coverage/*

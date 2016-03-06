@@ -62,7 +62,7 @@ describe("Documentation examples", function() {
         expect(response).to.comprise.of.json({
             url: "http://httpbin.org/get",
             headers: {
-                Host: "httpbin.org",
+                Host: "httpbin.org"
             }
         });
         expect(response).to.have.json('url', "http://httpbin.org/get");

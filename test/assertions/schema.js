@@ -132,7 +132,7 @@ describe("Chakram Assertions", function() {
                     expect(postRequest).to.have.schema('json.stringArray', stringArray),
                     expect(postRequest).to.have.schema('json.stringArray', mixedArray),
                     expect(postRequest).not.to.have.schema('json.mixedArray', stringArray),
-                    expect(postRequest).to.have.schema('json.mixedArray', mixedArray),
+                    expect(postRequest).to.have.schema('json.mixedArray', mixedArray)
                 ]);
             });
 
