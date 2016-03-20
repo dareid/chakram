@@ -6,7 +6,7 @@ Chakram is an API testing framework designed to perform end to end tests on JSON
 
 The library offers a BDD testing style and fully exploits javascript promises - the resulting tests are simple, clear and expressive. Chakram is built on [node.js](https://nodejs.org/), [mocha](http://mochajs.org/) and [chai](http://chaijs.com/).
 
-This readme offers an introduction to the library. For more information, visit Chakram's [documentation](http://dareid.github.io/chakram/) and [tests](https://github.com/dareid/chakram/tree/master/test) which demonstrate all of Chakram's capabilities. In addition, example tests of publicly accessible APIs are available in the [examples directory](https://github.com/dareid/chakram/tree/master/examples).
+This readme offers an introduction to the library. For more information, visit Chakram's [documentation](http://dareid.github.io/chakram/) and [tests](https://github.com/dareid/chakram/tree/master/test) which demonstrate all of Chakram's capabilities. In addition, example tests of publicly accessible APIs are available in the [examples directory](https://github.com/dareid/chakram/tree/master/examples). If required, assistance can be found in the project's [gitter chat room](https://gitter.im/dareid/chakram).
 
 ## Features
  - HTTP specific assertions. Allows testing of:
@@ -21,6 +21,7 @@ This readme offers an introduction to the library. For more information, visit C
 - Promise based
 - Extensible, allowing the defintion of custom assertions
 - Exports results in a variety of formats
+- Debugging support
 
 ## Benefits
 - **Software Quality**: Like all good applications, it’s critical that APIs are well-tested to ensure that they function correctly and deliver a consistent interface for consumers.
@@ -141,7 +142,7 @@ Test results can be exported in multiple formats, Mocha's builtin formats are de
 New assertions can be easily added to Chakram. The [plugin tests](https://github.com/dareid/chakram/blob/master/test/plugins.js) demonstrate how properties and methods can be added. Further information is available in [Chai's plugin documentation](http://chaijs.com/guide/plugins/).
 
 ## Contributing
-Issues, pull requests and questions are welcomed. If required, assistance can be found in the project's [gitter chat room](https://gitter.im/dareid/chakram).
+Issues, pull requests and questions are welcomed.
 
 ### Pull Requests
 

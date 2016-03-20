@@ -1,5 +1,10 @@
 #Changelog
 
+###1.3.0
+ - Identifies all schema errors #38
+ - Exposes tv4's addFormat method #39
+ - Added debugging functionality #30
+
 ###1.2.3
  - Updating dependencies
  - Fails schema validation if a referenced schema is missing #32
