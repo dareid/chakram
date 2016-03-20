@@ -51,6 +51,8 @@
             
                 <li data-name="module:chakram.addSchema"><a href="module-chakram.html#.addSchema">addSchema</a></li>
             
+                <li data-name="module:chakram.addSchemaFormat"><a href="module-chakram.html#.addSchemaFormat">addSchemaFormat</a></li>
+            
             </ul>
             <ul class="typedefs itemMembers">
             
@@ -90,6 +92,10 @@
                 <li data-name="module:chakram.request"><a href="module-chakram.html#.request">request</a></li>
             
                 <li data-name="module:chakram.setRequestDefaults"><a href="module-chakram.html#.setRequestDefaults">setRequestDefaults</a></li>
+            
+                <li data-name="module:chakram.startDebug"><a href="module-chakram.html#.startDebug">startDebug</a></li>
+            
+                <li data-name="module:chakram.stopDebug"><a href="module-chakram.html#.stopDebug">stopDebug</a></li>
             
                 <li data-name="module:chakram.wait"><a href="module-chakram.html#.wait">wait</a></li>
             
@@ -287,6 +293,64 @@
 
     
     <pre class="prettyprint"><code>chakram.addSchema('http://example.com/schema', { ... });</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".addSchemaFormat"><span class="type-signature static">static</span>module:chakram.addSchemaFormat</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Exposes tv4's add format method. Allows add custom format for schema validation.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>chakram.addSchemaFormat('decimal-digits', function (data, schema) {
+    if (typeof data === 'string' && !/^[0-9]+$/.test(data)) {
+        return null;
+    }
+    return "must be string of decimal digits";
+});</code></pre>
     
 
     
@@ -771,7 +835,7 @@ return expect(unavailableReq).to.be.unavailable;</code></pre>
     
         
         <div class="tag-source">
-            chakram.js, line 57
+            chakram.js, line 58
         </div>
         
     </div>
@@ -917,7 +981,7 @@ Identical to <a href="https://github.com/kriskowal/q/wiki/API-Reference#promisea
     
         
         <div class="tag-source">
-            methods.js, line 153
+            methods.js, line 166
         </div>
         
     </div>
@@ -988,7 +1052,7 @@ Identical to <a href="https://github.com/kriskowal/q/wiki/API-Reference#promisea
     
         
         <div class="tag-source">
-            methods.js, line 136
+            methods.js, line 148
         </div>
         
     </div>
@@ -1198,7 +1262,7 @@ Identical to <a href="https://github.com/kriskowal/q/wiki/API-Reference#promisea
     
         
         <div class="tag-source">
-            chakram.js, line 36
+            chakram.js, line 37
         </div>
         
     </div>
@@ -1360,7 +1424,7 @@ it("should support chakram and chai assertions", function () {
     
         
         <div class="tag-source">
-            methods.js, line 60
+            methods.js, line 72
         </div>
         
     </div>
@@ -1540,7 +1604,7 @@ it("should support chakram and chai assertions", function () {
     
         
         <div class="tag-source">
-            methods.js, line 71
+            methods.js, line 83
         </div>
         
     </div>
@@ -1863,7 +1927,7 @@ chakram.initialise(customProperty);</code></pre>
     
         
         <div class="tag-source">
-            methods.js, line 82
+            methods.js, line 94
         </div>
         
     </div>
@@ -2043,7 +2107,7 @@ chakram.initialise(customProperty);</code></pre>
     
         
         <div class="tag-source">
-            methods.js, line 111
+            methods.js, line 123
         </div>
         
     </div>
@@ -2251,7 +2315,7 @@ chakram.initialise(customProperty);</code></pre>
     
         
         <div class="tag-source">
-            methods.js, line 99
+            methods.js, line 111
         </div>
         
     </div>
@@ -2459,7 +2523,7 @@ chakram.initialise(customProperty);</code></pre>
     
         
         <div class="tag-source">
-            methods.js, line 124
+            methods.js, line 136
         </div>
         
     </div>
@@ -2667,7 +2731,7 @@ chakram.initialise(customProperty);</code></pre>
     
         
         <div class="tag-source">
-            methods.js, line 22
+            methods.js, line 24
         </div>
         
     </div>
@@ -2886,7 +2950,7 @@ expect(request).to.have.status(200);</code></pre>
     
         
         <div class="tag-source">
-            methods.js, line 145
+            methods.js, line 157
         </div>
         
     </div>
@@ -3002,6 +3066,194 @@ expect(request).to.have.status(200);</code></pre>
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id=".startDebug">
+            
+            <span class="type-signature static">static</span>module:chakram.startDebug<span class="signature">(debugFn)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            debug.js, line 28
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Actvates debugging. By default, will print request and response details to the console.
+Custom debugging functions can be specified.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>debugFn</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                A debug function which replaces the default log to console. Details of parameters can be found at https://github.com/request/request-debug.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".stopDebug">
+            
+            <span class="type-signature static">static</span>module:chakram.stopDebug<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            debug.js, line 15
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Deactivates debugging
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id=".wait">
             
             <span class="type-signature static">static</span>module:chakram.wait<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise}</span>
@@ -3009,7 +3261,7 @@ expect(request).to.have.status(200);</code></pre>
     
         
         <div class="tag-source">
-            chakram.js, line 95
+            chakram.js, line 96
         </div>
         
     </div>
@@ -3123,7 +3375,7 @@ This works by recording all chakram expectations called within an 'it' and waits
     
         
         <div class="tag-source">
-            chakram.js, line 74
+            chakram.js, line 75
         </div>
         
     </div>
@@ -3289,7 +3541,7 @@ Similar to <a href="https://github.com/kriskowal/q/wiki/API-Reference#promiseall
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.3</a> on Wed Sep 30 2015 22:57:43 GMT+0100 (BST)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun Mar 20 2016 08:03:55 GMT+0000 (GMT)
         </footer>
     </div>
 </div>

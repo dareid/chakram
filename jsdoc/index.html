@@ -51,6 +51,8 @@
             
                 <li data-name="module:chakram.addSchema"><a href="module-chakram.html#.addSchema">addSchema</a></li>
             
+                <li data-name="module:chakram.addSchemaFormat"><a href="module-chakram.html#.addSchemaFormat">addSchemaFormat</a></li>
+            
             </ul>
             <ul class="typedefs itemMembers">
             
@@ -90,6 +92,10 @@
                 <li data-name="module:chakram.request"><a href="module-chakram.html#.request">request</a></li>
             
                 <li data-name="module:chakram.setRequestDefaults"><a href="module-chakram.html#.setRequestDefaults">setRequestDefaults</a></li>
+            
+                <li data-name="module:chakram.startDebug"><a href="module-chakram.html#.startDebug">startDebug</a></li>
+            
+                <li data-name="module:chakram.stopDebug"><a href="module-chakram.html#.stopDebug">stopDebug</a></li>
             
                 <li data-name="module:chakram.wait"><a href="module-chakram.html#.wait">wait</a></li>
             
@@ -190,7 +196,7 @@
         <article class="readme"><h1>Chakram</h1><p><a href="https://travis-ci.org/dareid/chakram"><img src="https://travis-ci.org/dareid/chakram.svg?branch=master" alt="Build Status"></a> <a href="https://codeclimate.com/github/dareid/chakram"><img src="https://codeclimate.com/github/dareid/chakram/badges/coverage.svg" alt="Test Coverage"></a> <a href="https://codeclimate.com/github/dareid/chakram"><img src="https://codeclimate.com/github/dareid/chakram/badges/gpa.svg" alt="Code Climate"></a> <a href="https://gitter.im/dareid/chakram"><img src="https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg" alt="Gitter"></a></p>
 <p>Chakram is an API testing framework designed to perform end to end tests on JSON REST endpoints.</p>
 <p>The library offers a BDD testing style and fully exploits javascript promises - the resulting tests are simple, clear and expressive. Chakram is built on <a href="https://nodejs.org/">node.js</a>, <a href="http://mochajs.org/">mocha</a> and <a href="http://chaijs.com/">chai</a>.</p>
-<p>This readme offers an introduction to the library. For more information, visit Chakram's <a href="http://dareid.github.io/chakram/">documentation</a> and <a href="https://github.com/dareid/chakram/tree/master/test">tests</a> which demonstrate all of Chakram's capabilities. In addition, example tests of publicly accessible APIs are available in the <a href="https://github.com/dareid/chakram/tree/master/examples">examples directory</a>.</p>
+<p>This readme offers an introduction to the library. For more information, visit Chakram's <a href="http://dareid.github.io/chakram/">documentation</a> and <a href="https://github.com/dareid/chakram/tree/master/test">tests</a> which demonstrate all of Chakram's capabilities. In addition, example tests of publicly accessible APIs are available in the <a href="https://github.com/dareid/chakram/tree/master/examples">examples directory</a>. If required, assistance can be found in the project's <a href="https://gitter.im/dareid/chakram">gitter chat room</a>.</p>
 <h2>Features</h2><ul>
 <li>HTTP specific assertions. Allows testing of:<ul>
 <li>Status codes</li>
@@ -207,6 +213,7 @@
 <li>Promise based</li>
 <li>Extensible, allowing the defintion of custom assertions</li>
 <li>Exports results in a variety of formats</li>
+<li>Debugging support</li>
 </ul>
 <h2>Benefits</h2><ul>
 <li><strong>Software Quality</strong>: Like all good applications, it’s critical that APIs are well-tested to ensure that they function correctly and deliver a consistent interface for consumers.</li>
@@ -274,7 +281,7 @@ describe(&quot;Chakram&quot;, function() {
 <pre class="prettyprint source"><code>npm install -g mocha</code></pre><p>Once installed, run the tests using the <a href="http://mochajs.org/#usage">Mocha command line</a>, which in its simplest form is:</p>
 <pre class="prettyprint source"><code>mocha path/to/tests</code></pre><p>Test results can be exported in multiple formats, Mocha's builtin formats are described <a href="http://mochajs.org/#reporters">here</a> and export plugins for Mocha are available on NPM.</p>
 <h3>Adding Assertions</h3><p>New assertions can be easily added to Chakram. The <a href="https://github.com/dareid/chakram/blob/master/test/plugins.js">plugin tests</a> demonstrate how properties and methods can be added. Further information is available in <a href="http://chaijs.com/guide/plugins/">Chai's plugin documentation</a>.</p>
-<h2>Contributing</h2><p>Issues, pull requests and questions are welcomed. If required, assistance can be found in the project's <a href="https://gitter.im/dareid/chakram">gitter chat room</a>.</p>
+<h2>Contributing</h2><p>Issues, pull requests and questions are welcomed.</p>
 <h3>Pull Requests</h3><ul>
 <li>Fork the repository</li>
 <li>Make changes</li>
@@ -292,7 +299,7 @@ describe(&quot;Chakram&quot;, function() {
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.3</a> on Wed Sep 30 2015 22:57:43 GMT+0100 (BST)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun Mar 20 2016 08:03:55 GMT+0000 (GMT)
         </footer>
     </div>
 </div>
