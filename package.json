@@ -3,9 +3,7 @@
   "version": "1.3.0",
   "description": "Chakram is an API testing framework designed to test JSON REST endpoints. The library offers a BDD testing style and fully exploits javascript promises",
   "main": "lib/chakram.js",
-  "license": {
-    "type": "MIT"
-  },
+  "license": "MIT",
   "contributors": [
     {
       "name": "Daniel Reid",
