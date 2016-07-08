@@ -30,7 +30,7 @@
   ],
   "dependencies": {
     "chai": "^3.5.0",
-    "chai-as-promised": "5.2.x",
+    "chai-as-promised": "5.3.x",
     "chai-subset": "1.2.x",
     "extend-object": "1.0.x",
     "q": "1.4.x",
