@@ -53,6 +53,12 @@
             
                 <li data-name="module:chakram.addSchemaFormat"><a href="module-chakram.html#.addSchemaFormat">addSchemaFormat</a></li>
             
+                <li data-name="module:chakram.getSchemaMap"><a href="module-chakram.html#.getSchemaMap">getSchemaMap</a></li>
+            
+                <li data-name="module:chakram.schemaBanUnknown"><a href="module-chakram.html#.schemaBanUnknown">schemaBanUnknown</a></li>
+            
+                <li data-name="module:chakram.schemaCyclicCheck"><a href="module-chakram.html#.schemaCyclicCheck">schemaCyclicCheck</a></li>
+            
             </ul>
             <ul class="typedefs itemMembers">
             
@@ -351,6 +357,165 @@
     }
     return "must be string of decimal digits";
 });</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".getSchemaMap"><span class="type-signature static">static</span>module:chakram.getSchemaMap</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Exposes tv4's get schemaMap method. Allows to check the mapping schema object.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>chakram.getSchemaMap();</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".schemaBanUnknown"><span class="type-signature static">static</span>module:chakram.schemaBanUnknown</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Option for turning on tv4's "ban unknown properties" mode.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>chakram.schemaBanUnknown = true;</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".schemaCyclicCheck"><span class="type-signature static">static</span>module:chakram.schemaCyclicCheck</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Option for turning on tv4's option to check for self-referencing objects.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>chakram.schemaCyclicCheck = true;</code></pre>
     
 
     
@@ -835,7 +1000,7 @@ return expect(unavailableReq).to.be.unavailable;</code></pre>
     
         
         <div class="tag-source">
-            chakram.js, line 58
+            chakram.js, line 59
         </div>
         
     </div>
@@ -1257,12 +1422,12 @@ Identical to <a href="https://github.com/kriskowal/q/wiki/API-Reference#promisea
     <div class="nameContainer">
         <h4 class="name" id=".expect">
             
-            <span class="type-signature static">static</span>module:chakram.expect<span class="signature">(value)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{chakram-expectation}</span>
+            <span class="type-signature static">static</span>module:chakram.expect<span class="signature">(value, message)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{chakram-expectation}</span>
         </h4>
     
         
         <div class="tag-source">
-            chakram.js, line 37
+            chakram.js, line 38
         </div>
         
     </div>
@@ -1322,6 +1487,29 @@ Please see <a href="http://chaijs.com/api/bdd/">chai's API documentation</a> for
             <td class="description last">
                 
                 The variable to run assertions on, can be a <a href="global.html#ChakramResponse">ChakramResponse</a> promise</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                A custom assertion message passed to Chai</td>
         </tr>
 	
 	
@@ -3261,7 +3449,7 @@ Custom debugging functions can be specified.
     
         
         <div class="tag-source">
-            chakram.js, line 96
+            chakram.js, line 97
         </div>
         
     </div>
@@ -3375,7 +3563,7 @@ This works by recording all chakram expectations called within an 'it' and waits
     
         
         <div class="tag-source">
-            chakram.js, line 75
+            chakram.js, line 76
         </div>
         
     </div>
@@ -3541,7 +3729,7 @@ Similar to <a href="https://github.com/kriskowal/q/wiki/API-Reference#promiseall
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun Mar 20 2016 08:03:55 GMT+0000 (GMT)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Jul 08 2016 21:13:56 GMT+0100 (BST)
         </footer>
     </div>
 </div>
