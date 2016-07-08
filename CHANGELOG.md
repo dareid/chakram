@@ -1,5 +1,10 @@
 #Changelog
 
+###1.4.0
+ - Added support for expect's second custom message argument #56
+ - Exposes tv4's schemaBanUnknown and schemaCyclicCheck options #52
+ - Exposes tv4's getSchemaMap method #43
+
 ###1.3.0
  - Identifies all schema errors #38
  - Exposes tv4's addFormat method #39
