@@ -16,19 +16,20 @@ This readme offers an introduction to the library. For more information, visit C
   + JSON values
   + JSON structure (using the [JSON schema specification](http://json-schema.org/documentation.html))
   + Compression
+  + Response times
 
 - BDD formatting and hooks (e.g. beforeEach, afterEach)
 - Promise based
-- Extensible, allowing the defintion of custom assertions
+- Plugin support
+- Custom assertions
 - Exports results in a variety of formats
 - Debugging support
 
-## Benefits
-- **Software Quality**: Like all good applications, it’s critical that APIs are well-tested to ensure that they function correctly and deliver a consistent interface for consumers.
-- **Test Driven Development**: Developers may adopt a test driven development approach to system testing. This ensures that minimal development effort is needed to achieve requirements coverage.
-- **Backwards Compatibility**: Suites of Chakram tests can be developed throughout the evolution of the API, ensuring that versions behave as expected and backward compatibility is maintained.
-- **Documentation**: A well-described and easily readable test can demonstrate how to make use of an API.
-- **Third party testing**: Chakram’s primary use is to test APIs under development.  However, it may also be exploited to test third party APIs. Tests can be written which verify the functionality required and using continuous integration platforms, tests can be run periodically so that any changes to the API can generate notifications.
+## Plugins
+Awesome plugins from the community:
+ - [Joi Schema Assertion](https://github.com/roberto/chakram-joi)
+
+We would love to see more plugins! If you have a plugin, please add it to the list.
 
 ## Getting Started
 
