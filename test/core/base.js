@@ -86,6 +86,14 @@ describe("Chakram", function() {
             expect(request).not.to.have.status(400);
             return chakram.wait().then(assertChakramResponseObject);
         });
+
+        it("should record response time", function () {
+            this.timeout(3000);
+            return chakram.get("http://httpbin.org/delay/2")
+            .then(function (obj) {
+                expect(obj.responseTime).to.exist.and.to.be.at.least(2000).and.at.most(3000);
+            });
+        });
     });
 
     describe("Multiple expects", function () {
