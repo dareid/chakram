@@ -77,6 +77,8 @@
             
                 <li data-name="module:chakram.clearRequestDefaults"><a href="module-chakram.html#.clearRequestDefaults">clearRequestDefaults</a></li>
             
+                <li data-name="module:chakram.del"><a href="module-chakram.html#.del">del</a></li>
+            
                 <li data-name="module:chakram.delete"><a href="module-chakram.html#.delete">delete</a></li>
             
                 <li data-name="module:chakram.expect"><a href="module-chakram.html#.expect">expect</a></li>
@@ -137,6 +139,8 @@
                 <li data-name="module:chakram-expectation.header"><a href="module-chakram-expectation.html#.header">header</a></li>
             
                 <li data-name="module:chakram-expectation.json"><a href="module-chakram-expectation.html#.json">json</a></li>
+            
+                <li data-name="module:chakram-expectation.responsetime"><a href="module-chakram-expectation.html#.responsetime">responsetime</a></li>
             
                 <li data-name="module:chakram-expectation.schema"><a href="module-chakram-expectation.html#.schema">schema</a></li>
             
@@ -1146,7 +1150,7 @@ Identical to <a href="https://github.com/kriskowal/q/wiki/API-Reference#promisea
     
         
         <div class="tag-source">
-            methods.js, line 166
+            methods.js, line 184
         </div>
         
     </div>
@@ -1210,6 +1214,216 @@ Identical to <a href="https://github.com/kriskowal/q/wiki/API-Reference#promisea
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id=".del">
+            
+            <span class="type-signature static">static</span>module:chakram.del<span class="signature">(url, <span class="optional">data</span>, <span class="optional">params</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            methods.js, line 166
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Alias for chakram.delete. Perform HTTP DELETE request.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                fully qualified url</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                a JSON serializable object (unless json is set to false in params, in which case this should be a buffer or string)</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>params</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                additional request options, see the popular <a href="https://github.com/request/request#requestoptions-callback">request library</a> for options</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise
+                        
+                    
+            </td>
+            <td class="description last">Promise which will resolve to a <a href="global.html#ChakramResponse">ChakramResponse</a> object</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id=".delete">
             
             <span class="type-signature static">static</span>module:chakram.delete<span class="signature">(url, <span class="optional">data</span>, <span class="optional">params</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise}</span>
@@ -1217,7 +1431,7 @@ Identical to <a href="https://github.com/kriskowal/q/wiki/API-Reference#promisea
     
         
         <div class="tag-source">
-            methods.js, line 148
+            methods.js, line 153
         </div>
         
     </div>
@@ -1612,7 +1826,7 @@ it("should support chakram and chai assertions", function () {
     
         
         <div class="tag-source">
-            methods.js, line 72
+            methods.js, line 77
         </div>
         
     </div>
@@ -1792,7 +2006,7 @@ it("should support chakram and chai assertions", function () {
     
         
         <div class="tag-source">
-            methods.js, line 83
+            methods.js, line 88
         </div>
         
     </div>
@@ -2115,7 +2329,7 @@ chakram.initialise(customProperty);</code></pre>
     
         
         <div class="tag-source">
-            methods.js, line 94
+            methods.js, line 99
         </div>
         
     </div>
@@ -2295,7 +2509,7 @@ chakram.initialise(customProperty);</code></pre>
     
         
         <div class="tag-source">
-            methods.js, line 123
+            methods.js, line 128
         </div>
         
     </div>
@@ -2503,7 +2717,7 @@ chakram.initialise(customProperty);</code></pre>
     
         
         <div class="tag-source">
-            methods.js, line 111
+            methods.js, line 116
         </div>
         
     </div>
@@ -2711,7 +2925,7 @@ chakram.initialise(customProperty);</code></pre>
     
         
         <div class="tag-source">
-            methods.js, line 136
+            methods.js, line 141
         </div>
         
     </div>
@@ -3138,7 +3352,7 @@ expect(request).to.have.status(200);</code></pre>
     
         
         <div class="tag-source">
-            methods.js, line 157
+            methods.js, line 175
         </div>
         
     </div>
@@ -3729,7 +3943,7 @@ Similar to <a href="https://github.com/kriskowal/q/wiki/API-Reference#promiseall
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Jul 08 2016 21:13:56 GMT+0100 (BST)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sat Sep 03 2016 21:47:27 GMT+0100 (BST)
         </footer>
     </div>
 </div>
