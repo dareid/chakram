@@ -66,8 +66,8 @@ describe("Plugins", function() {
             var notATeapot = chakram.get("http://httpbin.org/status/200");
             var aTeapot = chakram.get("http://httpbin.org/status/418");
             return chakram.waitFor([
-                expect(notATeapot).to.not.be.a.teapot,
-                expect(aTeapot).to.be.a.teapot
+                expect(notATeapot).to.not.be.teapot,
+                expect(aTeapot).to.be.teapot
             ]);
         });
 

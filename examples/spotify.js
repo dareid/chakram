@@ -2,7 +2,7 @@ var chakram = require('./../lib/chakram.js'),
     expect = chakram.expect;
 
 describe("Spotify API", function() {
-    
+
     before(function () {
         var spotifyErrorSchema = {
             properties: {
@@ -16,7 +16,7 @@ describe("Spotify API", function() {
             },
             required: ["error"]
         };
-        
+
         chakram.addProperty("spotify", function(){});
         chakram.addMethod("error", function (respObj, status, message) {
             expect(respObj).to.have.schema(spotifyErrorSchema);
@@ -34,47 +34,47 @@ describe("Spotify API", function() {
             });
         });
     });
-    
-    
-    describe("Search Endpoint", function () {        
+
+
+    describe("Search Endpoint", function () {
         var randomArtistSearch;
-        
+
         before(function () {
             randomArtistSearch = chakram.get("https://api.spotify.com/v1/search?q=random&type=artist");
         });
-        
-        
+
+
         it("should require a search query", function () {
             var missingQuery = chakram.get("https://api.spotify.com/v1/search?type=artist");
-            return expect(missingQuery).to.be.a.spotify.error(400, "No search query");
+            return expect(missingQuery).to.be.spotify.error(400, "No search query");
         });
-        
+
         it("should require an item type", function () {
             var missingType = chakram.get("https://api.spotify.com/v1/search?q=random");
-            return expect(missingType).to.be.a.spotify.error(400, "Missing parameter type");
+            return expect(missingType).to.be.spotify.error(400, "Missing parameter type");
         });
-        
+
         var shouldSupportItemType = function (type) {
             it("should support item type "+type, function () {
                 var typeCheck = chakram.get("https://api.spotify.com/v1/search?q=random&type="+type);
                 return expect(typeCheck).to.have.status(200);
             });
         };
-        
+
         shouldSupportItemType('artist');
         shouldSupportItemType('track');
         shouldSupportItemType('album');
         shouldSupportItemType('playlist');
-        
+
         it("should throw an error if an unknown item type is used", function () {
             var missingType = chakram.get("https://api.spotify.com/v1/search?q=random&type=invalid");
-            return expect(missingType).to.be.a.spotify.error(400, "Bad search type field");
+            return expect(missingType).to.be.spotify.error(400, "Bad search type field");
         });
-        
+
         it("should by default return 20 search results", function () {
             return expect(randomArtistSearch).to.have.limit("artists", 20);
         });
-        
+
         it("should support a limit parameter", function () {
             var one = chakram.get("https://api.spotify.com/v1/search?q=random&type=artist&limit=1");
             expect(one).to.have.limit("artists", 1);
@@ -82,7 +82,7 @@ describe("Spotify API", function() {
             expect(fifty).to.have.limit("artists", 50);
             return chakram.wait();
         });
-        
+
         it("should support an offset parameter", function () {
             var first = chakram.get("https://api.spotify.com/v1/search?q=random&type=artist&limit=1");
             var second = chakram.get("https://api.spotify.com/v1/search?q=random&type=artist&limit=1&offset=1");
@@ -93,7 +93,7 @@ describe("Spotify API", function() {
                 return chakram.wait();
             });
         });
-        
+
         it("should only support GET calls", function () {
             this.timeout(4000);
             expect(chakram.post("https://api.spotify.com/v1/search")).to.have.status(405);
@@ -102,7 +102,7 @@ describe("Spotify API", function() {
             expect(chakram.patch("https://api.spotify.com/v1/search")).to.have.status(405);
             return chakram.wait();
         });
-       
+
         it("should return href, id, name and popularity for all found artists", function () {
             return expect(randomArtistSearch).to.have.schema('artists.items', {
                 type: "array",
