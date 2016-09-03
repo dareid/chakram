@@ -11,8 +11,8 @@ describe("Extensibility", function () {
   it("should be able to detect teapots", function () {
     var notATeapot = chakram.get("http://httpbin.org/status/200");
     var aTeapot = chakram.get("http://httpbin.org/status/418");
-    expect(notATeapot).to.not.be.a.teapot;
-    expect(aTeapot).to.be.a.teapot;
+    expect(notATeapot).to.not.be.teapot;
+    expect(aTeapot).to.be.teapot;
     return chakram.wait();
   });
 });
