@@ -60,6 +60,7 @@ describe("Methods", function() {
 
     describe("DELETE", function () {
         testWriteMethods(chakram.delete, "http://httpbin.org/delete");
+        testWriteMethods(chakram.del, "http://httpbin.org/delete");
     });
 
     describe("PATCH", function () {
