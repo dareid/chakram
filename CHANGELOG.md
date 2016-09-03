@@ -1,5 +1,10 @@
 #Changelog
 
+###1.5.0
+ - Added `responsetime` assertion #58
+ - Added `responseTime` to `ChakramResponseObject` #60
+ - Introduced `del` alias #61
+
 ###1.4.0
  - Added support for expect's second custom message argument #56
  - Exposes tv4's schemaBanUnknown and schemaCyclicCheck options #52
