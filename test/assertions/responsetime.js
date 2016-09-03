@@ -11,16 +11,10 @@ describe("Chakram Assertions", function() {
             request = chakram.get("http://httpbin.org/delay/2");
         })
 
-        it("should check response time is less than or equal to expected response time if called as a method", function () {
-            return expect(request).to.have.responsetime(3000);
+        it("should check response time is less than or equal to expected response time", function () {
+            expect(request).to.have.responsetime(3000);
+            expect(request).not.to.have.responsetime(1900);
+            return chakram.wait();
         })
-
-        it("should support chaining", function() {
-            return chakram.waitFor([
-                expect(request).to.have.responsetime.below(3000),
-                expect(request).to.have.responsetime.above(2000),
-                expect(request).to.have.responsetime.within(2000, 3000)
-            ]);
-        });
     });
 });
