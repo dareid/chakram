@@ -53,9 +53,6 @@ describe("Chakram Assertions", function() {
                     expect(postRequest).to.have.json('json.str', /^test str$/)
                 ]);
             });
-            it("should be able to equal nulls", function () {
-                return expect(postRequest).to.have.json('json.empty', null);
-            });
         });
 
         var testChainedCompriseProperty = function(description, buildChain) {
