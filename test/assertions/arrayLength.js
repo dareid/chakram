@@ -6,15 +6,15 @@ describe("Chakram Assertions", function () {
 
     describe("arrayLength()", function () {
 
-        it("should check length of array at root", function () {
-            var response = chakram.post("http://httpbin.org/post", ["an", "array"]);
-            expect(response).to.have.arrayLength(2);
+        it("should check length of array at body root", function () {
+            var response = chakram.get("https://jsonplaceholder.typicode.com/users");
+            expect(response).to.have.arrayLength(10);
             return chakram.wait();
         });
 
         it("should check length of array in body", function () {
-            var response = chakram.post("http://httpbin.org/post", {myArr: ["an", "array"]});
-            expect(response).to.have.arrayLength("myArr", 2);
+            var response = chakram.post("http://httpbin.org/post", ["an", "array"]);
+            expect(response).to.have.arrayLength("json", 2);
             return chakram.wait();
         });
     });
