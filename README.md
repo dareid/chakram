@@ -4,7 +4,7 @@
 
 Chakram is an API testing framework designed to perform end to end tests on JSON REST endpoints.
 
-The library offers a BDD testing style and fully exploits javascript promises - the resulting tests are simple, clear and expressive. Chakram is built on [node.js](https://nodejs.org/), [mocha](http://mochajs.org/) and [chai](http://chaijs.com/).
+The library offers a BDD testing style and fully exploits javascript promises - the resulting tests are simple, clear and expressive. Chakram is built on [node.js](https://nodejs.org/), [mocha](http://mochajs.org/), [chai](http://chaijs.com/) and [request](https://github.com/request/request).
 
 This readme offers an introduction to the library. For more information, visit Chakram's [documentation](http://dareid.github.io/chakram/) and [tests](https://github.com/dareid/chakram/tree/master/test) which demonstrate all of Chakram's capabilities. In addition, example tests of publicly accessible APIs are available in the [examples directory](https://github.com/dareid/chakram/tree/master/examples). If required, assistance can be found in the project's [gitter chat room](https://gitter.im/dareid/chakram).
 
