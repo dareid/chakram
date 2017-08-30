@@ -140,7 +140,7 @@ Test results can be exported in multiple formats, Mocha's builtin formats are de
 
 ### Adding Assertions
 
-New assertions can be easily added to Chakram. The [plugin tests](https://github.com/dareid/chakram/blob/master/test/plugins.js) demonstrate how properties and methods can be added. Further information is available in [Chai's plugin documentation](http://chaijs.com/guide/plugins/).
+New assertions can be easily added to Chakram. The [plugin tests](https://github.com/dareid/chakram/blob/master/test/core/plugins.js) demonstrate how properties and methods can be added. Further information is available in [Chai's plugin documentation](http://chaijs.com/guide/plugins/).
 
 ## Contributing
 Issues, pull requests and questions are welcomed.
