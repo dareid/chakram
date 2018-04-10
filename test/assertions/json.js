@@ -47,6 +47,14 @@ describe("Chakram Assertions", function() {
             });
         });
 
+        describe("RegExp", function () {
+            it("should ensure matches json by RegExp", function () {
+                return chakram.waitFor([
+                    expect(postRequest).to.have.json('json.str', /^test str$/)
+                ]);
+            });
+        });
+
         var testChainedCompriseProperty = function(description, buildChain) {
             describe(description, function () {
                 it("should ensure body includes given json", function() {
