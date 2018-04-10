@@ -11,21 +11,20 @@ The library offers a BDD testing style and fully exploits javascript promises - 
 This readme offers an introduction to the library. For more information, visit Chakram's [documentation](http://dareid.github.io/chakram/) and [tests](https://github.com/dareid/chakram/tree/master/test) which demonstrate all of Chakram's capabilities. In addition, example tests of publicly accessible APIs are available in the [examples directory](https://github.com/dareid/chakram/tree/master/examples). If required, assistance can be found in the project's [gitter chat room](https://gitter.im/dareid/chakram).
 
 ## Features
- - HTTP specific assertions. Allows testing of:
-  + Status codes
-  + Cookie presence and value
-  + Header presence and value
-  + JSON values
-  + JSON structure (using the [JSON schema specification](http://json-schema.org/documentation.html))
-  + Compression
-  + Response times
-
-- BDD formatting and hooks (e.g. beforeEach, afterEach)
-- Promise based
-- Plugin support
-- Custom assertions
-- Exports results in a variety of formats
-- Debugging support
+ * HTTP specific assertions. Allows testing of:
+   * Status codes
+   * Cookie presence and value
+   * Header presence and value
+   * JSON values
+   * JSON structure (using the [JSON schema specification](http://json-schema.org/documentation.html))
+   * Compression
+   * Response times
+* BDD formatting and hooks (e.g. beforeEach, afterEach)
+* Promise based
+* Plugin support
+* Custom assertions
+* Exports results in a variety of formats
+* Debugging support
 
 ## Plugins
 Awesome plugins from the community:
