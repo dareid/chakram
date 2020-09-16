@@ -1,17 +1,16 @@
-var testsRunningInNode = (typeof global !== "undefined" ? true : false),
-    chakram = (testsRunningInNode ? global.chakram : window.chakram),
-    expect = (testsRunningInNode ? global.expect : window.expect);
+var testsRunningInNode = typeof global !== "undefined" ? true : false,
+    chakram = testsRunningInNode ? global.chakram : window.chakram,
+    expect = testsRunningInNode ? global.expect : window.expect;
 
 describe("Chakram Assertions", function () {
-
     describe("arrayIncluding()", function () {
-
         it("should check array at body root", function () {
             var album = {
-                "userId": 1,
-                "id": 1,
-                "title": "quidem molestiae enim"
+                userId: 1,
+                id: 1,
+                title: "quidem molestiae enim",
             };
+
             var response = chakram.get("https://jsonplaceholder.typicode.com/albums");
             expect(response).to.have.arrayIncluding(album);
             return chakram.wait();

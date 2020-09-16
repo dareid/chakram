@@ -1,0 +1,7 @@
+{
+    "file": ["./test/bootstrap.js"],
+    "options": {
+        "timeout": 100000,
+        "slow": 100000
+    }
+}

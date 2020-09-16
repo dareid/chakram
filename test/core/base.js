@@ -1,25 +1,23 @@
-var testsRunningInNode = (typeof global !== "undefined" ? true : false),
-    chakram = (testsRunningInNode ? global.chakram : window.chakram),
-    expect = (testsRunningInNode ? global.expect : window.expect);
+var testsRunningInNode = typeof global !== "undefined" ? true : false,
+    chakram = testsRunningInNode ? global.chakram : window.chakram,
+    expect = testsRunningInNode ? global.expect : window.expect;
 
-describe("Chakram", function() {
-
+describe("Chakram", function () {
     it("should support chai's built in expectations", function () {
         expect(true).not.to.equal(false);
         expect(1).to.be.below(10);
-        expect("teststring").to.be.a('string');
-        expect([1,2,3]).not.to.contain(4);
+        expect("teststring").to.be.a("string");
+        expect([1, 2, 3]).not.to.contain(4);
         expect(undefined).to.be.undefined;
         expect(null).to.be.null;
     });
 
     describe("Async support", function () {
-
-        describe("Async it", function() {
+        describe("Async it", function () {
             var delayedResponse;
             this.timeout(11000);
 
-            beforeEach(function() {
+            beforeEach(function () {
                 delayedResponse = chakram.get("http://httpbin.org/delay/1");
             });
 
@@ -28,14 +26,16 @@ describe("Chakram", function() {
             });
 
             it("should support mocha's done callback", function (done) {
-                expect(delayedResponse).to.have.status(200).then(function(){done();});
+                expect(delayedResponse)
+                    .to.have.status(200)
+                    .then(function () {
+                        done();
+                    });
             });
         });
     });
 
-
     describe("Response Object", function () {
-
         var request;
 
         before(function () {
@@ -43,15 +43,13 @@ describe("Chakram", function() {
         });
 
         it("should expose any errors in the chakram response object", function () {
-            return chakram.get("not-valid")
-            .then(function(obj) {
+            return chakram.get("not-valid").then(function (obj) {
                 expect(obj.error).to.exist.and.to.be.an("error");
             });
         });
 
         it("should include the original URL in the chakram response object", function () {
-            return chakram.get("not-valid")
-            .then(function(obj) {
+            return chakram.get("not-valid").then(function (obj) {
                 expect(obj.url).to.exist.and.to.equal("not-valid");
             });
         });
@@ -76,7 +74,7 @@ describe("Chakram", function() {
         it("should resolve chakram.waitFor promises to a chakram response object", function () {
             var waitPromise = chakram.waitFor([
                 expect(request).to.have.status(200),
-                expect(request).not.to.have.status(400)
+                expect(request).not.to.have.status(400),
             ]);
             return waitPromise.then(assertChakramResponseObject);
         });
@@ -89,8 +87,7 @@ describe("Chakram", function() {
 
         it("should record response time", function () {
             this.timeout(3000);
-            return chakram.get("http://httpbin.org/delay/2")
-            .then(function (obj) {
+            return chakram.get("http://httpbin.org/delay/2").then(function (obj) {
                 expect(obj.responseTime).to.exist.and.to.be.at.least(2000).and.at.most(3000);
             });
         });
@@ -99,14 +96,14 @@ describe("Chakram", function() {
     describe("Multiple expects", function () {
         var request;
 
-        beforeEach(function() {
+        beforeEach(function () {
             request = chakram.get("http://httpbin.org/status/200");
         });
 
         it("should support grouping multiple tests", function () {
             return chakram.waitFor([
                 expect(request).to.have.status(200),
-                expect(request).not.to.have.status(404)
+                expect(request).not.to.have.status(404),
             ]);
         });
 
@@ -114,7 +111,7 @@ describe("Chakram", function() {
             return expect(request).to.have.status(200).and.not.to.have.status(404);
         });
 
-        it("should support auto waiting for tests", function() {
+        it("should support auto waiting for tests", function () {
             expect(request).to.have.status(200);
             expect(request).not.to.have.status(404);
             return chakram.wait();
@@ -124,15 +121,17 @@ describe("Chakram", function() {
     describe("Chained requests", function () {
         it("should allow multiple chained requests", function () {
             this.timeout(4000);
-            return expect(chakram.get("http://httpbin.org/status/200")).to.have.status(200)
-            .then(function(obj) {
-                var postRequest = chakram.post("http://httpbin.org/post", {"url": obj.url});
-                expect(postRequest).to.have.status(200);
-                expect(postRequest).to.have.header('content-length');
-                return chakram.wait();
-            }).then(function(obj) {
-                expect(obj.body.json.url).to.be.equal("http://httpbin.org/status/200");
-            });
+            return expect(chakram.get("http://httpbin.org/status/200"))
+                .to.have.status(200)
+                .then(function (obj) {
+                    var postRequest = chakram.post("http://httpbin.org/post", { url: obj.url });
+                    expect(postRequest).to.have.status(200);
+                    expect(postRequest).to.have.header("content-length");
+                    return chakram.wait();
+                })
+                .then(function (obj) {
+                    expect(obj.body.json.url).to.be.equal("http://httpbin.org/status/200");
+                });
         });
     });
 });

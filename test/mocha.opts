@@ -1,1 +1,0 @@
--t 10000 ./test/bootstrap.js test/core/*.js test/assertions/*.js examples/*.js

@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Chakram: BDD REST API test tool</title>
+    
+    <meta name="description" content="Chakram: BDD REST API test tool" />
+    
+        <meta name="keywords" content="E2E REST API JSON chai mocha nodejs test BDD" />
+        <meta name="keyword" content="E2E REST API JSON chai mocha nodejs test BDD" />
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/jaguar.css">
+    
+    
+    <script>
+    var config = {"monospaceLinks":false,"cleverLinks":false,"applicationName":"Chakram-BeInformed","meta":{"title":"Chakram: BDD REST API test tool","description":"Chakram: BDD REST API test tool","keyword":"E2E REST API JSON chai mocha nodejs test BDD"},"linenums":false,"default":{}};
+    </script>
+    
+
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html">Chakram-BeInformed</a></h3>
+
+    <div class="search">
+        <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
+    </div>
+    <ul class="list">
+    
+        <li class="item" data-name="module:chakram">
+            <span class="title">
+                <a href="module-chakram.html">module:chakram</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="module:chakram.addSchema"><a href="module-chakram.html#.addSchema">addSchema</a></li>
+            
+                <li data-name="module:chakram.addSchemaFormat"><a href="module-chakram.html#.addSchemaFormat">addSchemaFormat</a></li>
+            
+                <li data-name="module:chakram.getSchemaMap"><a href="module-chakram.html#.getSchemaMap">getSchemaMap</a></li>
+            
+                <li data-name="module:chakram.schemaBanUnknown"><a href="module-chakram.html#.schemaBanUnknown">schemaBanUnknown</a></li>
+            
+                <li data-name="module:chakram.schemaCyclicCheck"><a href="module-chakram.html#.schemaCyclicCheck">schemaCyclicCheck</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="module:chakram.addMethod"><a href="module-chakram.html#.addMethod">addMethod</a></li>
+            
+                <li data-name="module:chakram.addProperty"><a href="module-chakram.html#.addProperty">addProperty</a></li>
+            
+                <li data-name="module:chakram.addRawPlugin"><a href="module-chakram.html#.addRawPlugin">addRawPlugin</a></li>
+            
+                <li data-name="module:chakram.all"><a href="module-chakram.html#.all">all</a></li>
+            
+                <li data-name="module:chakram.clearRequestDefaults"><a href="module-chakram.html#.clearRequestDefaults">clearRequestDefaults</a></li>
+            
+                <li data-name="module:chakram.del"><a href="module-chakram.html#.del">del</a></li>
+            
+                <li data-name="module:chakram.delete"><a href="module-chakram.html#.delete">delete</a></li>
+            
+                <li data-name="module:chakram.expect"><a href="module-chakram.html#.expect">expect</a></li>
+            
+                <li data-name="module:chakram.get"><a href="module-chakram.html#.get">get</a></li>
+            
+                <li data-name="module:chakram.head"><a href="module-chakram.html#.head">head</a></li>
+            
+                <li data-name="module:chakram.initialize"><a href="module-chakram.html#.initialize">initialize</a></li>
+            
+                <li data-name="module:chakram.options"><a href="module-chakram.html#.options">options</a></li>
+            
+                <li data-name="module:chakram.patch"><a href="module-chakram.html#.patch">patch</a></li>
+            
+                <li data-name="module:chakram.post"><a href="module-chakram.html#.post">post</a></li>
+            
+                <li data-name="module:chakram.put"><a href="module-chakram.html#.put">put</a></li>
+            
+                <li data-name="module:chakram.setRequestDefaults"><a href="module-chakram.html#.setRequestDefaults">setRequestDefaults</a></li>
+            
+                <li data-name="module:chakram.startDebug"><a href="module-chakram.html#.startDebug">startDebug</a></li>
+            
+                <li data-name="module:chakram.stopDebug"><a href="module-chakram.html#.stopDebug">stopDebug</a></li>
+            
+                <li data-name="module:chakram.wait"><a href="module-chakram.html#.wait">wait</a></li>
+            
+                <li data-name="module:chakram.waitFor"><a href="module-chakram.html#.waitFor">waitFor</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="module:chakram-expectation">
+            <span class="title">
+                <a href="module-chakram-expectation.html">module:chakram-expectation</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="module:chakram-expectation.arrayIncluding"><a href="module-chakram-expectation.html#.arrayIncluding">arrayIncluding</a></li>
+            
+                <li data-name="module:chakram-expectation.arrayLength"><a href="module-chakram-expectation.html#.arrayLength">arrayLength</a></li>
+            
+                <li data-name="module:chakram-expectation.cookie"><a href="module-chakram-expectation.html#.cookie">cookie</a></li>
+            
+                <li data-name="module:chakram-expectation.deflate"><a href="module-chakram-expectation.html#.deflate">deflate</a></li>
+            
+                <li data-name="module:chakram-expectation.gzip"><a href="module-chakram-expectation.html#.gzip">gzip</a></li>
+            
+                <li data-name="module:chakram-expectation.header"><a href="module-chakram-expectation.html#.header">header</a></li>
+            
+                <li data-name="module:chakram-expectation.json"><a href="module-chakram-expectation.html#.json">json</a></li>
+            
+                <li data-name="module:chakram-expectation.responsetime"><a href="module-chakram-expectation.html#.responsetime">responsetime</a></li>
+            
+                <li data-name="module:chakram-expectation.schema"><a href="module-chakram-expectation.html#.schema">schema</a></li>
+            
+                <li data-name="module:chakram-expectation.status"><a href="module-chakram-expectation.html#.status">status</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="global">
+            <span class="title">
+                <a href="global.html">global</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            <span class="subtitle">Typedefs</span>
+            
+                <li data-name="ChakramResponse"><a href="global.html#ChakramResponse">ChakramResponse</a></li>
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="jar"><a href="global.html#jar">jar</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+    </ul>
+</div>
+
+    <div class="main">
+        <h1 class="page-title" data-filename="module-chakram-expectation.html">Module: chakram-expectation</h1>
+        
+
+
+
+<section>
+    
+<header>
+    <h2>
+    chakram-expectation
+    </h2>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+            <div class="description">Extends the <a href="http://chaijs.com/api/bdd/">chai.expect</a> object with additional HTTP matchers.</div>
+        
+        
+        
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+        
+        
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".arrayIncluding">
+            
+            <span class="type-signature static">static</span>module:chakram-expectation.arrayIncluding<span class="signature">(<span class="optional">subelement</span>, member)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            assertions/arrayIncluding.js, line 15
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Checks the inclusion of an array member in the response. Defaults to the body JSON. An optional first argument allows sub-element checks.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>subelement</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                if specified a sub-element of the JSON body is checked, specified using dot notation</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>member</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+|
+
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the expected member included in the array</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>it("should check array in body", function () {
+     var response = chakram.post("http://httpbin.org/post", ["an", "array"]);
+     expect(response).to.have.arrayIncluding("json", "an");
+     return chakram.wait();
+ });</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".arrayLength">
+            
+            <span class="type-signature static">static</span>module:chakram-expectation.arrayLength<span class="signature">(<span class="optional">subelement</span>, length)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            assertions/arrayLength.js, line 15
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Checks the length of an array in the response. Defaults to the body JSON. An optional first argument allows sub-element checks.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>subelement</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                if specified a sub-element of the JSON body is checked, specified using dot notation</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>length</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                the expected length of the array</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>it("should check length of array", function () {
+     var response = chakram.post("http://httpbin.org/post", ["an", "array"]);
+     expect(response).to.have.arrayLength(2);
+     return chakram.wait();
+ });</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".cookie">
+            
+            <span class="type-signature static">static</span>module:chakram-expectation.cookie<span class="signature">(name, <span class="optional">value</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            assertions/cookie.js, line 15
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Either checks that a cookie exists or ensures the cookie matches a given value
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                checks a cookie with this name exists</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+|
+
+<span class="param-type">RegExp</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                if specified, checks the cookie matches the given string or regular expression</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>it("should allow checking of HTTP cookies", function () {
+    var response = chakram.get("http://httpbin.org/cookies/set?chakram=testval");
+    expect(response).to.have.cookie('chakram');
+    expect(response).to.have.cookie('chakram', 'testval');
+    expect(response).to.have.cookie('chakram', /val/);
+    return chakram.wait();
+});</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".deflate">
+            
+            <span class="type-signature static">static</span>module:chakram-expectation.deflate<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            assertions/compression.js, line 29
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Checks that the response is deflate compressed
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>it("should detect deflate compression", function () {
+        var deflate = chakram.get("http://httpbin.org/deflate");
+        return expect(deflate).to.be.encoded.with.deflate;
+    });</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".gzip">
+            
+            <span class="type-signature static">static</span>module:chakram-expectation.gzip<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            assertions/compression.js, line 16
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Checks that the response is gzip compressed
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>it("should detect gzip compression", function () {
+        var gzip = chakram.get("http://httpbin.org/gzip");
+        return expect(gzip).to.be.encoded.with.gzip;
+    });</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".header">
+            
+            <span class="type-signature static">static</span>module:chakram-expectation.header<span class="signature">(name, <span class="optional">value</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            assertions/header.js, line 19
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Either checks that a header exists or ensures the header matches a given value
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                checks a header with this name exists</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+|
+
+<span class="param-type">RegExp</span>
+|
+
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                if specified, checks the header matches the given string or regular expression OR calls the provided function passing the header's value</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>it("should allow checking of HTTP headers", function () {
+    var response = chakram.get("http://httpbin.org/get");
+    expect(response).to.have.header('content-type');
+    expect(response).to.have.header('content-type', 'application/json');
+    expect(response).to.have.header('content-type', /json/);
+    expect(response).to.have.header('content-type', function(contentType) {
+        expect(contentType).to.equal('application/json');
+    });
+    return chakram.wait();
+});</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".json">
+            
+            <span class="type-signature static">static</span>module:chakram-expectation.json<span class="signature">(<span class="optional">subelement</span>, expectedValue)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            assertions/json.js, line 25
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Checks the content of a JSON object within the return body. By default this will check the body JSON exactly matches the given object. If the 'comprise' chain element is used, it checks that the object specified is contained within the body JSON. An additional first argument allows sub object checks.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>subelement</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                if specified a subelement of the JSON body is checked, specified using dot notation</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>expectedValue</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+|
+
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                a JSON serializable object which should match the JSON body or the JSON body's subelement OR a custom function which is called with the JSON body or the JSON body's subelement</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>it("should allow checking of JSON return bodies", function () {
+    var response = chakram.get("http://httpbin.org/get");
+    expect(response).to.comprise.of.json({
+        url: "http://httpbin.org/get",
+        headers: {
+            Host: "httpbin.org",
+        }
+    });
+    expect(response).to.have.json('url', "http://httpbin.org/get");
+    expect(response).to.have.json('url', function (url) {
+        expect(url).to.equal("http://httpbin.org/get");
+    });
+    return chakram.wait();
+});</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".responsetime">
+            
+            <span class="type-signature static">static</span>module:chakram-expectation.responsetime<span class="signature">(milliseconds)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            assertions/responsetime.js, line 12
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Checks the response time of the response is less than or equal to the provided millisecond value.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>milliseconds</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the expected maximum response time in milliseconds</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>it("should allow checking maximum response time", function () {
+    var request = chakram.get("http://httpbin.org/delay/2");
+    return expect(request).to.have.responsetime(3000);
+});</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".schema">
+            
+            <span class="type-signature static">static</span>module:chakram-expectation.schema<span class="signature">(<span class="optional">subelement</span>, expectedSchema)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            assertions/schema.js, line 28
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Checks the schema of the returned JSON object against a provided <a href="http://json-schema.org/">JSON Schema</a>. This assertion utilizes the brilliant <a href="https://github.com/geraintluff/tv4">tv4 library</a>. An optional dot notation argument allows a subelement of the JSON object to checked against a JSON schema. Amoungst others, this can confirm types, array lengths, required fields, min and max of numbers and string lengths. For more examples see the test/assertions/schema.js tests.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>subelement</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                if specified a subelement of the JSON body is checked, specified using dot notation</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>expectedSchema</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                a JSON schema object which should match the JSON body or the JSON body's subelement. For more details on format see <a href="http://json-schema.org/">the JSON schema website</a></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>it("should check that the returned JSON object satisifies a JSON schema", function () {
+    var response = chakram.get("http://httpbin.org/get");
+    expect(response).to.have.schema('headers', {"required": ["Host", "Accept"]});
+    expect(response).to.have.schema({
+        "type": "object",
+        properties: {
+            url: {
+                type: "string"
+            },
+            headers: {
+                type: "object"
+            }
+        }
+    });
+    return chakram.wait();
+});</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".status">
+            
+            <span class="type-signature static">static</span>module:chakram-expectation.status<span class="signature">(code)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            assertions/statuscode.js, line 12
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Checks the status code of the response
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>code</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                the expected status code from the response</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>it("should allow checking of the response's status code", function () {
+    var response = chakram.get("http://httpbin.org/get");
+    return expect(response).to.have.status(200);
+});</code></pre>
+    
+
+    
+</dd>
+
+        </dl>
+    
+    
+    
+    
+    
+</article>
+
+</section>  
+
+
+
+
+
+        
+
+        <footer>
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Wed Sep 16 2020 14:04:52 GMT+0200 (Central European Summer Time)
+        </footer>
+    </div>
+</div>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+<script src="scripts/main.js"></script>
+</body>
+</html>
