@@ -1,3 +1,4 @@
 node_modules
 coverage
-out
+docs
+.nyc_output

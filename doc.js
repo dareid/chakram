@@ -16,7 +16,7 @@ function stripIframes() {
         const updatedContent = htmlContent
             .split("\n")
             .map((line) => {
-                if (line.includes("<iframe src")) {
+                if (line.includes(LINE_TO_REPLACE)) {
                     return line.replace(LINE_TO_REPLACE, "");
                 }
 
