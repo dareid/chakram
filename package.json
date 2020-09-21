@@ -62,7 +62,8 @@
         "predoc": "npm install",
         "doc": "jsdoc -t node_modules/jaguarjs-jsdoc -c conf.json -R README.md -r lib && node ./doc.js",
         "prebuild:js": "rm -rf dist",
-        "build": "simplifyify --outfile dist/chakram.js --bundle --debug --standalone chakram lib/* lib/**/*"
+        "build": "simplifyify --outfile dist/chakram.js --bundle --debug --standalone chakram lib/* lib/**/*",
+        "release": "standard-version"
     },
     "engines": {
         "node": ">= 10.0.0"
