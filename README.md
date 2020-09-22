@@ -2,7 +2,7 @@
 
 [Be Informed](https://www.beinformed.com) is using Chakram extensively in its own test tooling solution. Since Chakram is no longer actively maintained, we decided to fork Chakram and to replace deprecated components with newer alternatives and upgrade dependencies.
 
-Documentation on Chakram can be found on https://github.com/dareid/chakram. You can also find documentation in the `docs` folder of this project.
+Documentation on Chakram-BeInformed can be found on https://beinformed.github.io/chakram-beinformed/. You can also find documentation in the `docs` folder of this project.
 
 ## Differences between Chakram and Chakram-BeInformed
 
