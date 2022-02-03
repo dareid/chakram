@@ -33,12 +33,12 @@
         "BDD"
     ],
     "dependencies": {
-        "chai": "^4.x.x",
+        "chai": "^4.3.6",
         "chai-as-promised": "^7.x.x",
         "chai-subset": "^1.6.x",
         "extend-object": "1.x.x",
-        "fetch-cookie": "^0.10.1",
-        "lodash": "^4.17.20",
+        "fetch-cookie": "^1.0.0",
+        "lodash": "^4.17.21",
         "node-fetch": "^2.6.1",
         "q": "^1.5.1",
         "tough-cookie": "^4.0.0",
@@ -48,13 +48,13 @@
         "codeclimate-test-reporter": "0.x.x",
         "jaguarjs-jsdoc": "dareid/jaguarjs-jsdoc",
         "jsdoc": "latest",
-        "mocha": "8.x.x",
+        "mocha": "^9.2.0",
         "nyc": "^15.1.0",
-        "prettier": "^2.1.1",
-        "rewire": "5.x.x",
-        "simplifyify": "2.x.x",
-        "sinon": "1.x.x",
-        "standard-version": "^9.0.0"
+        "prettier": "^2.5.1",
+        "rewire": "^6.0.0",
+        "simplifyify": "^8.0.4",
+        "sinon": "^13.0.1",
+        "standard-version": "^9.3.2"
     },
     "scripts": {
         "pretest": "npm install",
@@ -63,9 +63,10 @@
         "doc": "jsdoc -t node_modules/jaguarjs-jsdoc -c conf.json -R README.md -r lib && node ./doc.js",
         "prebuild:js": "rm -rf dist",
         "build": "simplifyify --outfile dist/chakram.js --bundle --debug --standalone chakram lib/* lib/**/*",
-        "release": "standard-version"
+        "release": "standard-version",
+        "beta-release": "standard-version --prerelease beta"
     },
     "engines": {
-        "node": ">= 10.0.0"
+        "node": ">= 12.0.0"
     }
 }
